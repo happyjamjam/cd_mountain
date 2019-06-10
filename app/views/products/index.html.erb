@@ -4,8 +4,9 @@
 		<div>
 			<%= attachment_image_tag product.jacket_img, :image %><br>
 			<p>商品名：<%= product.product_name %></p><br>
+			アーティスト名：
 			<%= @artists.each do |artist| %>
-				<span>アーティスト名：<%= artist.artist_name %> </span><br>
+				<span><%= artist.artist_name %> </span>
 			<% end %>
 			<p>価格：<%= product.price %> 円</p>
 		</div>
