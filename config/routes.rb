@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  resources :products, only:[:index, :show]
   devise_for :admins
   devise_for :users
   resources :users, only: [:show, :edit]
