@@ -1,0 +1,62 @@
+<h1>Products#show</h1>
+<div>
+	<%= attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+
+	<div class="product_detail">
+		<h2><%= @product.product_name %></h2>
+		<%= @artist.artist_name %>/ <%= @label.label_name %>
+		<%= @genre.genre_name %>
+		<%= @product.price %> 円（税抜き価格）
+	</div>
+
+	<div class="#">
+		¥ <%= @product.price %>
+		在庫数 <%= @product.stock %> / <%= @product.sales_status %>
+		<select name="quantity">
+			<option value="1"> 1</option>
+			<option value="2"> 2</option>
+			<option value="3"> 3</option>
+			<option value="4"> 4</option>
+			<option value="5"> 5</option>
+		</select>
+		<%= link_to "カートに入れる", "#", class: "btn btn-primary" %>
+	</div>
+
+	<h2> トラックリスト</h2>
+
+	<% @disks.each do |d| %>
+		ディスク<%= d.disk_number %>
+		<% @musics.each do |m| %>
+		  トラック<%= m.track_number %>. <%= m.music.title %>
+		<% end %>
+	<% end %>
+
+	<%= link_to "レビューを投稿する", "#", class: "review-button btn btn-success" %>
+
+	<h2> レビュー</h2>
+
+	<table class="table">
+		<tr>
+			<th> 投稿者</th>
+			<th> タイトル</th>
+			<th> 本文</th>
+		</tr>
+
+		<% @reviews.each do |r| %>
+
+			<tr>
+				<td>
+					<%= r.user.first_name %>
+				</td>
+				<td>
+					<%= r.title %>
+				</td>
+				<td>
+					<%= r.body %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<p>Find me in app/views/products/show.html.erb</p>
