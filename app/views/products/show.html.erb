@@ -4,7 +4,7 @@
 
 	<div class="product_detail">
 		<h2><%= @product.product_name %></h2>
-		<%= @artist.artist_name %>/ <%= @label.label_name %>
+		<%= @artists.artist_name %>/ <%= @label.label_name %>
 		<%= @genre.genre_name %>
 		<%= @product.price %> 円（税抜き価格）
 	</div>
@@ -23,13 +23,13 @@
 	</div>
 
 	<h2> トラックリスト</h2>
-
-	<% @disks.each do |d| %>
-		ディスク<%= d.disk_number %>
-		<% @musics.each do |m| %>
-		  トラック<%= m.track_number %>. <%= m.music.title %>
-		<% end %>
-	<% end %>
+	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
+	<%# @disks.each do |d| %>
+		ディスク<%=# d.disk_number %>
+		<%# @musics.each do |m| %>
+		  トラック<%=# m.track_number %>. <%=# m.music_title %>
+		<%# end %>
+	<%# end %>
 
 	<%= link_to "レビューを投稿する", "#", class: "review-button btn btn-success" %>
 
@@ -56,6 +56,7 @@
 				</td>
 			</tr>
 		<% end %>
+		<%= paginate @reviews, class: "paginate" %>
 	</table>
 </div>
 
