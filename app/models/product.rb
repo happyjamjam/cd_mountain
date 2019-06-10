@@ -4,7 +4,6 @@ class Product < ApplicationRecord
 	has_many :users, through: :carts
 	has_many :carts
 	has_many :disks
-	has_many :musics, through: :disks
 	has_many :favorites
 	has_many :users, through: :favorites
 	has_many :reviews
