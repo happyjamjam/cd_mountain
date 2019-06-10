@@ -1,0 +1,61 @@
+<div class = "container">
+  <div class = "row">
+  	<div class = "col-xs-9">
+  	  <h3 class = "cart-title">カート</h3>
+  	  <table class = "table">
+  	  	<thread>
+  	  		<tr>
+  	  		  <th></th>
+  	  		  <th>商品名</th>
+  	  		  <th>値段</th>
+  	  		  <th>個数</th>
+  	  		  <th>合計金額</th>
+  	  		</tr>
+  	  	</thread>
+
+  	  	<tbody>
+
+  	  	  <% @cart.each do |cart| %>
+
+  	  	   <tr>
+              <td class = "contents"><%= attachment_image_tag cart.jacket_img_id, :jacket_img_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
+                <td class = "contents"><%= link_to cart.product_name %></td>
+                <td class = "contents"><%= link_to cart.product_price %></td>
+                <td class = "contents"><%= f.select :cart, [["1", "1"], ["2", "2"],["3","3"],["4","4"],["5","5"]],  :prompt => @cart_items.quantity %></td>
+                <td class = "contents"><%= get_total_price(cart.price,10) %></td>
+            </tr>
+              <% end %>
+              </tbody>
+       </table>
+    </div>
+    <div class = "col-xs-3">
+      <h3 class = "order-title">ご注文内容</h3>
+      <table class = "table">
+      	<tbody>
+      	  <tr>
+      	  	<th>小計</th>
+      	  	<th></th>
+      	  	<th></th>
+      	  </tr>
+      	  <tr>
+      	  	<th>消費税</th>
+      	  	<th><p>消費税8%</p></th>
+      	  	<th></th>
+      	  </tr>
+      	  	<th>送料</th>
+      	  	<th>一配送に付き500円</th>
+      	  	<th><p>¥500</p></th>
+      	  </tr>
+      	  <tr>
+      	  	<th class = "total_price_title">総合計金額</th>
+      	  	<th></th>
+      	  	<th></th>
+      	  </tr>
+      	</tbody>
+       </table>
+       <div class = "sibmit-bottom">
+          <%= f.submit '注文画面へ進む', class: "btn btn-primary col-xs-offset-11 col-xs-1" %>
+       </div>
+    </div>
+  </div>
+</div>
