@@ -46,9 +46,9 @@
 	<tbody>
 		<% @favorites.each do |favorite| %>
 		<tr>
-			<td><%= attachment_image_tag product, :jacket_img %></td>
-			<td><%= product.product_name %></td>
-			<td><%= product.price %></td>
+			<td><%= favorite.attachment_image_tag product, :jacket_img %></td>
+			<td><%= favorite.product.product_name %></td>
+			<td><%= favorite.product.price %></td>
 		</tr>
 		<% end %>
 	</tbody>
