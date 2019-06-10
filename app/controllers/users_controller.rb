@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!
+
 def show
   	@user = current_user
     @orders = current_user.orders.all
     @favorites = current_user.favorites.all
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def user_params
