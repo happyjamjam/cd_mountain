@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 
+
 	belongs_to :genre
 	belongs_to :label
 	has_many :users, through: :carts
