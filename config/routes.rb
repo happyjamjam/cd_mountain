@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+  get 'contacts/create'
+  get 'contacts/update'
   resources :products, only:[:index, :show]
   devise_for :admins
   devise_for :users
