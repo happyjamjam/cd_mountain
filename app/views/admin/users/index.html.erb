@@ -1,0 +1,13 @@
+<h1>お客様一覧</h1>
+<table class="table">
+	<tr>
+		<th> お名前</th>
+		<th></th>
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td> <%= user.last_name %> <%= user.first_name %> </td>
+			<td> <%= link_to "詳細", admin_user_path(user), class: "btn" %></td>
+		</tr>
+	<% end %>
+</table>
