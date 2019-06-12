@@ -22,6 +22,8 @@
 		<%= link_to "カートに入れる", "#", class: "btn btn-primary" %>
 	</div>
 
+	<% if user_signed_in? %>
+		<% if product.favorited_by?(current_user) %>
 	<h2> トラックリスト</h2>
 	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
 	<%# @disks.each do |d| %>
