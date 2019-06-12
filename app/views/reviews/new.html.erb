@@ -1,9 +1,11 @@
 <h3>レビュー投稿</h3>
  <div class = "product-box">
   <%= attachment_image_tag @product, :product_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>]
-  <%= @puroduct.product_name %>
+  <%= @product.product_name %>
   <%= @artists.artist_name %>
   <%= @label.label_name %> 
+  <%= @genre. genre_name %>
+  
  </div>
 
  <%= form_for(@review)  do |f| %>

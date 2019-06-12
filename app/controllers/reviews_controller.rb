@@ -1,9 +1,10 @@
 class ReviewsController < ApplicationController
   def new
   	@review = Review.new
-    @product =prduct.find(params[:id])
+    @product =Prduct.find(params[:id])
     @genre = @product.genre_id
     @label = @product.label_id
+    @artist =@product.artist_id
   end
 
   def create
@@ -26,4 +27,10 @@ class ReviewsController < ApplicationController
   	reviews = review.find(params[:id])
   	reviews.destroy
   end
+
+rivate
+  def review_params
+        params.require(:review).permit(:name,:title, :body)
+  end
+
 end
