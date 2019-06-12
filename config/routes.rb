@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	root to: "contacts#index"
-  	resources :users, only: [:index, :show, :edit, :update]
-    resources :contacts, only: [:index, :show, :new, :create, :update]
+  	resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :contacts, only: [:index, :show, :destroy]
     resources :reviews, only: [:edit, :update, :destroy]
     resources :products
     resources :artist, only: [:create, :edit]
