@@ -1,2 +1,43 @@
-<h1>Order#index</h1>
-<p>Find me in app/views/order/index.html.erb</p>
+<div class = "container">
+  <div class = "row">
+  	<p>カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
+  	<div class = "col-xs-9">
+  	　　<div style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+
+          <div class = "col-xs-6">
+	        <div class = "delivery-information">
+	          <h5>お届け先選択</h5>
+	          	<%= current_user.name %>
+	          	<%= current_user.postal_code %>
+	          	<%= current_user.address %>
+	          	<%= current_user.tel %>
+	        </div>
+
+          	<div class= "change-address"  id = "change-address-show">変更</div>
+          	 <div class= "change-modal-wrapper" id= "address-modal">
+		      <div class= "modal">
+		       <div id= "adress-options">
+		        <h2>お届け先を選択してください</h2>
+
+		       </div>
+		      </div>
+		     </div>
+          </div>
+
+          <div class = "col-xs-6 col-xs-offset-6">
+
+          	<h5>支払い方法選択</h5>
+          	<input type = "radio" name = "payment-method" value = "registered"> クレジット
+          	<input type = "radio" name = "payment-method" value = "other-addresses"> 銀行振込
+          	<input type = "radio" name = "payment-method" value = "other-addresses"> 代金引換
+          </div>
+  	   </div>
+    </div>
+    <div class = "col-xs-3">
+    </div>
+  </div>
+  <div class = "row">
+
+
+  </div>
+</div>
