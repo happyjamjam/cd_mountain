@@ -1,2 +1,14 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<h1>登録情報編集</h1>
+<!-- ボタンの位置は後で調整します -->
+<%= link_to "ユーザ削除", admin_user_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+<%= form_for ([:admin, @user]) do |f| %>
+	<%= f.label "姓" %>            <%= f.text_field :last_name %>
+	<%= f.label "名" %>            <%= f.text_field :first_name %><br>
+	<%= f.label "カナ姓" %>         <%= f.text_field :kana_last_name %>
+	<%= f.label "カナ名" %>         <%= f.text_field :kana_first_name %><br>
+	<%= f.label "郵便番号" %>       <%= f.text_field :postal_code %><br>
+	<%= f.label "住所" %>          <%= f.text_area :address %><br>
+	<%= f.label "電話番号" %>       <%= f.text_field :tel %><br>
+	<%= f.label "メールアドレス" %>  <%= f.text_field :email %><br>
+	<%= f.submit "編集完了", class: "btn btn-warning" %>
+<% end %>
