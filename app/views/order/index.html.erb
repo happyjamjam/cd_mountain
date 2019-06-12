@@ -12,16 +12,30 @@
 	          	<%= current_user.address %>
 	          	<%= current_user.tel %>
 	        </div>
-
+            <!-- 上記表示以外のアドレスを選択する js使用-->
           	<div class= "change-address"  id = "change-address-show">変更</div>
           	 <div class= "change-modal-wrapper" id= "address-modal">
 		      <div class= "modal">
 		       <div id= "adress-options">
 		        <h2>お届け先を選択してください</h2>
-
+		        <table class = "table">
+		         <tbody>
+                   <% current_user.addresses.each do |address| %>
+                   <tr>
+  	   	            <td class = "contents"><%= link_to address.name, class: "text-muted" %></td>
+  	   	            <td class = "contents"><%= address.postal_code %></td>
+  	   	            <td class = "contents"><%= address.address %></td>
+    	           </tr>
+    	           <% end %>
+                 </tbody>
+                </table>
 		       </div>
 		      </div>
 		     </div>
+		    <!-- 登録していない住所はここで登録する -->
+		    <div class = "register-new-address">
+		      <%= link_to "新しい住所を登録", users_path(current_user) %>
+		    </div>
           </div>
 
           <div class = "col-xs-6 col-xs-offset-6">
@@ -34,10 +48,52 @@
   	   </div>
     </div>
     <div class = "col-xs-3">
+       <h3 class = "order-title">ご注文内容</h3>
+       <table class = "table">
+      	 <tbody>
+      	  <tr>
+      	  	<th>小計</th>
+      	  	<th></th>
+      	  	<th><%= @subtotal_price %></th>
+      	  </tr>
+      	  <tr>
+      	  	<th>消費税</th>
+      	  	<td><p>消費税8%</p></td>
+      	  	<th><%= @tax %></th>
+      	  </tr>
+      	  	<th>送料</th>
+      	  	<td>一配送 500円</td>
+      	  	<th><p>¥500</p></th>
+      	  </tr>
+      	  <tr>
+      	  	<th class = "total_price_title">総合計金額</th>
+      	  	<th></th>
+      	  	<th><%= @final_price %></th>
+      	  </tr>
+      	</tbody>
+       </table>
+       <div class = "sibmit-bottom">
+          <%= link_to '注文を確定する', class: "btn btn-primary col-xs-7" %>
+       </div>
+    </div>
     </div>
   </div>
   <div class = "row">
-
-
+  	<table class = "table">
+      <tbody>
+        <% @user_carts.each do |cart| %>
+         <tr>
+    	   <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "noimage.jpg", size:'50x50' %></td>
+    	   <tr>
+	  	   	   <td class = "contents"><%= link_to cart.product_name, product_path(product.id), class: "text-muted" %></td>
+	  	   	   <td class = "contents"><%= cart.product %></td>
+	  	   	   <td class = "contents"><%= cart.product.stock %></td>
+	  	   	   <td class = "content" ><%= cart.product.price %></td>
+  	   	   </tr>
+  	   	   <td class = "contents"><%= cart.quantity %></td>
+    	 </tr>
+    	<% end %>
+      </tbody>
+    </table>
   </div>
 </div>
