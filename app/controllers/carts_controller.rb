@@ -2,12 +2,12 @@ class CartsController < ApplicationController
 
   def index
 
-  	@user_carts = current.carts.order(id: "DESC")
+  	@user_carts = current_user.carts.order(id: "DESC")
 
     @subtotal_price = 0
     @user_carts.each do |cart|
-      get_total_price = cart.product.price * cart.quantity
-      @subtotal_price += get_total_price
+      @get_total_price = cart.product.price * cart.quantity
+      @subtotal_price += @get_total_price
     end
 
     @tax = @subtotal_price * 0.08

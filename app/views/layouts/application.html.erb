@@ -8,25 +8,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if user_signed_in? %>
     <header class = "navbar navbar-default">
       <div class = "container">
-        <nav class = "nav navbar-nav navbar-left">
+      <nav class = "nav navbar-nav navbar-left">
           <h4 class = "title">CD MOUNTAIN</h4>
-        </nav>
+      </nav>
+    <% if user_signed_in? %>
         <nav>
           <ul class = "nav navbar-nav navbar-right">
-            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <li><%= link_to "マイページ", user_path(current_user) %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <li><%= link_to '', class: "glyphicon glyphicon-shopping-cart" %></li>
           </ul>
         </nav>
     <% else %>
-    <header class = "navbar navbar-default">
-       <div class = "container">
-        <nav class = "nav navbar-nav navbar-left">
-         <h4 class = "nav-brand">CD MOUNTAIN</h4>
-        </nav>
         <nav>
          <ul class = "nav navbar-nav navbar-right">
           <li><%= link_to "ログイン", new_user_session_path %></li>
