@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   def new
   	@review = Review.new
+    @product =prduct.find(params[:id])
+    @genre = @product.genre_id
+    @label = @product.label_id
   end
 
   def create
