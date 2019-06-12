@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     if @review.save
      redurect_to product_path
     else
-     render "new"
+     render :new
 　　 end
   end
 
