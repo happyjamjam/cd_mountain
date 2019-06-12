@@ -73,7 +73,7 @@
       	</tbody>
        </table>
        <div class = "sibmit-bottom">
-          <%= link_to '注文を確定する', class: "btn btn-primary col-xs-7" %>
+          <%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-primary col-xs-7" %>
        </div>
     </div>
     </div>
@@ -83,7 +83,7 @@
       <tbody>
         <% @user_carts.each do |cart| %>
          <tr>
-    	   <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "noimage.jpg", size:'50x50' %></td>
+    	   <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "noimage.jpg", size:'100x100' %></td>
     	   <tr>
 	  	   	   <td class = "contents"><%= link_to cart.product_name, product_path(product.id), class: "text-muted" %></td>
 	  	   	   <td class = "contents"><%= cart.product %></td>
