@@ -13,5 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.li {
+  style: none;
+}
+>>>>>>> 5b7bd140bfcb82f0b445538c580d6968dec7f55f:app/assets/stylesheets/application.scss
