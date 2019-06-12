@@ -1,3 +1,6 @@
+<% @user.errors.full_messages.each do |message| %>
+	・<%= message %>
+<% end %>
 <h1>登録情報編集</h1>
 <!-- ボタンの位置は後で調整します -->
 <%= link_to "ユーザ削除", admin_user_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
