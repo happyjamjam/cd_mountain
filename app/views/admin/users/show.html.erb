@@ -1,2 +1,64 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h2>登録情報</h2>
+<!-- ボタンはあとで適切な位置に配置します -->
+<%= link_to "編集画面へ", edit_admin_user_path(@user), class: "btn btn-warning" %>
+<%= link_to "削除", admin_user_path(@user), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+
+<table class="table">
+	<tr>
+		<th> お名前</th><th> 姓</th><td> <%= @user.last_name %></td><th>名</th><td> <%= @user.first_name %></td>
+	</tr>
+
+	<tr>
+		<th></th><th> カナ姓</th><td> <%= @user.kana_last_name %></td><th>カナ名</th><td> <%= @user.kana_first_name %></td>
+	</tr>
+
+	<tr>
+		<th> 郵便番号</th><td> <%= @user.postal_code %></td>
+	</tr>
+
+	<tr>
+		<th> 住所</th><td> <%= @user.address %></td>
+	</tr>
+
+	<tr>
+		<th> 電話番号</th><td> <%= @user.tel %></td>
+	</tr>
+
+	<tr>
+		<th> メールアドレス</th><td> <%= @user.email %></td>
+	</tr>
+</table>
+
+<h2> ユーザ購入履歴</h2>
+<table class = "table">
+	<tr>
+		<th> 注文ID</th>
+		<th> ステータス</th>
+		<th> 購入日</th>
+		<th></th>
+	</tr>
+<% @orders.each do |order| %>
+	<tr>
+		<td> <%= order.id %></td>
+		<td> <%= order.shipping_status %></td>
+		<td> <%= order.created_at %></td>
+		<td> <%= link_to "購入詳細", admin_order_path %></td>
+	</tr>
+<% end %>
+</table>
+
+<h2> レビュー一覧</h2>
+<table class = "table">
+	<tr>
+		<th> 商品名</th>
+		<th> タイトル</th>
+	</tr>
+	<% @reviews.each do |review| %>
+		<tr>
+			<td> <%= review.product.product_name %></td>
+			<td> <%= review.title %></td>
+			<td> <%= link_to "レビュー編集", edit_admin_review_path, class: "btn btn-warning" %></td>
+			<td> <%= link_to "レビュー削除", admin_review_path, method: :delete, class: "btn btn-danger" %></td>
+		</tr>
+	<% end %>
+</table>
