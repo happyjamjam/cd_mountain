@@ -11,15 +11,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	root to: "contacts#index"
-<<<<<<< HEAD
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :contacts, only: [:index, :show, :destroy]
-    resources :reviews, only: [:edit, :update, :destroy]
-=======
-  	resources :users, only: [:index, :show, :edit, :update]
     resources :contacts, only: [:index, :show, :new, :create, :update]
     resources :reviews, only: [:edit, :update, :destroy,:new]
->>>>>>> Add overflow scrolling
     resources :products
     resources :artist, only: [:create, :edit]
     resources :disks, only: [:create, :update, :destroy]
