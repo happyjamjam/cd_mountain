@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
   	passwords:     'admins/passwords',
@@ -11,8 +12,8 @@ Rails.application.routes.draw do
   namespace :admin do
   	root to: "contacts#index"
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :contacts, only: [:index, :show, :destroy]
-    resources :reviews, only: [:edit, :update, :destroy]
+    resources :contacts, only: [:index, :show, :new, :create, :update]
+    resources :reviews, only: [:edit, :update, :destroy,:new]
     resources :products
     resources :artist, only: [:create, :edit]
     resources :disks, only: [:create, :update, :destroy]
@@ -23,9 +24,18 @@ Rails.application.routes.draw do
 
   end
 
+  resources :products do
+    resources :reviews, only: [:edit, :update, :destroy,:new,:create]
+  end
+
+
+
   root to: "products#index"
   resources :users, only: [:show]
-  resources :products, only:[:index, :show]
+
   resources :carts, only:[:index, :create, :update, :destroy]
+
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
