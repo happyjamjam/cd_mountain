@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+
+
 	belongs_to :genre
 	belongs_to :label
 	has_many :users, through: :carts
@@ -10,4 +12,7 @@ class Product < ApplicationRecord
 	has_many :users, through: :reviews
 	has_many :orders, through: :order_details
 	has_many :order_details
+
+	attachment :jacket_img
+
 end

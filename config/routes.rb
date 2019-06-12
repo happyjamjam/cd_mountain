@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   	passwords:     'admins/passwords',
   	registrations: 'admins/registrations'
   }
+
   devise_for :users
 
   namespace :admin do
@@ -19,10 +20,12 @@ Rails.application.routes.draw do
     resources :labals, only: [:create, :update]
     resources :genres, only: [:create, :update]
     resources :orders, only: [:index, :show]
+
   end
 
   root to: "products#index"
   resources :users, only: [:show]
   resources :products, only:[:index, :show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :carts, only:[:index, :create, :update, :destroy]
+
 end
