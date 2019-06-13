@@ -1,99 +1,23 @@
 <div class = "container">
   <div class = "row">
-  	<p>カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
-  	<div class = "col-xs-9">
-  	　　<div style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-
-          <div class = "col-xs-6">
-	        <div class = "delivery-information">
-	          <h5>お届け先選択</h5>
-	          	<%= current_user.name %>
-	          	<%= current_user.postal_code %>
-	          	<%= current_user.address %>
-	          	<%= current_user.tel %>
-	        </div>
-            <!-- 上記表示以外のアドレスを選択する js使用-->
-          	<div class= "change-address"  id = "change-address-show">変更</div>
-          	 <div class= "change-modal-wrapper" id= "address-modal">
-		      <div class= "modal">
-		       <div id= "adress-options">
-		        <h2>お届け先を選択してください</h2>
-		        <table class = "table">
-		         <tbody>
-                   <% current_user.addresses.each do |address| %>
-                   <tr>
-  	   	            <td class = "contents"><%= link_to address.name, class: "text-muted" %></td>
-  	   	            <td class = "contents"><%= address.postal_code %></td>
-  	   	            <td class = "contents"><%= address.address %></td>
-    	           </tr>
-    	           <% end %>
-                 </tbody>
-                </table>
-		       </div>
-		      </div>
-		     </div>
-		    <!-- 登録していない住所はここで登録する -->
-		    <div class = "register-new-address">
-		      <%= link_to "新しい住所を登録", users_path(current_user) %>
-		    </div>
-          </div>
-
-          <div class = "col-xs-6 col-xs-offset-6">
-
-          	<h5>支払い方法選択</h5>
-          	<input type = "radio" name = "payment-method" value = "registered"> クレジット
-          	<input type = "radio" name = "payment-method" value = "other-addresses"> 銀行振込
-          	<input type = "radio" name = "payment-method" value = "other-addresses"> 代金引換
-          </div>
-  	   </div>
-    </div>
-    <div class = "col-xs-3">
-       <h3 class = "order-title">ご注文内容</h3>
-       <table class = "table">
-      	 <tbody>
-      	  <tr>
-      	  	<th>小計</th>
-      	  	<th></th>
-      	  	<th><%= @subtotal_price %></th>
-      	  </tr>
-      	  <tr>
-      	  	<th>消費税</th>
-      	  	<td><p>消費税8%</p></td>
-      	  	<th><%= @tax %></th>
-      	  </tr>
-      	  	<th>送料</th>
-      	  	<td>一配送 500円</td>
-      	  	<th><p>¥500</p></th>
-      	  </tr>
-      	  <tr>
-      	  	<th class = "total_price_title">総合計金額</th>
-      	  	<th></th>
-      	  	<th><%= @final_price %></th>
-      	  </tr>
-      	</tbody>
-       </table>
-       <div class = "sibmit-bottom">
-          <%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-primary col-xs-7" %>
-       </div>
-    </div>
-    </div>
-  </div>
-  <div class = "row">
-  	<table class = "table">
+    <h2>お買い上げありがとうございました</h2>
+    <p> 今回の</p><%= link_to '注文詳細' %><p>はこちらから</p>
+    <table class = "table">
       <tbody>
-        <% @user_carts.each do |cart| %>
+        <% @user_orders.each do |order| %>
          <tr>
-    	   <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "noimage.jpg", size:'100x100' %></td>
-    	   <tr>
-	  	   	   <td class = "contents"><%= link_to cart.product_name, product_path(product.id), class: "text-muted" %></td>
-	  	   	   <td class = "contents"><%= cart.product %></td>
-	  	   	   <td class = "contents"><%= cart.product.stock %></td>
-	  	   	   <td class = "content" ><%= cart.product.price %></td>
-  	   	   </tr>
-  	   	   <td class = "contents"><%= cart.quantity %></td>
-    	 </tr>
-    	<% end %>
+         <td class = "contents"><%= attachment_image_tag order.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "noimage.jpg", size:'100x100' %></td>
+         <tr>
+             <td class = "contents"><%= link_to order.product_name, product_path(product.id), class: "text-muted" %></td>
+             <td class = "contents"><%= order.product %></td>
+             <td class = "contents"><%= order.product.stock %></td>
+             <td class = "content" ><%= order.product.price %></td>
+           </tr>
+           <td class = "contents"><%= order.quantity %></td>
+       </tr>
+      <% end %>
       </tbody>
     </table>
+    </div>
   </div>
 </div>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
  before_action :configure_permitted_parameters, if: :devise_controller?
 
-# carts / orders 計算用関数
+# carts / orders 共通計算用関数
 
 def calculation
 

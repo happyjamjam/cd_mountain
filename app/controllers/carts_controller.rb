@@ -22,7 +22,7 @@ class CartsController < ApplicationController
   	@cart.user_id = current_user.id
 
   	@cart.update(cart_params)
-  	redirect_to carts_index_path(@cart)
+  	redirect_to carts_path(@cart)
 
   end
 
@@ -31,7 +31,7 @@ class CartsController < ApplicationController
   	cart = Cart.find(params[:id])
 
   	cart.destroy
-  	redirect_to carts_index_path(@cart)
+  	redirect_to carts_path(@cart)
 
   end
 

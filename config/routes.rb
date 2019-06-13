@@ -32,9 +32,9 @@ Rails.application.routes.draw do
 
   root to: "products#index"
   resources :users, only: [:show]
-
   resources :carts, only:[:index, :create, :update, :destroy]
   resources :orders, only:[:create, :show, :index]
+  get 'orders/confirm' => 'orders#confirm'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
