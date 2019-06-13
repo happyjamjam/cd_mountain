@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   	root to: "contacts#index"
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :new, :create, :update]
-    resources :reviews, only: [:edit, :update, :destroy,:new]
-    resources :products
+    resources :products do
+    resources :reviews, only: [:edit, :update, :destroy]
+  end
     resources :artist, only: [:create, :edit]
     resources :disks, only: [:create, :update, :destroy]
     resources :musics, only: [:create, :update, :destroy]

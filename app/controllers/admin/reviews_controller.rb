@@ -1,13 +1,13 @@
 class Admin::ReviewsController < Admin::ApplicationController
   def edit
   	@review = Review.find(params[:id])
-  	@product =Product.find(params[:id])
+  	@product =Product.find(params[:product_id])
     @genre = @product.genre_id
     @label = @product.label_id
     @artist =@product.artist_id
   end
 
-  def updeta
+  def update
     review = Review.find(params[:id])
     review.update(review_params)
     redirect_to admin_user_path
@@ -22,5 +22,9 @@ class Admin::ReviewsController < Admin::ApplicationController
   	redirect_to admin_user_path
   end
 
+private
+  def review_params
+    params.require(:review).permit(:name,:title, :body)
+  end
 
 end
