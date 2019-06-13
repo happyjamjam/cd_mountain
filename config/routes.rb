@@ -24,15 +24,12 @@ Rails.application.routes.draw do
 
   end
 
-  resources :products do
-    resources :reviews, only: [:edit, :update, :destroy,:new,:create]
-  end
-
-
-
   root to: "products#index"
   resources :users, only: [:show]
-
+  resources :products do
+    resources :reviews, only: [:edit, :update, :destroy,:new,:create]
+    resource :favorite, only: [:create, :destroy]
+  end
   resources :carts, only:[:index, :create, :update, :destroy]
 
 

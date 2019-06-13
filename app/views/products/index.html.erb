@@ -2,13 +2,14 @@
 <div>
 	<% @products.each do |product| %>
 		<div>
-			<%= attachment_image_tag product, :jacket_img %><br>
-			<p>商品名：<%= product.product_name %></p><br>
+			<%# attachment_image_tag product, :jacket_img %><br>
+			商品名：<%= product.product_name %><br>
 			アーティスト名：
-			<% @artists.each do |artist| %>
-				<span><%= artist.artist_name %> </span>
-			<% end %>
-			<p>価格：<%= product.price %> 円</p>
+			<%# @artists.each do |artist| %>
+				<%# artist.artist_name %>
+			<%# end %>
+			<br>
+			価格：<%= product.price %>
 		</div>
 	<% end %>
 	<%= paginate @products, class: "paginate" %>
