@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+	<% if product.favorited_by?(current_user) %>
+
+		<%= link_to product_favorite_path(product.id), method: :delete, remote: true do %>
+			<i class = "fa fa-heart" aria-hidden = "true" style = "color: red;"></i>
+		<% end %>
+		<%= product.favorites.count %>
+
+	<% else %>
+
+		<%= link_to product_favorite_path(product.id), method: :post, remote: true do %>
+			<i class = "far fa-heart" aria-hidden = "true" style = "color: black;"></i>
+		<% end %>
+		<%= product.favorites.count %>
+
+	<% end %>
+<% end %>

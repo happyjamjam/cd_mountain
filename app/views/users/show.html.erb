@@ -40,7 +40,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		<% @favorites.each do |favorite| %>
+		<% @favorite_products.each do |favorite| %>
 		  <tr>
 		    <td><%= favorite.attachment_image_tag product, :jacket_img %></td>
 		    <td><%= favorite.product.product_name %></td>
