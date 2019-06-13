@@ -17,9 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-
   	calculation
-
   end
 
   def confirmaration
