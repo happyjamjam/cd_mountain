@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
   	passwords:     'admins/passwords',
@@ -14,8 +13,8 @@ Rails.application.routes.draw do
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :new, :create, :update]
     resources :products do
-    resources :reviews, only: [:edit, :update, :destroy]
-  end
+      resources :reviews, only: [:edit, :update, :destroy]
+    end
     resources :artist, only: [:create, :edit]
     resources :disks, only: [:create, :update, :destroy]
     resources :musics, only: [:create, :update, :destroy]
