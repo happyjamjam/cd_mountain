@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   	@order.total_price = @final_price
 
   	@order.save
-    redirect_to orders_path
+    render :index
 
   end
 
@@ -20,8 +20,6 @@ class OrdersController < ApplicationController
   end
 
   def index
-
-  	@user_orders = current_user.carts.all.order(id: "DESC")
 
   end
 
