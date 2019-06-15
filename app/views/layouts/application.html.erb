@@ -37,6 +37,13 @@
        </div>
     <% end %>
     </header>
+    <div class = "text-success col-xs-offset-1">
+      <% if flash[:notice] %>
+        <div class = "flash">
+         <%= flash[:notice] %>
+        </div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

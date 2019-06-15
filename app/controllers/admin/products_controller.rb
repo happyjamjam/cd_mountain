@@ -11,6 +11,7 @@ class Admin::ProductsController < Admin::ApplicationController
   	@product = Product.new(product_params)
 
   	@book.save
+  	flash[:notice] = "Product was successfully created."
     redirect_to admin_products(current_admin)
 
   end
@@ -23,17 +24,17 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def edit
 
-  	@ = Product.find(params[:id])
+  	@product = Product.find(params[:id])
 
   end
 
   def update
 
-    @cart = Product.find(params[:id])
+    @product = Product.find(params[:id])
 
-    if @cart.update(_params)
-      flash[:notice] = "Book was successfully updated."
-      redirect_to book_path(@book.id)
+    if @product.update(_params)
+      flash[:notice] = "Product was successfully updated."
+      redirect_to product_path(@product.id)
     else
       render :edit
     end
@@ -48,6 +49,12 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def destroy
+
+  	product = Product.find(params[:id])
+
+  	product.destroy
+  	flash[:notice] = "Product was successfully destroyed."
+  	redirect_to admin_products_path
 
   end
 
