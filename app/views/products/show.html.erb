@@ -1,11 +1,10 @@
-<h1>Products#show</h1>
 <div>
-	<%= attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+	<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
 
 	<div class="product_detail">
 		<h2><%= @product.product_name %></h2>
-		<%= @artists.artist_name %>/ <%= @label.label_name %>
-		<%= @genre.genre_name %>
+		<%# @artists.artist_name %>/ <%# @label.label_name %>
+		<%# @genre.genre_name %>
 		<%= @product.price %> 円（税抜き価格）
 	</div>
 
@@ -22,12 +21,16 @@
 		<%= link_to "カートに入れる", "#", class: "btn btn-primary" %>
 	</div>
 
+	<div id="favorite_buttons_<%= @product.id %>">
+    <%= render partial: 'favorites/favorite', locals: { product: @product } %>
+  </div>
+
 	<h2> トラックリスト</h2>
 	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
 	<%# @disks.each do |d| %>
-		ディスク<%=# d.disk_number %>
+		ディスク<%## d.disk_number %>
 		<%# @musics.each do |m| %>
-		  トラック<%=# m.track_number %>. <%=# m.music_title %>
+		  トラック<%# m.track_number %>. <%# m.music_title %>
 		<%# end %>
 	<%# end %>
 
@@ -59,5 +62,3 @@
 		<%= paginate @reviews, class: "paginate" %>
 	</table>
 </div>
-
-<p>Find me in app/views/products/show.html.erb</p>
