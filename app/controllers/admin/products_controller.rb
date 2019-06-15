@@ -2,6 +2,8 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def new
 
+  	@product = Product.new
+
   end
 
   def create
