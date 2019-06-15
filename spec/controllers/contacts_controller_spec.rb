@@ -9,6 +9,7 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
+<<<<<<< HEAD
   describe "GET #create" do
     it "returns http success" do
       get :create
@@ -23,4 +24,6 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
+=======
+>>>>>>> efacb42c99062337a2d3004677a214316aba7570
 end

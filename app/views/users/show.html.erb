@@ -1,55 +1,54 @@
-<div>
-<h3>ユーザー情報</h3>
+<div class = "container">
+  <div class = "row">
+  	<div class = "col-xs-7 col-xs-offset-3">
+  	  <h3>ユーザー情報</h3>
+      <h3>名前: <%= @user.last_name %><%= @user.first_name %></h3>
+      <h3>郵便番号: <%= @user.postal_code %></h3>
+      <h3>住所: <%= @user.address %></h3>
+      <h3>電話番号: <%= @user.tel %></h3>
+      <h3>メールアドレス: <%= @user.email %></h3>
+      <p><%= link_to '#', edit_user_registration_path(@user) %></p>
 
-<h3>名前: <%= @user.last_name %><%= @user.first_name %></h3>
 
-<h3>郵便番号: <%= @user.postal_code %></h3>
+      <h2>購入履歴一覧</h2>
+	  <table>
+        <thead>
+          <tr>
+            <th>注文ID</th>
+            <th>ステータス</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to order.id,order_path(order.id) %></td>
+            <td><%= order.shipping_status %></td>
+            <td><%= order.created_at %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-<h3>住所: <%= @user.address %></h3>
-
-<h3>電話番号: <%= @user.tel %></h3>
-
-<h3>メールアドレス: <%= @user.email %></h3>
-
-<p><%= link_to "#" , edit_user_registration_path(@user) %></p>
+	  <h2>いいね一覧</h2>
+	  <table>
+		<thead>
+		  <tr>
+		    <th>イメージ</th>
+		    <th>商品名</th>
+		    <th>価格</th>
+		  </tr>
+		</thead>
+		<tbody>
+		<% @favorite_products.each do |favorite| %>
+		  <tr>
+		    <td><%= favorite.attachment_image_tag product, :jacket_img %></td>
+		    <td><%= favorite.product.product_name %></td>
+		    <td><%= favorite.product.price %></td>
+		  </tr>
+		<% end %>
+		</tbody>
+	  </table>
+      </div>
+   </div>
 </div>
-
-<h2>購入履歴一覧</h2>
-<table>
-	<thead>
-		<tr>
-			<th>注文ID</th>
-			<th>ステータス</th>
-			<th>Date</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @orders.each do |order| %>
-		<tr>
-			<td><%= link_to order.id,order_path(order.id) %></td>
-			<td><%= order.shipping_status %></td>
-			<td><%= order.created_at %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
-<h2>いいね一覧</h2>
-<table>
-	<thead>
-		<tr>
-			<th>イメージ</th>
-			<th>商品名</th>
-			<th>価格</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @favorites.each do |favorite| %>
-		<tr>
-			<td><%= favorite.attachment_image_tag product, :jacket_img %></td>
-			<td><%= favorite.product.product_name %></td>
-			<td><%= favorite.product.price %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>

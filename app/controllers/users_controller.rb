@@ -5,7 +5,7 @@ before_action :correct_user, only: [:show]
   def show
   	@user = current_user
     @orders = current_user.orders.all
-    @favorites = current_user.favorites.all
+    @favorite_products = @user.favorite_products
   end
 
   private
