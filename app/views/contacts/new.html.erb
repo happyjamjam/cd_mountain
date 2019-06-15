@@ -1,2 +1,15 @@
-<h1>Contacts#new</h1>
-<p>Find me in app/views/contacts/new.html.erb</p>
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+<h1>お問い合わせ</h1>
+
+<%= form_for @contact do |f| %>
+<h2>お問い合わせ内容</h2>
+<%= f.text_area :contact_text %>
+
+<p><%= f.submit '送信' %></p>
+
+<% end %>
