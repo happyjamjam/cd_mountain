@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   	# @musics = @disks.musics.all
   	#@artists = @musics.artist.all
   	@reviews = @product.reviews.page(params[:page]).per(5)
-    @favorites = Favorite.all
+    @cart = Cart.new
   end
 
 end
