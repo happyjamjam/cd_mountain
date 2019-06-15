@@ -12,7 +12,7 @@ class CartsController < ApplicationController
   	@cart_item.user_id = current_user.id
 
   	@cart_item.save
-  	redirect_to carts_path(@cart)
+  	redirect_to carts_path(current_user.carts)
 
   end
 
