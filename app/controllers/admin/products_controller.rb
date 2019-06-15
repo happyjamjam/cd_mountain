@@ -43,6 +43,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def show
 
     @product = Product.find(params[:id])
+    @reviews = @product.reviews.page(params[:page]).per(5)
 
   end
 

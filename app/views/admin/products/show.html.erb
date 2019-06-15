@@ -1,2 +1,50 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div class = "container">
+  <div class = "row">
+  	<div class = "col-xs-3">
+	<% attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+    </div>
+    <div class = "col-xs-3">
+	 <div class="product_detail">
+		<%= @product.product_name %></h2>
+		<% @product.disks.artists.artist_name %><% @product.label.label_name %>
+		<% @genre.genre_name %>
+		<%= @product.genre.price %> 円（税抜き価格）
+	 </div>
+	</div>
+
+	<div class = "row">
+		<h2> トラックリスト</h2>
+		<% @product.each do |d| %>
+	    <% d.disk_number %>
+	    <% end%>
+	    <% @product.each do |m| %>
+	    <% m.diskd.music.track_number %>.<% m.music_title %>
+	    <% end %>
+	</div>
+
+	<div class = "row">
+      <h2> レビュー</h2>
+
+      <table class="table table-hover">
+  	  	<thread>
+  	  	　<tr>
+  	  	　　<th>投稿者</th>
+  	  	　　<th>タイトル</th>
+  	  	　　<th>本文</th>
+  	  	　　<th></th>
+  	  	　</tr>
+  	  	</thread>
+
+		<% @reviews.each do |r| %>
+　　　　　<tvody>
+		 <tr>
+	      <td><%= r.user.first_name %></td>
+		  <td><%= r.title %></td>
+		  <td><%= r.body %></td>
+		  <td class = "contents"><%= link_to '編集', edit_product_review_path(@reviews.id), class: "btn-sm btn-success" %></td>
+          <td class = "contents"><%= link_to '削除', product_review_path(@reviews.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
+		 </tr>
+		<% end %>
+		<%= paginate @reviews, class: "paginate" %>
+	   </table>
+</div>
