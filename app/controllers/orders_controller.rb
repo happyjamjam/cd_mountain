@@ -1,22 +1,21 @@
 class OrdersController < ApplicationController
 
- def create
-
- 	calculation
-
-  	@order = Order.new
-  	@order.total_price = @final_price
-
-  	@order.save
-    render :index
-
+  def create
+    calculation
+    @order = Order.new
+    @order.user_id = current_user.id
+    @order.total_price = @final_price
+    if @order.save
+      @user_carts.destroy
+      render :index
+    else
+      render :template => "carts/index"
+    end
   end
 
   def show
-
-  	calculation
-    @order_histroty = current_user.orders.order(id: "DESC")
-
+  	@order = Order.find(params[:id])
+    @order_items = @order.order_details
   end
 
   def index
@@ -24,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-
+    calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @payment = current_user
   	# 支払い関係カラム未作成のため変数作成不可

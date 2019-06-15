@@ -7,12 +7,10 @@ class CartsController < ApplicationController
   end
 
   def create
-
   	@cart_item = Cart.new(cart_params)
   	@cart_item.user_id = current_user.id
-
   	@cart_item.save
-  	redirect_to carts_path(current_user.carts)
+  	redirect_to carts_path(current_user)
 
   end
 

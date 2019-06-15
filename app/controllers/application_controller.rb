@@ -7,15 +7,15 @@ class ApplicationController < ActionController::Base
 def calculation
 
 	@user_carts = current_user.carts.order(id: "DESC")
+	@subtotal_price = 0
 
-	  	@subtotal_price = 0
-	    @user_carts.each do |cart|
-	      @get_total_price = cart.product.price * cart.quantity
-	      @subtotal_price += @get_total_price
-	    end
+	@user_carts.each do |cart|
+		@get_total_price = cart.product.price * cart.quantity
+	  @subtotal_price += @get_total_price
+	end
 
-	    @tax = @subtotal_price * 0.08
-	    @final_price = @subtotal_price + @tax + 500
+	@tax = (@subtotal_price * 0.08).floor
+	@final_price = @subtotal_price + @tax + 500
 
 end
 
