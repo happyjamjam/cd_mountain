@@ -36,12 +36,15 @@
         </nav>
        </div>
     <% end %>
-     <%= search_form_for @q do |f| %>
+    <div class ="row">
+     <div class="col-lg-8 col-lg-offset-auto">
+      <%= search_form_for @q do |f| %>
+       <%= f.search_field :product_name_cont, class: 'col-xs-10' %>
+       <%= f.submit %>
+      <% end %>
+     </div>
+    </div>
 
-      <%= f.label :product_name_cont %>
-      <%= f.search_field :product_name_cont %>
-      <%= f.submit %>
-     <% end %>
     </header>
     <%= yield %>
   </body>
