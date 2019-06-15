@@ -11,4 +11,9 @@ class User < ApplicationRecord
   has_many :contacts
   has_many :reviews
 
+  def full_name
+    self.last_name + self.first_name
+  end
+
+
 end
