@@ -2,7 +2,7 @@
 <table class = "table">
 	<tr>
 		<th> 購入日</th>
-		<td> <%= @order.created_at %></td>
+		<td> <%= @order.created_at.to_date %></td>
 	</tr>
 	<% @order_items.each do |order| %>
 		<tr>
