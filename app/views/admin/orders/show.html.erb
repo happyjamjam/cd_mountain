@@ -1,0 +1,30 @@
+<h1>購入履歴詳細</h1>
+<table class = "table">
+	<tr>
+		<th> 購入日</th>
+		<td> <%= @order.created_at %></td>
+	</tr>
+	<% @order_items.each do |order| %>
+		<tr>
+			<th> 購入内容</th>
+			<td>
+				<%# attachment_image_tag order, :jacket_img %>
+				<%= order.product.product_name %> / <%# order.product.disks.musics.artist.artist_name %>
+			</td>
+		</tr>
+	<% end %>
+
+	<tr>
+		<th> 合計金額</th>
+		<td> <%= @order.total_price %>円</td>
+	</tr>
+
+	<tr>
+		<th> 発送先住所</th>
+		<td> 〒<%= @order.postal_code %><br><%= @order.shipping_address %><br><%= @order.shipping_name %> 様</td>
+	</tr>
+
+	<tr>
+		<th> 発送状況</th>
+		<td> <%= @order.shipping_status %></td>
+	</tr>

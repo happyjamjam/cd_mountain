@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
   	root to: "contacts#index"
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :contacts, only: [:index, :show, :new, :create, :update]
+    resources :contacts, only: [:index, :show, :new, :destroy, :update]
     resources :products do
       resources :reviews, only: [:edit, :update, :destroy]
     end
