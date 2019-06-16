@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
   	#@artists = @musics.artist.all
   	@reviews = @product.reviews.page(params[:page]).per(5)
     @cart = Cart.new
-    @cart.product_id = @product.id
   end
 
 end

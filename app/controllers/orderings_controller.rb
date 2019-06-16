@@ -1,12 +1,13 @@
-class OrdersController < ApplicationController
+class OrderingsController < OrderDetailsController
 
   def create
     calculation
-    @order = Order.new
+    @order = Ordering.new
     @order.user_id = current_user.id
     @order.total_price = @final_price
     if @order.save
-      @user_carts.destroy
+      create_order_details
+      #@user_carts.destroy
       render :index
     else
       render :template => "carts/index"
@@ -14,8 +15,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-  	@order = Order.find(params[:id])
-    @order_items = @order.order_details
+  	@order = Ordering.find(params[:id])
+    @order_history = @order.order_details
   end
 
   def index

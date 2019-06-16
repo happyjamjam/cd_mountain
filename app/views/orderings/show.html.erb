@@ -1,0 +1,44 @@
+<div class = "container">
+  <div class = "row">
+    <h3>購入履歴詳細</h3>
+
+    <table class = "table">
+      <tbody>
+        <% @order_history.each do |history| %>
+
+          <tr>
+            <th>購入日</th>
+            <td><%= history.created_at.to_date %></td>
+          </tr>
+
+         	<tr>
+            <th>購入内容</th>
+            <td class = "contents"><%# attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %></td>
+          </tr>
+
+          <tr>
+            <th> 購入枚数</th>
+            <td><%= history.purchase_quantity %></td>
+          </tr>
+
+          <tr>
+            <th>合計金額</th>
+            <%= history.purchase_price * history.purchase_quantity %>
+          </tr>
+        <% end %>
+
+        <tr>
+            <th>発送先住所</th>
+            <td><%= @order_history.order.postal_code %></td>
+            <td><%= @order_history.order.shipping_address %></td>
+            <td><%= @order_history.order.shipping_name %>様</td>
+          </tr>
+        <tr>
+          <th>発送状況</th>
+          <td><%= @order_history.order.shipping_status %></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

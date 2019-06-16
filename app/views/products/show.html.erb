@@ -11,7 +11,7 @@
 	<div class="#">
 		¥ <%= @product.price %>
 		在庫数 <%= @product.stock %> / <%= @product.sales_status %>
-		<%= form_for @cart do |f| %>
+		<%= form_for @cart, url:product_carts_path(@product) do |f| %>
 			<%= f.label :quantity, "数量" %>
 			<%= f.text_field :quantity %>
 			<% if user_signed_in? %>

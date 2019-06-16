@@ -54,26 +54,26 @@
       	  <tr>
       	  	<th>小計</th>
       	  	<th></th>
-      	  	<th><%= @subtotal_price %></th>
+      	  	<th>¥<%= @subtotal_price %></th>
       	  </tr>
       	  <tr>
       	  	<th>消費税</th>
       	  	<td><p>消費税8%</p></td>
-      	  	<th><%= @tax %></th>
+      	  	<th>¥<%= @tax %></th>
       	  </tr>
       	  	<th>送料</th>
-      	  	<td>一配送 500円</td>
+      	  	<td>一配送 ¥500</td>
       	  	<th><p>¥500</p></th>
       	  </tr>
       	  <tr>
       	  	<th class = "total_price_title">総合計金額</th>
       	  	<th></th>
-      	  	<th><%= @final_price %></th>
+      	  	<th>¥<%= @final_price %></th>
       	  </tr>
       	</tbody>
        </table>
        <div class = "submit-bottom">
-          <%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-primary col-xs-7" %>
+          <%= link_to '注文を確定する', orders_path(@order), method: :post, class: "btn btn-primary col-xs-7" %>
        </div>
     </div>
     </div>
