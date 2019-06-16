@@ -11,7 +11,7 @@ class OrdersController < OrderDetailsController
     if @order.save
       create_order_details
       render :index
-      current_user.carts.destroy
+      current_user.carts.destroy_all
     else
       render :template => "carts/index"
     end
