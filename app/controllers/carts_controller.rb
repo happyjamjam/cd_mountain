@@ -21,7 +21,7 @@ class CartsController < ApplicationController
   	@cart.user_id = current_user.id
 
   	@cart.update(cart_params)
-  	redirect_to carts_path(@cart)
+  	redirect_to carts_path
 
   end
 

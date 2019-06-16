@@ -21,7 +21,12 @@
               <td class = "contents"><%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: '100x100' %></td>
                 <td class = "contents"><%= link_to cart.product.product_name, product_path(cart.product) %></td>
                 <td class = "contents"><%= cart.product.price %>円</td>
-                <td class = "quantity-select"><%= cart.quantity %></td>
+                <%= form_for cart, url: cart_path(cart), method: :PUT do |f| %>
+                  <td class = "quantity-select">
+                    <%= f.select :quantity, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], prompt: cart.quantity %>
+                    <%= f.submit "個数を変更する" %>
+                  </td>
+                <% end %>
                 <td class = "content-total"><%= cart.product.price * cart.quantity %>円</td>
                 <td> <%= link_to "削除", cart_path(cart), method: :delete, class: "btn" %></td>
             </tr>
