@@ -1,8 +1,8 @@
-class OrderingsController < OrderDetailsController
+class OrdersController < OrderDetailsController
 
   def create
     calculation
-    @order = Ordering.new
+    @order = Order.new
     @order.user_id = current_user.id
     @order.total_price = @final_price
     if @order.save
@@ -15,7 +15,7 @@ class OrderingsController < OrderDetailsController
   end
 
   def show
-  	@order = Ordering.find(params[:id])
+  	@order = Order.find(params[:id])
     @order_history = @order.order_details
   end
 

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :musics, only: [:create, :update, :destroy]
     resources :labals, only: [:create, :update]
     resources :genres, only: [:create, :update]
-    resources :orderings, only: [:index, :show]
+    resources :orders, only: [:index, :show]
 
   end
 
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :carts, only: [:index, :update, :destroy]
   get 'orders/confirm' => 'orders#confirm'
-  resources :orderings, only:[:create, :show, :index]
+  resources :orders, only:[:create, :show, :index]
   resources :contacts, only:[:new, :create]
   resources :order_details, only: [:create]
 end

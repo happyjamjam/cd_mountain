@@ -5,6 +5,6 @@ class Admin::OrderingsController < Admin::ApplicationController
 
   def show
   	@order = Ordering.find(params[:id])
-  	@order_items = @order.order_details
+  	@order_history = @order.order_details
   end
 end

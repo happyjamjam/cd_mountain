@@ -29,13 +29,13 @@
 
         <tr>
             <th>発送先住所</th>
-            <td><%= @order_history.order.postal_code %></td>
-            <td><%= @order_history.order.shipping_address %></td>
-            <td><%= @order_history.order.shipping_name %>様</td>
+            <td><%= @order.postal_code %></td>
+            <td><%= @order.shipping_address %></td>
+            <td><%= @order.shipping_name %>様</td>
           </tr>
         <tr>
           <th>発送状況</th>
-          <td><%= @order_history.order.shipping_status %></td>
+          <td><%= @order.shipping_status %></td>
         </tr>
       </tbody>
     </table>
