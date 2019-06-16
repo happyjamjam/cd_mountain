@@ -17,14 +17,16 @@
     <header class = "navbar navbar-default">
       <div class = "container">
       <nav class = "nav navbar-nav navbar-left">
-          <h4 class = "title">CD MOUNTAIN</h4>
+          <%= link_to root_path do %>
+            <%= image_tag("/assets/16062019103135A.png",size: '80') %>
+          <% end %>
       </nav>
     <% if user_signed_in? %>
         <nav>
           <ul class = "nav navbar-nav navbar-right">
             <li><%= link_to "マイページ", user_path(current_user) %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to '', class: "glyphicon glyphicon-shopping-cart" %></li>
+            <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
           </ul>
         </nav>
     <% else %>
@@ -44,8 +46,19 @@
       <% end %>
      </div>
     </div>
-
     </header>
+     <div class = "main_image">
+     </div>
     <%= yield %>
+    <footer class = "footer style">
+      <div class = "container">
+        <div class ="row">
+          <div class ="col-lg8 col-lg-offset-auto">
+            <% if user_signed_in? %>
+              <p><%=link_to "お問い合わせ" , new_contact_path %></p>
+            <% end %>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
