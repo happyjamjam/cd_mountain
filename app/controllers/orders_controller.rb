@@ -5,10 +5,13 @@ class OrdersController < OrderDetailsController
     @order = Order.new
     @order.user_id = current_user.id
     @order.total_price = @final_price
+    @order.postal_code = current_user.postal_code
+    @order.shipping_address = current_user.address
+    @order.shipping_name = current_user.full_name
     if @order.save
       create_order_details
-      #@user_carts.destroy
       render :index
+      current_user.carts.destroy
     else
       render :template => "carts/index"
     end

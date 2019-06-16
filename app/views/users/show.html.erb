@@ -14,7 +14,7 @@
       <h3>住所: <%= @user.address %></h3>
       <h3>電話番号: <%= @user.tel %></h3>
       <h3>メールアドレス: <%= @user.email %></h3>
-      <p><%= link_to '#', edit_user_registration_path(@user) %></p>
+      <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
 
 
       <h2>購入履歴一覧</h2>
@@ -49,8 +49,8 @@
 		<tbody>
 		<% @favorite_products.each do |favorite| %>
 		  <tr>
-		    <td><%= favorite.attachment_image_tag product, :jacket_img %></td>
-		    <td><%= favorite.product.product_name %></td>
+		    <td><%# attachment_image_tag favorite, :jacket_img %></td>
+		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
 		    <td><%= favorite.product.price %></td>
 		  </tr>
 		<% end %>

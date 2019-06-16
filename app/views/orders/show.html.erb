@@ -13,7 +13,9 @@
 
          	<tr>
             <th>購入内容</th>
-            <td class = "contents"><%# attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %></td>
+            <td class = "contents">
+              <%# attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %>
+              <%= history.product.product_name %>/ <%# history.product.disks.musics.artist.artist_name %></td>
           </tr>
 
           <tr>
@@ -23,13 +25,13 @@
 
           <tr>
             <th>合計金額</th>
-            <%= history.purchase_price * history.purchase_quantity %>
+            <td>¥<%= history.purchase_price * history.purchase_quantity %></td>
           </tr>
         <% end %>
 
         <tr>
             <th>発送先住所</th>
-            <td><%= @order.postal_code %></td>
+            <td>〒<%= @order.postal_code %></td>
             <td><%= @order.shipping_address %></td>
             <td><%= @order.shipping_name %>様</td>
           </tr>
