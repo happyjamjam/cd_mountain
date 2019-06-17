@@ -17,6 +17,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
+
+.clearfix::after {
+  content:"";
+  display:block;
+  clear:both;
+}
+
 .li {
   style: none;
 }
@@ -36,6 +44,13 @@ header{
 }
 .navbar {
 	margin: 0;
+}
+#produch-search{
+	width: 550px;
+	margin-left: 100px;
+}
+.nav-top{
+	margin-top: 12px;
 }
 
 

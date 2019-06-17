@@ -16,35 +16,41 @@
 
     <header class = "navbar navbar-default">
       <div class = "container">
-      <nav class = "nav navbar-nav navbar-left">
-          <%= link_to root_path do %>
-            <%= image_tag("/assets/16062019103135A.png",size: '80') %>
-          <% end %>
-      </nav>
-    <% if user_signed_in? %>
-        <nav>
-          <ul class = "nav navbar-nav navbar-right">
-            <li><%= link_to "マイページ", user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
-          </ul>
-        </nav>
-    <% else %>
-        <nav>
-         <ul class = "nav navbar-nav navbar-right">
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-         </ul>
-        </nav>
-       </div>
-    <% end %>
-    <div class ="row">
-     <div class="col-lg-8 col-lg-offset-auto">
-      <%= search_form_for @q do |f| %>
-       <%= f.search_field :product_name_cont, class: 'col-xs-10' %>
-       <%= f.submit %>
-      <% end %>
-     </div>
+        <div class ="row">
+          <nav class = "nav navbar-nav navbar-left col-lg-1">
+              <%= link_to root_path do %>
+                <%= image_tag("/assets/16062019103135A.png",size: '80') %>
+              <% end %>
+          </nav>
+          <div class="nav-top clearfix">
+            
+            <% if user_signed_in? %>
+                <nav>
+                  <ul class = "nav navbar-nav navbar-right">
+                    <li><%= link_to "マイページ", user_path(current_user) %></li>
+                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                    <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+                  </ul>
+                </nav>
+            <% else %>
+                <nav>
+                 <ul class = "nav navbar-nav navbar-right">
+                  <li><%= link_to "ログイン", new_user_session_path %></li>
+                  <li><%= link_to "新規登録", new_user_registration_path %></li>
+                 </ul>
+                </nav>
+            <% end %>
+
+             <div class="navbar-form navbar-left">
+               <%= search_form_for @q do |f| %>
+               <div class="form-group">
+               <%= f.search_field :product_name_cont, class: 'form-control col-lg-10', id: "produch-search" %>
+               </div>
+               <%= f.submit "商品検索",class: "btn btn-default" %>
+              <% end %>
+             </div>
+            </div>
+        </div>
     </div>
     </header>
      <div class = "main_image">
