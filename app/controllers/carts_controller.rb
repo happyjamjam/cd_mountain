@@ -4,6 +4,7 @@ class CartsController < ApplicationController
 
   	calculation
     @cart_array = []
+
   end
 
   def create
@@ -28,7 +29,6 @@ class CartsController < ApplicationController
 
   	@cart = Cart.find(params[:id])
   	@cart.user_id = current_user.id
-
   	@cart.update(cart_params)
   	redirect_to carts_path
 
@@ -47,7 +47,5 @@ class CartsController < ApplicationController
   def cart_params
   	params.require(:cart).permit(:quantity)
   end
-
-
 
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
  before_action :configure_permitted_parameters, if: :devise_controller?
+ before_action :search
 
 # carts / orders 共通計算用関数
 
@@ -19,7 +20,25 @@ def calculation
 
 end
 
+def search
+	@q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page])
+end
+
 protected
+
+   def after_sign_in_path_for(resource)
+   	user_path(current_user.id)
+   end
+
+
+   def after_sign_up_path_for(resource)
+   	user_path(current_user.id)
+   end
+
+   def after_sign_out_path_for(resource)
+   	root_path
+   end
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :first_name, :last_name, :kana_first_name, :kana_last_name, :postal_code, :address, :tel])

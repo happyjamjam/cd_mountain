@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 	has_many :users, through: :carts
 	has_many :carts
 	has_many :disks
+	accepts_nested_attributes_for :disks
 	has_many :favorites
 	#has_many :users, through: :favorites
 	has_many :reviews
@@ -18,4 +19,5 @@ class Product < ApplicationRecord
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
+
 end

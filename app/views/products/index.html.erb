@@ -1,5 +1,26 @@
-<h1>商品一覧</h1>
-<div>
+   <div class= "slider">
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+      <div><img src= "assets/no_img.jpg"/></div>
+   </div>
+
+<div class = "container">
+ <div class = "row">
+   <div class = "col-xs-9">
+   <h3>商品一覧</h3>
+   <div class = "product-wrapper">
 	<% @products.each do |product| %>
 		<div>
 			<%# attachment_image_tag product, :jacket_img%><br>
@@ -14,3 +35,23 @@
 	<% end %>
 	<%= paginate @products, class: "paginate" %>
 </div>
+   </div>
+   </div>
+  </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('.slider').slick({
+    autoplay: true,
+    arrows: false,
+    autoplaySpeed: 0,
+    cssEase: 'linear',
+    speed: 3000,
+    swipe: false,
+    slidesToShow: 14,
+    slidesToScroll: 1,
+  });
+
+});
+</script>

@@ -8,35 +8,61 @@
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   </head>
   <body>
 
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="app.js"></script>
-
-    <header class = "navbar navbar-default">
+    <header class = "navbar navbar-light bg-light">
       <div class = "container">
-      <nav class = "nav navbar-nav navbar-left">
-          <h4 class = "title"> <%= link_to "CD MOUNTAIN", root_path %></h4>
-      </nav>
-    <% if user_signed_in? %>
-        <nav>
-          <ul class = "nav navbar-nav navbar-right">
-            <li><%= link_to "マイページ", user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to '', class: "glyphicon glyphicon-shopping-cart" %></li>
-          </ul>
-        </nav>
-    <% else %>
-        <nav>
-         <ul class = "nav navbar-nav navbar-right">
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-         </ul>
-        </nav>
-       </div>
-    <% end %>
-    </header>
+        <div class ="row">
+          <nav class = "nav navbar-nav navbar-left">
+              <%= link_to root_path do %>
+              <%= image_tag("/assets/16062019103135A.png",size: '80') %>
+              <% end %>
+              <span>CD MOUNTAIN</span>
+          </nav>
+          <div class= "nav-top clearfix">
+            <% if user_signed_in? %>
+                <nav>
+                  <ul class = "nav navbar-nav navbar-right">
+                    <li><%= link_to "マイページ", user_path(current_user) %></li>
+                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                    <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+                  </ul>
+                </nav>
+            <% else %>
+                <nav>
+                 <ul class = "nav navbar-nav navbar-right">
+                  <li><%= link_to "ログイン", new_user_session_path %></li>
+                  <li><%= link_to "新規登録", new_user_registration_path %></li>
+                 </ul>
+                </nav>
+            <% end %>
+              <div class= "navbar-form navbar-right">
+                       <%= search_form_for @q do |f| %>
+                       <div class="form-group">
+                       <%= f.search_field :product_name_cont, class: 'form-control', id: "produch-search" %>
+                       </div>
+                       <%= f.submit "商品検索",class: "btn btn-default" %>
+                      <% end %>
+              </div>
+        </div>
+    </div>
+  </header>
     <%= yield %>
+    <footer class = "footer style">
+      <div class = "container">
+        <div class ="row">
+          <div class ="col-lg8 col-lg-offset-auto">
+            <% if user_signed_in? %>
+              <p><%=link_to "お問い合わせ" , new_contact_path %></p>
+            <% end %>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
+

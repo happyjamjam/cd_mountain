@@ -7,16 +7,17 @@
 
 <div class = "container">
   <div class = "row">
-  	<div class = "col-xs-7 col-xs-offset-3">
-  	  <h3>ユーザー情報</h3>
-      <h3>名前: <%= @user.last_name %><%= @user.first_name %></h3>
-      <h3>郵便番号: <%= @user.postal_code %></h3>
-      <h3>住所: <%= @user.address %></h3>
-      <h3>電話番号: <%= @user.tel %></h3>
-      <h3>メールアドレス: <%= @user.email %></h3>
-      <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+  	<div class = "col-xs-3 col-xs-offset-1">
+     <h4>ユーザー情報</h4>
+        <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
+        <p>郵便番号: <%= @user.postal_code %></p>
+        <p>住所: <%= @user.address %></p>
+        <p>電話番号: <%= @user.tel %></p>
+        <p>メールアドレス: <%= @user.email %></p>
+        <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+    </div>
 
-
+    <div class = "col_xs-offset-4">
       <h2>購入履歴一覧</h2>
 	  <table>
         <thead>

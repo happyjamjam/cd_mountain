@@ -17,6 +17,65 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.li {
-  style: none;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+span {
+
+  font-size: 25px;
+  font-family: 'arial black';
+}
+
+header{
+	height: 80px;
+	margin: 0;
+}
+
+
+#produch-search{
+	width: 450px;
+}
+
+.nav-top{
+	margin-top: 12px;
+	margin-left: 10px;
+}
+
+
+footer{
+	height: 100px;
+	background-color: limegreen;
+	margin-top:50px;
+	color:black;
+	text-decoration:underline;
+	background-position:center;
+	text-align: right;
+	font-size: 16px;
+	background-image: url(586746.jpg);
+	background-size:cover;
+	background-position:center;
+
+}
+
+.slider{
+	div{
+	  width: 100%;
+	  img{
+	    width: 90px;
+	    height: 90px;
+	  }
+	}
+}
+
+
+
