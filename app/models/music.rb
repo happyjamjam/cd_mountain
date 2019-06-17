@@ -1,7 +1,6 @@
 class Music < ApplicationRecord
 
-has_many :disks
-accepts_nested_attributes_for :disks
+belongs_to :disk
 has_many :artists
 accepts_nested_attributes_for :artists
 

@@ -1,5 +1,6 @@
 class Disk < ApplicationRecord
 
-belongs_to :music
+has_many :musics
+belongs_to :product
 
 end
