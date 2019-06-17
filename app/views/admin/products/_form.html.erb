@@ -1,0 +1,46 @@
+<%= form_for @product, url: admin_products_path do |f| %>
+
+	<div class="field">
+		<%= f.label :product_name %>
+		<%= f.text_field :product_name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :price %>
+		<%= f.text_field :price %>
+	</div>
+
+	<div class="field">
+		<%= f.label :stock %>
+		<%= f.text_field :stock %>
+	</div>
+
+	<div class="field">
+		<%= f.label :sales_status %>
+		<%= f.text_field :sales_status %>
+	</div>
+
+	<%= fields_for @genre do |genre| %>
+	<div class="field">
+		<%= genre.label :genre_name %>
+		<%= genre.text_field :genre_name %>
+	<% end %>
+	</div>
+
+	<%= fields_for @label do |label| %>
+	<div class="field">
+		<%= label.label :label_name %>
+		<%= label.text_field :label_name %>
+	<% end %>
+	</div>
+
+	<%= f.fields_for :disks do |disk| %>
+	  <%= render 'disk_fields', f: disk %>
+	<% end %>
+
+	<div id="links">
+		<%= link_to_add_association 'add disk', f, :disks %>
+	</div>
+
+	<%= f.submit %>
+<% end %>

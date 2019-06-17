@@ -17,9 +17,9 @@
      </tr>
      <tr>
        <td class = "contents"><%= products.price %></td>
-       <td class = "contents"><%= products.genres.genre_name %></td>
-       <td class = "contents"><%= products.labels.label_name %></td>
-       <td class = "contents"><%= products.diskss.musics.music_title %></td>
+       <td class = "contents"><%= products.genre.genre_name %></td>
+       <td class = "contents"><%= products.label.label_name %></td>
+       <td class = "contents"><%= products.music.music_title %></td>
        <td class = "contents"><%= link_to 'edit', edit_admin_product_path(products.id), class: "btn-sm btn-success" %></td>
        <td class = "contents"><%= link_to 'destroy', admin_product_path(products.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
     <% end %>
