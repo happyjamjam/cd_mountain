@@ -27,12 +27,14 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only: [:edit, :update, :destroy,:new,:create]
     resource :favorite, only: [:create, :destroy]
+    resources :carts, only: [:create]
   end
 
   root to: "products#index"
   resources :users, only: [:show]
-  resources :carts, only:[:index, :create, :update, :destroy]
+  resources :carts, only: [:index, :update, :destroy]
   get 'orders/confirm' => 'orders#confirm'
   resources :orders, only:[:create, :show, :index]
   resources :contacts, only:[:new, :create]
+  resources :order_details, only: [:create]
 end

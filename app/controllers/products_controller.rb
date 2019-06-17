@@ -10,10 +10,17 @@ class ProductsController < ApplicationController
   	@genre = @product.genre_id
   	@label = @product.label_id
   	@disks = @product.disks.all
-  	# @musics = @disks.musics.all
+  	#@musics = @disks.musics.all
   	#@artists = @musics.artist.all
   	@reviews = @product.reviews.page(params[:page]).per(5)
-    @cart = Cart.new(user_id: current_user.id, product_id: @product.id)
-  end
+    @cart = Cart.new
 
+    if @product.stock != 0
+      @array = []
+      (1..@product.stock).each do |s|
+        new_array = [s, s]
+        @array.push(new_array)
+      end
+    end
+  end
 end
