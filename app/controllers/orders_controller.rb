@@ -13,7 +13,7 @@ class OrdersController < OrderDetailsController
       render :index
       current_user.carts.destroy_all
     else
-      render :template => "carts/index"
+      redirect_to orders_confirm_path, notice: "エラー"
     end
   end
 
@@ -37,7 +37,7 @@ class OrdersController < OrderDetailsController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :user_id, :shipping_status, :total_price, :postal_code, :shipping_address, :shipping_name)
+    params.require(:order).permit(:payment_method)
   end
 
 end

@@ -13,10 +13,12 @@
 		<%= form_for @cart, url:product_carts_path(@product) do |f| %>
 			<%= f.label :quantity, "数量" %>
 			<%= f.select :quantity, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]] %>
-			<% if user_signed_in? %>
-				<%= f.submit "カートに入れる", class: "btn btn-primary" %>
-			<% else %>
-				<p> カートに入れるにはログインしてください。</p>
+			<% if @product.stock != 0 %>
+				<% if user_signed_in? %>
+					<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+				<% else %>
+					<p> カートに入れるにはログインしてください。</p>
+				<% end %>
 			<% end %>
 		<% end %>
 	</div>

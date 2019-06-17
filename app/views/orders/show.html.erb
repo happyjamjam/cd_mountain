@@ -15,7 +15,7 @@
             <th>購入内容</th>
             <td class = "contents">
               <%# attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %>
-              <%= history.product.product_name %>/ <%# history.product.disks.musics.artist.artist_name %></td>
+              <%= link_to history.product.product_name, product_path(history.product) %>/ <%# history.product.disks.musics.artist.artist_name %></td>
           </tr>
 
           <tr>
