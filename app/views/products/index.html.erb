@@ -22,22 +22,22 @@
    <h3>商品一覧</h3>
    <div class = "product-wrapper">
 	<% @products.each do |product| %>
-	  <div>
-	  <%# attachment_image_tag product, :jacket_img %><br>
-	  商品名：<%= product.product_name %><br>
-	  アーティスト名：
-	  <%# @artists.each do |artist| %>
-	  <%# artist.artist_name %>
-	  <%# end %>
-	  <br>
-	  価格：<%= product.price %>
-	  </div>
-    <% end %>
-    <%= paginate @products, class: "paginate" %>
+		<div>
+			<%# attachment_image_tag product, :jacket_img%><br>
+			商品名：<%= link_to product.product_name, product_path(product) %><br>
+			アーティスト名：
+			<%# @artists.each do |artist| %>
+				<%# artist.artist_name %>
+			<%# end %>
+			<br>
+			価格：<%= product.price %> 円
+		</div>
+	<% end %>
+	<%= paginate @products, class: "paginate" %>
+</div>
    </div>
    </div>
   </div>
- </div>
 
 <script type="text/javascript">
 $(document).ready(function(){

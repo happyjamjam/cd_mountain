@@ -18,14 +18,25 @@
   	  	<tbody>
   	  	  <% @user_carts.each do |cart| %>
   	  	   <tr>
-              <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
-                <td class = "contents"><%= link_to cart.product_name, product_path(cart.product) %></td>
-                <td class = "contents"><%= link_to cart.product_price, product_path(cart.product) %></td>
-                <td class = "quantity-select"><%= f.select :cart, [["1", "1"], ["2", "2"],["3","3"],["4","4"],["5","5"]],  :prompt => cart.quantity %></td>
-                <td class = "content-total"><%= @get_total_price %></td>
+              <td class = "contents"><%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: '100x100' %></td>
+                <td class = "contents"><%= link_to cart.product.product_name, product_path(cart.product) %></td>
+                <td class = "contents"><%= cart.product.price %>円</td>
+                <%= form_for cart, url: cart_path(cart), method: :PUT do |f| %>
+                  <td class = "quantity-select">
+                    <% @cart_array.clear %>
+                    <% (1..cart.product.stock).each do |s| %>
+                      <% new_array = [s, s] %>
+                      <% @cart_array.push(new_array) %>
+                    <% end %>
+                    <%= f.select :quantity, @cart_array, prompt: cart.quantity %>
+                    <%= f.submit "個数を変更する" %>
+                  </td>
+                <% end %>
+                <td class = "content-total"><%= cart.product.price * cart.quantity %>円</td>
+                <td> <%= link_to "削除", cart_path(cart), method: :delete, class: "btn" %></td>
             </tr>
-              <% end %>
-              </tbody>
+          <% end %>
+        </tbody>
        </table>
     </div>
     <!-- ページ右側 ご注文内容 -->
@@ -36,26 +47,28 @@
       	  <tr>
       	  	<th>小計</th>
       	  	<th></th>
-      	  	<th><%= @subtotal_price %></th>
+      	  	<th>¥<%= @subtotal_price %></th>
       	  </tr>
       	  <tr>
       	  	<th>消費税</th>
       	  	<td><p>消費税8%</p></td>
-      	  	<th><%= @tax %></th>
+      	  	<th>¥<%= @tax %></th>
       	  </tr>
       	  	<th>送料</th>
-      	  	<td>一配送 500円</td>
+      	  	<td>一配送 ¥500</td>
       	  	<th><p>¥500</p></th>
       	  </tr>
       	  <tr>
       	  	<th class = "total_price_title">総合計金額</th>
       	  	<th></th>
-      	  	<th><%= @final_price %></th>
+      	  	<th>¥<%= @final_price %></th>
       	  </tr>
       	</tbody>
        </table>
        <div class = "sibmit-bottom">
-          <%= link_to '注文画面へ進む', orders_confirm_path, method: :post, class: "btn btn-primary col-xs-7" %>
+        <% if current_user.carts.exists? %>
+          <%= link_to '注文画面へ進む', orders_confirm_path, class: "btn btn-primary col-xs-7" %>
+        <% end %>
        </div>
     </div>
   </div>

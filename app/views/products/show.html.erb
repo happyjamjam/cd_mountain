@@ -5,16 +5,21 @@
 		<h2><%= @product.product_name %></h2>
 		<%# @artists.artist_name %>/ <%# @label.label_name %>
 		<%# @genre.genre_name %>
-		<%= @product.price %> 円（税抜き価格）
 	</div>
 
 	<div class="#">
 		¥ <%= @product.price %>
 		在庫数 <%= @product.stock %> / <%= @product.sales_status %>
-		<%= form_for(@cart) do |f| %>
+		<%= form_for @cart, url:product_carts_path(@product) do |f| %>
 			<%= f.label :quantity, "数量" %>
-			<%= f.text_field :quantity %>
-			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+			<%= f.select :quantity, @array %>
+			<% if @product.stock != 0 %>
+				<% if user_signed_in? %>
+					<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+				<% else %>
+					<p> カートに入れるにはログインしてください。</p>
+				<% end %>
+			<% end %>
 		<% end %>
 	</div>
 
@@ -30,9 +35,11 @@
 		  トラック<%# m.track_number %>. <%# m.music_title %>
 		<%# end %>
 	<%# end %>
-
-	<%= link_to "レビューを投稿する", "#", class: "review-button btn btn-success" %>
-
+	<% if user_signed_in? %>
+		<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
+	<% else %>
+		<p>レビューを書くにはログインしてください。</p>
+	<% end %>
 	<h2> レビュー</h2>
 
 	<table class="table">
