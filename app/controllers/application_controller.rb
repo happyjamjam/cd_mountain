@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
  before_action :configure_permitted_parameters, if: :devise_controller?
+ before_action :search
 
 # carts / orders 共通計算用関数
 
@@ -17,6 +18,11 @@ def calculation
 	    @tax = @subtotal_price * 0.08
 	    @final_price = @subtotal_price + @tax + 500
 
+end
+
+def search
+	@q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page])
 end
 
 protected
