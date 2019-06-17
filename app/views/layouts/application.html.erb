@@ -18,12 +18,10 @@
       <div class = "container">
         <div class ="row">
           <nav class = "nav navbar-nav navbar-left">
-            <ul>
-              <%#= link_to root_path do %>
-              <%#= image_tag("/assets/16062019103135A.png",size: '60') %>
-              <%# end %>
-              <h3 class = "logo-title">CD MOUNTAIN</h3>
-            </ul>
+              <%= link_to root_path do %>
+              <%= image_tag("/assets/16062019103135A.png",size: '80') %>
+              <% end %>
+              <span>CD MOUNTAIN</span>
           </nav>
           <div class= "nav-top clearfix">
             <% if user_signed_in? %>
