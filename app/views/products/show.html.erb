@@ -11,14 +11,11 @@
 	<div class="#">
 		¥ <%= @product.price %>
 		在庫数 <%= @product.stock %> / <%= @product.sales_status %>
-		<select name="quantity">
-			<option value="1"> 1</option>
-			<option value="2"> 2</option>
-			<option value="3"> 3</option>
-			<option value="4"> 4</option>
-			<option value="5"> 5</option>
-		</select>
-		<%= link_to "カートに入れる", "#", class: "btn btn-primary" %>
+		<%= form_for(@cart) do |f| %>
+			<%= f.label :quantity, "数量" %>
+			<%= f.text_field :quantity %>
+			<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+		<% end %>
 	</div>
 
 	<div id="favorite_buttons_<%= @product.id %>">

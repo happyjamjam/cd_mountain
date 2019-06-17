@@ -19,8 +19,8 @@
   	  	  <% @user_carts.each do |cart| %>
   	  	   <tr>
               <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %></td>
-                <td class = "contents"><%= link_to cart.product_name %></td>
-                <td class = "contents"><%= link_to cart.product_price %></td>
+                <td class = "contents"><%= link_to cart.product_name, product_path(cart.product) %></td>
+                <td class = "contents"><%= link_to cart.product_price, product_path(cart.product) %></td>
                 <td class = "quantity-select"><%= f.select :cart, [["1", "1"], ["2", "2"],["3","3"],["4","4"],["5","5"]],  :prompt => cart.quantity %></td>
                 <td class = "content-total"><%= @get_total_price %></td>
             </tr>
