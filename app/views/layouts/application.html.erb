@@ -14,10 +14,10 @@
   </head>
   <body>
 
-    <header class = "navbar navbar-default">
+    <header class = "navbar navbar-light bg-light">
       <div class = "container">
       <nav class = "nav navbar-nav navbar-left">
-          <h4 class = "title">CD MOUNTAIN</h4>
+          <h3 class = "logo-title">CD MOUNTAIN</h3>
       </nav>
     <% if user_signed_in? %>
         <nav>
@@ -38,24 +38,6 @@
     <% end %>
     </header>
 
-    <div class= "slider">
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-      <div><img src= "assets/no_img.jpg"/></div>
-    </div>
-
     <div class = "text-success col-xs-offset-1">
       <% if flash[:notice] %>
         <div class = "flash">
@@ -67,19 +49,4 @@
   </body>
 </html>
 
-<script type="text/javascript">
-$(document).ready(function(){
 
-  $('.slider').slick({
-    autoplay: true,
-    arrows: false,
-    autoplaySpeed: 0,
-    cssEase: 'linear',
-    speed: 300,
-    swipe: false,
-    slidesToShow: 14,
-    slidesToScroll: 1,
-  });
-
-});
-</script>
