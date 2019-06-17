@@ -8,12 +8,13 @@ class OrdersController < OrderDetailsController
     @order.postal_code = current_user.postal_code
     @order.shipping_address = current_user.address
     @order.shipping_name = current_user.full_name
-    if @order.save
+    if @order.valid?
+      @order.save
       create_order_details
       render :index
       current_user.carts.destroy_all
     else
-      redirect_to orders_confirm_path, notice: "エラー"
+      redirect_to orders_confirm_path
     end
   end
 

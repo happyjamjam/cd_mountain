@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   def index
 
   	calculation
-
+    @cart_array = []
   end
 
   def create
@@ -14,6 +14,9 @@ class CartsController < ApplicationController
     if current_user.carts.exists?(product_id: cart_item.product_id)
       existing_cart = current_user.carts.find_by(product_id: cart_item.product_id)
       existing_cart.quantity += cart_item.quantity
+      if existing_cart.quantity > cart_item.product.stock
+        existing_cart.quantity = cart_item.product.stock
+      end
       existing_cart.save
     else
       cart_item.save
