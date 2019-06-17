@@ -36,6 +36,16 @@
         </nav>
        </div>
     <% end %>
+
+    <div class = "navbar-form navbar-right">
+      <%= serch_form @q do |f| %>
+      <div class = "form-group">
+      <%= f.search_field :product_name_cont, class: 'form-control col-lg-10', id: "product-search" %>
+      </div>
+      <%= f.submit "商品検索", class: "btn btn-default" %>
+      <% end %>
+      </div>
+    </div>
     </header>
 
     <div class = "text-success col-xs-offset-1">
