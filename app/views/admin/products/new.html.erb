@@ -1,36 +1,40 @@
 <div class = "container">
   <div class = "row">
-    <table class="table table-hover">
+  <div class = "col-xs-5">
+    <table class= "table">
      <tbody>
-      <%= form_for(@product) do |newproduct| %>
-     <tr>
-       <th><label>シングル / アルバム名</label></th>
-       <td><%= newproduct.text_field :product_name, class: 'form-control' %><</td>
-     </tr>
-     <tr>
-       <th><label>アーティスト名</label></th>
-       <td><%= newproduct.disk.music.artist.text_field :artist_name, class: "col-xs-5" %></td>
-       <td><p>ふりがな</p><%= f.text_field :product_name, class: 'form-control' %></td>
-     </tr>
-     <tr>
-       <th><label>ジャケット画像</label></th>
-       <td><%= attachment_image_tag newproduct, :jaclet_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %></td>
-     </tr>
-     <tr>
-       <th><label>レーベル名</label></th>
-       <td><%= newproduct.label.text_field :label_name, class: 'form-control' %></td>
-     </tr>
-     <tr>
-       <th><label>曲名</label></th>
-       <td><%= newproduct.disks.musics.text_field :music_title, class: 'form-control' %></td>
-     </tr>
-     <tr>
-       <th><label>ジャンル</label></th>
-       <td><%= newproduct.genre.text_field :music_title, class: 'form-control' %></td>
-     </tr>
-     <tr>
-       <th><label>在庫数</label></th>
-       <td><%= newproduct.stock.text_field :stock, class: 'form-control' %>
+     <%#= form_for @product do |np| %>
+         <th><label>ジャケット画像</label></th>
+         <td><%#= np.attachment_field :jacket_img %></td>
+       </tr>
+       <tr>
+        <%#= np.fields_for :labels do |l| %>
+         <th><label>レーベル名</label></th>
+         <td><%#= l.labels.text_field :label_name %></td>
+       </tr>
+       <tr>
+         <th><label>ジャンル</label></th>
+         <td><%#= n.genre.text_field :music_title, class: 'form-control' %></td>
+       </tr>
+       <tr>
+         <th><label>在庫数</label></th>
+         <td><%#= n.stock.text_field :stock, class: 'form-control' %></td>
+       </tr>
+     <%# end %>
+     </tbody>
+    </table>
+  </div>
+  <div class = "col-xs-7">
+       <tr>
+        <%#= np.fields_for :musics do |m| %>
+         <th><label>曲名</label></th>
+         <td><%#= n.disks.musics.text_field :music_title, class: 'form-control' %></td>
+        <% end %>
+        <%#= np.fields_for :artits do |a| %>
+         <th><label>アーティスト名</label></th>
+         <td><%#= a.text_field :artist_name %><br>
+         <p>ふりがな</p><%= a.text_field :product_name %></td>
+       </tr>
      </tbody>
     </table>
     <%= link_to '登録完了', admin_products_path, method: :post, class: "btn btn-primary col-xs-7" %>

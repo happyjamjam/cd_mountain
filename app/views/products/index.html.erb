@@ -1,3 +1,20 @@
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('.slider').slick({
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: 'linear',
+    speed: 3000,
+    swipe: false,
+    slidesToShow: 14,
+    slidesToScroll: 1,
+  });
+
+});
+</script>
+
 <h1>商品一覧</h1>
 <div>
 	<% @products.each do |product| %>
