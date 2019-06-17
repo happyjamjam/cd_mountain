@@ -13,5 +13,4 @@ class ProductsController < ApplicationController
   	@reviews = @product.reviews.page(params[:page]).per(5)
     @cart = Cart.new
   end
-
 end
