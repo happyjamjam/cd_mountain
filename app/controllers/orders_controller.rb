@@ -2,7 +2,7 @@ class OrdersController < OrderDetailsController
 
   def create
     calculation
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.total_price = @final_price
     @order.postal_code = current_user.postal_code
@@ -29,15 +29,15 @@ class OrdersController < OrderDetailsController
   def confirm
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
-    @payment = current_user
+    @order = Order.new
   	# 支払い関係カラム未作成のため変数作成不可
 
   end
 
   private
 
-  def cart_params
-    params.require(:order).permit(:user_id, :shipping_status, :total_price, :postal_code, :shipping_address, :shipping_name)
+  def order_params
+    params.require(:order).permit(:payment_method, :user_id, :shipping_status, :total_price, :postal_code, :shipping_address, :shipping_name)
   end
 
 end

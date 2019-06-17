@@ -11,7 +11,13 @@ class CartsController < ApplicationController
   	cart_item = Cart.new(cart_params)
   	cart_item.user_id = current_user.id
     cart_item.product_id = product.id
-  	cart_item.save
+    if current_user.carts.exists?(product_id: cart_item.product_id)
+      existing_cart = current_user.carts.find_by(product_id: cart_item.product_id)
+      existing_cart.quantity += cart_item.quantity
+      existing_cart.save
+    else
+      cart_item.save
+    end
     redirect_to carts_path
   end
 
