@@ -1,2 +1,30 @@
-<h1>Admin::Products#index</h1>
-<p>Find me in app/views/admin/products/index.html.erb</p>
+<div class = "container">
+  <div class = row>
+  <%= link_to '商品の追加', new_admin_product_path, class: "btn btn-primary col-xs-7" %>
+  <table class="table table-hover">
+    <thead>
+     <tr>
+      <th>商品名</th>
+      <th>商品詳細</th>
+      <th></th>
+     </tr>
+    </thead>
+
+　　<tbody>
+    <% @products.each do |products| %>
+     <tr>
+       <td class = "contents"><%= products.product_name %></td>
+     </tr>
+     <tr>
+       <td class = "contents"><%= products.price %></td>
+       <td class = "contents"><%= products.genres.genre_name %></td>
+       <td class = "contents"><%= products.labels.label_name %></td>
+       <td class = "contents"><%= products.diskss.musics.music_title %></td>
+       <td class = "contents"><%= link_to 'edit', edit_admin_product_path(products.id), class: "btn-sm btn-success" %></td>
+       <td class = "contents"><%= link_to 'destroy', admin_product_path(products.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
+    <% end %>
+   </tbody>
+  </table>
+  <%= paginate @products, class: "paginate" %>
+  </div>
+</div>
