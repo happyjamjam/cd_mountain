@@ -42,19 +42,16 @@ span {
 
 header{
 	height: 80px;
-	margin: 0;
+	margin: 15px 50px 0 40px;
 }
 
+.search-engine {
+  margin-left: 40px;
+}
 
 #product-search{
-	width: 550px;
+	width: 400px;
 }
-
-.nav-top{
-	margin-top: 12px;
-	margin-left: 10px;
-}
-
 
 footer{
 	height: 100px;
@@ -71,6 +68,8 @@ footer{
 
 }
 
+/*プロダクトindexページ 流れるCDの実装*/
+
 .slider{
 	div{
 	  width: 100%;
@@ -82,4 +81,144 @@ footer{
 }
 
 
+/*ユーザー情報登録*/
 
+.user-edit-name {
+  padding: 5px;
+}
+
+.user-edit-form {
+
+  width: 200px;
+  height: 40px;
+
+}
+
+.user-edit {
+  text-align: center;
+}
+
+.user-edit::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.col-xs-6 {
+  margin: 40px 0;
+}
+
+.useremail-form {
+  width: 400px;
+  height: 40px;
+}
+
+.useraddress-form {
+  width: 500px;
+  height: 80px;
+}
+
+.name-line1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.name-line2, .name-line4, .name-line5 {
+  margin-bottom: 10px;
+}
+
+.name-line3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.name-line6 {
+  margin-bottom: 40px;
+}
+
+.password-change {
+  margin-bottom: 10px;
+}
+
+.password-change3 {
+  margin-bottom: 30px;
+}
+
+.empty-okay {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.sign-out-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sign-out-title::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.user-edit-back {
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+/*ユーザー　サインイン*/
+
+.main-section{
+    background:url('../demo/imgpsh_fullsize.jpg') no-repeat;
+    background-size:100% 100%;
+    margin: 0px;
+    width: 100%;
+}
+.user-login-header,.login-image-main{
+    margin-top: 15px;
+}
+.user-login-header h1{
+    font-size: 45px;
+    color:#fff;
+}
+.user-login-header p,.last-part p{
+    color:#c9c5c7;
+}
+.user-login-header span{
+    color:#fff;
+    font-weight: 600;
+}
+.login-image-main{
+    padding: 30px;
+    background-color:#fff;
+    border-radius:5px;
+    box-shadow: 0 0 5px 0 #fff;
+}
+.user-image-section img{
+    background-color: #B56162;
+    padding:30px;
+    height:150px;
+    width:150px;
+    border-radius: 50%;
+}
+.user-login-box,.last-part{
+    padding:20px;
+}
+.user-login-box a,.user-login-box a:hover{
+    background-color: #B56162;
+    border:1px solid #B56162;
+    width: 100%;
+    color:#fff;
+    font-weight:600;
+}
+.last-part a{
+    text-decoration: none;
+    color:#B56162;
+}
