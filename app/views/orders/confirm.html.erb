@@ -39,12 +39,6 @@
           </div>
 
           <div class = "col-xs-6 col-xs-offset-6">
-
-          	<h5>支払い方法選択</h5>
-            <%= form_for @order, url: orders_path do |f| %>
-              <label> <%= f.radio_button :payment_method, "クレジット" %> クレジット</label>
-              <label> <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込 </label>
-              <label> <%= f.radio_button :payment_method, "代金引換" %> 代金引換 </label>
           </div>
   	   </div>
     </div>
@@ -74,7 +68,12 @@
       	</tbody>
        </table>
        <div class = "submit-bottom">
-          <%= f.submit '注文を確定する', class: "btn btn-primary col-xs-7" %>
+        <h5>支払い方法選択</h5>
+          <%= form_for @order, url: orders_path do |f| %>
+            <label> <%= f.radio_button :payment_method, "クレジット" %> クレジット</label>
+            <label> <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込 </label>
+            <label> <%= f.radio_button :payment_method, "代金引換" %> 代金引換 </label>
+            <%= f.submit '注文を確定する', class: "btn btn-primary col-xs-7" %>
           <% end %>
        </div>
     </div>
