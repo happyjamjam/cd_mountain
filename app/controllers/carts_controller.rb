@@ -27,9 +27,8 @@ class CartsController < ApplicationController
 
   def update
 
-  	@cart = Cart.find(params[:id])
-  	@cart.user_id = current_user.id
-  	@cart.update(cart_params)
+  	cart = Cart.find(params[:id])
+  	cart.update(cart_params)
   	redirect_to carts_path
 
   end
