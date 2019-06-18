@@ -8,3 +8,13 @@
  flex-direction: row;
  flex-wrap: nowrap;
 }
+.product-box{
+	border: 1px solid #000;
+	border-radius: 24px;
+	display: inline-block;
+    height: 300px;
+}
+.favorite-box{
+	float:right;
+}
+
