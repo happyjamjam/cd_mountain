@@ -18,9 +18,7 @@
       <div class = "container">
         <div class ="row">
           <nav class = "nav navbar-nav navbar-left">
-              <%= link_to root_path do %>
-              <%= image_tag("/assets/16062019103135A.png",size: '80') %>
-              <% end %>
+              <%= link_to image_tag("/assets/16062019103135A.png",size: '80'), root_path, method: :get %>
               <span>CD MOUNTAIN</span>
           </nav>
           <div class= "nav-top clearfix">
@@ -29,7 +27,7 @@
                   <ul class = "nav navbar-nav navbar-right">
                     <li><%= link_to "マイページ", user_path(current_user) %></li>
                     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                    <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+                     <li><%= link_to "", carts_path, method: :get, class: "glyphicon glyphicon-shopping-cart" %></li>
                   </ul>
                 </nav>
             <% else %>

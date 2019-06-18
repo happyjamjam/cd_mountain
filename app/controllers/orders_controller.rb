@@ -5,7 +5,7 @@ class OrdersController < OrderDetailsController
     # 在庫が注文数よりも多いかをチェック
     @user_carts.each do |cart|
       if cart.product.stock < cart.quantity # 在庫が注文数よりも少なければカートに戻る
-        redirect_to carts_path
+        redirect_to carts_path, notice: "在庫数が変更されました。注文枚数を選択し直してください。"
         return
      end
    end
