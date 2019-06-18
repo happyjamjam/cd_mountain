@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_042243) do
+ActiveRecord::Schema.define(version: 2019_06_18_044017) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_042243) do
     t.string "shipping_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "payment_method", null: false
+    t.string "payment_method"
   end
 
   create_table "products", force: :cascade do |t|

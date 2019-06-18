@@ -10,7 +10,11 @@ class OrdersController < OrderDetailsController
      end
    end
     # チェック終了
-    @order = Order.new(order_params)
+    if params[:order]
+      @order = Order.new(order_params)
+    else
+      @order = Order.new
+    end
     @order.user_id = current_user.id
     @order.total_price = @final_price
     @order.postal_code = current_user.postal_code
@@ -40,6 +44,7 @@ class OrdersController < OrderDetailsController
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @order = Order.new
+
   	# 支払い関係カラム未作成のため変数作成不可
 
   end
