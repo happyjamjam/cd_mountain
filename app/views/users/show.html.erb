@@ -1,25 +1,43 @@
 <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 
 <div class = "container">
   <div class = "row">
-  	<div class = "col-xs-3 col-xs-offset-1">
-     <h4>ユーザー情報</h4>
-        <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
-        <p>郵便番号: <%= @user.postal_code %></p>
-        <p>住所: <%= @user.address %></p>
-        <p>電話番号: <%= @user.tel %></p>
-        <p>メールアドレス: <%= @user.email %></p>
-        <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+
+  	<div class = "col-xs-3">
+
+      <h4>ユーザー情報</h4>
+      <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
+      <p>郵便番号: <%= @user.postal_code %></p>
+      <p>住所: <%= @user.address %></p>
+      <p>電話番号: <%= @user.tel %></p>
+      <p>メールアドレス: <%= @user.email %></p>
+      <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+
+      <div>
+        <% if @addresses.exists? %>
+          <h4> 登録住所一覧</h4>
+          <% @addresses.each do |a| %>
+            <%= a.name %>
+            <br>
+            〒<%= a.postal_code %>
+            <p class = "address"><%= a.address %></p><br>
+            <%= a.tel %>
+            <br>
+            <%= link_to "編集する", edit_address_path(a), class: "btn" %>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
-    <div class = "col_xs-offset-4">
-      <h2>購入履歴一覧</h2>
-	  <table>
+    <div class = "col-xs-6">
+      <h4>購入履歴一覧</h4>
+      <table class = "table">
         <thead>
           <tr>
             <th>注文ID</th>
@@ -37,26 +55,31 @@
         <% end %>
         </tbody>
       </table>
+      <%= paginate @orders, class: "paginate" %>
+    </div>
 
-	  <h2>いいね一覧</h2>
-	  <table>
-		<thead>
-		  <tr>
-		    <th>イメージ</th>
-		    <th>商品名</th>
-		    <th>価格</th>
-		  </tr>
-		</thead>
-		<tbody>
-		<% @favorite_products.each do |favorite| %>
-		  <tr>
-		    <td><%# attachment_image_tag favorite, :jacket_img %></td>
-		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
-		    <td><%= favorite.product.price %></td>
-		  </tr>
-		<% end %>
-		</tbody>
-	  </table>
-      </div>
-   </div>
+    <div class = "col-xs-3">
+  	  <h4>いいね一覧</h4>
+  	  <table class = "table">
+  		  <thead>
+    		  <tr>
+    		    <th>イメージ</th>
+    		    <th>商品名</th>
+    		    <th>価格</th>
+    		  </tr>
+  		  </thead>
+  		  <tbody>
+  		    <% @favorite_products.each do |favorite| %>
+  		      <tr>
+      		    <td><%# attachment_image_tag favorite.product, :jacket_img %></td>
+      		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
+      		    <td><%= favorite.product.price %></td>
+  		      </tr>
+  		    <% end %>
+  		  </tbody>
+  	  </table>
+      <%= paginate @favorite_products, class: "paginate" %>
+    </div>
+
+  </div>
 </div>
