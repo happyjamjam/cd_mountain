@@ -7,23 +7,27 @@ class OrdersController < OrderDetailsController
       if cart.product.stock < cart.quantity # 在庫が注文数よりも少なければカートに戻る
         redirect_to carts_path, notice: "在庫数が変更されました。注文枚数を選択し直してください。"
         return
-     end
-   end
+      end
+    end
     # チェック終了
-    @order = Order.new(order_params)
-    @order.user_id = current_user.id
-    @order.total_price = @final_price
-    @order.postal_code = current_user.postal_code
-    @order.shipping_address = current_user.address
-    @order.shipping_name = current_user.full_name
-    if @order.save
-      create_order_details
-      render :index
-      @user_carts.destroy_all
-      return
+    unless current_user.carts.exists?
+      redirect_to carts_path
     else
-      redirect_to orders_confirm_path, notice: "お支払い方法を選択してください。"
-      return
+      @order = Order.new(order_params)
+      @order.user_id = current_user.id
+      @order.total_price = @final_price
+      @order.postal_code = current_user.postal_code
+      @order.shipping_address = current_user.address
+      @order.shipping_name = current_user.full_name
+      if @order.save
+        create_order_details
+        render :index
+        @user_carts.destroy_all
+        return
+      else
+        redirect_to orders_confirm_path, notice: "お支払い方法を選択してください。"
+        return
+      end
     end
   end
 
