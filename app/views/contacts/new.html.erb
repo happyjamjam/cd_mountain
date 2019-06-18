@@ -6,13 +6,18 @@
 
 <div class = "container">
   <div class = "row">
-  <h3>お問い合わせ</h3>
-
-  <%= form_for @contact do |f| %>
-  <h5>お問い合わせ内容</h5>
-  <%= f.text_area :contact_text %>
-
-　<p><%= f.submit '送信', class: "btn btn-success col-xs-3" %></p>
-
-　<% end %>
+  	<section class = "contact clearfix">
+	  <h3 class = "contact-title">お問い合わせ</h3>
+	</section>
+       <div class = "col-xs-6">
+       	<p class = "thankyou-message">お問い合わせありがとうございます。<br>ご返信には3〜4営業日いただいております。</p>
+       </div>
+       <div class = "col-xs-6">
+       	<h5>お問い合わせ内容</h5>
+	    <%= form_for @contact do |f| %>
+	    <%= f.text_area :contact_text %>
+	   </div>
+	   <p><%= f.submit '送信', class: "btn btn-success col-xs-2 col-xs-offset-9" %></p>
+	   <% end %>
+  </div>
 </div>
