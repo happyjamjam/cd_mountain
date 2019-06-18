@@ -10,11 +10,7 @@ class OrdersController < OrderDetailsController
      end
    end
     # チェック終了
-    if params[:order]
-      @order = Order.new(order_params)
-    else
-      @order = Order.new
-    end
+    @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.total_price = @final_price
     @order.postal_code = current_user.postal_code
