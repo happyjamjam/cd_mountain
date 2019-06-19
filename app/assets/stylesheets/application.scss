@@ -30,42 +30,32 @@
   clear: both;
 }
 
-span {
+body {
+  background-color: rgba(255,255,255,0);
+}
 
+
+/*ヘッダー　ナビゲーションバー */
+
+.site-name {
   font-size: 25px;
   font-family: 'arial black';
 }
 
 header{
 	height: 80px;
-	margin: 0;
+	padding: 15px 50px 0 40px;
 }
 
-
-#produch-search{
-	width: 450px;
+.search-engine {
+  margin-left: 40px;
 }
 
-.nav-top{
-	margin-top: 12px;
-	margin-left: 10px;
+#product-search{
+	width: 400px;
 }
 
-
-footer{
-	height: 100px;
-	background-color: limegreen;
-	margin-top:50px;
-	color:black;
-	text-decoration:underline;
-	background-position:center;
-	text-align: right;
-	font-size: 16px;
-	background-image: url(586746.jpg);
-	background-size:cover;
-	background-position:center;
-
-}
+/*プロダクトindexページ 流れるCDの実装*/
 
 .slider{
 	div{
@@ -108,4 +98,179 @@ footer{
 	z-index: 2;
 }
 
+/*ユーザー情報登録*/
 
+.user-edit-name {
+  padding: 5px;
+}
+
+.user-edit-form {
+
+  width: 200px;
+  height: 40px;
+
+}
+
+.user-edit {
+  text-align: center;
+}
+
+.user-edit::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.col-xs-6 {
+  margin: 40px 0;
+}
+
+.useremail-form {
+  width: 400px;
+  height: 40px;
+}
+
+.useraddress-form {
+  width: 500px;
+  height: 80px;
+}
+
+.name-line1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.name-line2, .name-line4, .name-line5 {
+  margin-bottom: 10px;
+}
+
+.name-line3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.name-line6 {
+  margin-bottom: 40px;
+}
+
+.password-change {
+  margin-bottom: 10px;
+}
+
+.password-change3 {
+  margin-bottom: 30px;
+}
+
+.empty-okay {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.sign-out-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sign-out-title::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.user-edit-back {
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+/*ユーザー　サインイン 兼 アカウント登録*/
+
+.main-section{
+    background:url('../demo/imgpsh_fullsize.jpg') no-repeat;
+    background-size:100% 100%;
+    margin: 0px;
+    width: 100%;
+}
+.user-login-header,.login-image-main{
+    margin-top: 15px;
+}
+.user-login-header h1{
+    font-size: 45px;
+    color:#fff;
+}
+.user-login-header p,.last-part p{
+    color:#c9c5c7;
+}
+.user-login-header span{
+    color:#fff;
+    font-weight: 600;
+}
+.login-image-main{
+    padding: 10px;
+    background-color:#fff;
+    border-radius:5px;
+    box-shadow: 0 0 5px 0 #fff;
+}
+.user-image-section img{
+    height:150px;
+    width:150px;
+    border-radius: 50%;
+}
+.user-login-box,.last-part{
+    padding: 10px;
+}
+.login-button :hover{
+    background-color: #B56162;
+    border:1px solid #B56162;
+    width: 100%;
+    color:#fff;
+    font-weight:600;
+}
+.last-part a{
+    text-decoration: none;
+    color:#B56162;
+}
+
+/*ユーザー 新規アカウント登録*/
+
+.new-account-address {
+  width: 250px;
+  height: 50px;
+}
+
+.new-account-email {
+  width: 250px;
+}
+
+/*フッター*/
+
+footer {
+  background-color: black;
+  height: 250px;
+  color: white;
+  margin-top: 300px;
+  padding: 20px 50px 0 70px;
+}
+
+.icon-white {
+  color: #FFFFFF;
+}
+
+.footer-statement {
+  margin-left: 40px;
+}
+
+.contact-footer {
+  font-weight: bold;
+}
+
+.footer-contents-name {
+  margin-bottom: 20px;
+}

@@ -2,14 +2,22 @@
       <div class="flash">
         <%= flash[:notice] %>
       </div>
-    <% end %>
-
-<h1>お問い合わせ</h1>
-
-<%= form_for @contact do |f| %>
-<h2>お問い合わせ内容</h2>
-<%= f.text_area :contact_text %>
-
-<p><%= f.submit '送信' %></p>
-
 <% end %>
+
+<div class = "container">
+  <div class = "row">
+  	<section class = "contact clearfix">
+	  <h3 class = "contact-title">お問い合わせ</h3>
+	</section>
+       <div class = "col-xs-6">
+       	<p class = "about-reply">お問い合わせありがとうございます。<br>ご返信には3〜4営業日いただいております。</p>
+       </div>
+       <div class = "col-xs-6">
+       	<h5>お問い合わせ内容</h5>
+	    <%= form_for @contact do |f| %>
+	    <%= f.text_area :contact_text %>
+	   </div>
+	   <p><%= f.submit '送信', class: "btn btn-success col-xs-2 col-xs-offset-9" %></p>
+	   <% end %>
+  </div>
+</div>
