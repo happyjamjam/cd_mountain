@@ -1,3 +1,37 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.process {
+  font-size: 11px;
+  margin: 20px 0;
+}
+
+.cart-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.order-title {
+  margin-top: 65px;
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.order-title::after {
+  content: "";
+  display: block;
+  background: gray;
+  height: 1px;
+  width: 200px;
+  margin: 15px;
+
+}
+
+.sibmit-bottom {
+   margin-top: 30px;
+}
