@@ -47,12 +47,10 @@ header{
 	padding: 15px 50px 0 40px;
 }
 
-.search-engine {
-  margin-left: 40px;
-}
 
-#product-search{
-	width: 400px;
+.search-engine{
+  margin-left: 40px;
+	width: 300px;
 }
 
 /*プロダクトindexページ 流れるCDの実装*/
@@ -194,7 +192,8 @@ header{
     border-radius: 50%;
 }
 .user-login-box,.last-part{
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 60px;
 }
 .login-button :hover{
     background-color: #B56162;
@@ -218,6 +217,29 @@ header{
 .new-account-email {
   width: 250px;
 }
+
+.new-account-info1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-info2, .new-account-info4, .new-account-info5,
+.new-account-info6, .new-account-info7, .new-account-info8 {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-info3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-button {
+  margin-top: 20px;
+}
+
 
 /*フッター*/
 
