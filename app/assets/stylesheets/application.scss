@@ -31,7 +31,7 @@
 }
 
 body {
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(225,225,230,0.6);
 }
 
 
@@ -47,15 +47,24 @@ header{
 	padding: 15px 50px 0 40px;
 }
 
+
 .search-engine {
   margin-left: 40px;
+  margin-top:10px;
+
+}
+
+.search-engine input{
+	float:left;
 }
 
 #product-search{
-	width: 400px;
+	width: 500px;
 }
 
+
 /*プロダクトindexページ 流れるCDの実装*/
+
 
 .slider{
 	div{

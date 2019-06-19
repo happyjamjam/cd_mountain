@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   	# @products = Product.page(params[:page])
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true).page(params[:page])
+    @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
+  
   end
 
   def show
