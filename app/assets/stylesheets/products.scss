@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .product-wrapper {
  display: flex;
  flex-direction: row;
@@ -11,3 +12,30 @@
 .product-item {
   padding: 20px;
 }
+
+.cart-box{
+	border: 1px solid #000;
+	border-radius: 24px;
+	display: inline-block;
+    height: 300px;
+}
+.favorite-box{
+	float:right;
+}
+
+.button{
+	height: 60px;
+	margin-top: 40px;
+	border-radius: 20px;
+}
+
+.review-box{
+	background-color: gray;
+}
+.rank-img{
+	float:left;
+}
+.rank-box{
+	float:right;
+}
+
