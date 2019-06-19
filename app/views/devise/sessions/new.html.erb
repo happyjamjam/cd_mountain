@@ -21,7 +21,9 @@
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                 <%= f.password_field :password, autocomplete: "current-password", :placeholder => " password" %>
             </div>
-            <%= f.submit "ログイン", class: "btn btn-defualt" %>
+            <div class = "login-buttom">
+             <%= f.submit "ログイン", class: "btn btn-defualt" %>
+            </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 last-part">
             <% if devise_mapping.rememberable? %>
