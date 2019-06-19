@@ -1,93 +1,84 @@
-<h2>登録情報 <%= resource_name.to_s.humanize %></h2>
+<section class = "mypage clearfix">
+    <h4 class = "user-edit">登録情報</h4>
+</section>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class = "container">
+  <div class = "row">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
+    <div class = "name-line1">
+      <%= f.label :姓, class: "user-edit-name" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "user-edit-form" %>
 
-<table>
-    <tr>
-      <td>
-        <div class="field">
-          <%= f.label :姓 %>
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-        </div>
-      </td>
-      <td>
-        <div class="field">
-          <%= f.label :名 %>
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-        </div>
-      </td>
-      </tr>
+      <%= f.label :カナ姓, class: "user-edit-name" %>
+      <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name", class: "user-edit-form" %><br>
+    </div>
+    <div class = "name-line2">
+      <%= f.label :名, class: "user-edit-name" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "user-edit-form" %>
 
-      <tr>
-      <td>
-        <div class="field">
-          <%= f.label :カナ姓 %>
-          <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
-        </div>
-      </td>
-      <td>
-        <div class="field">
-          <%= f.label :カナ名 %>
-          <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
-        </div>
-      </td>
-    </tr>
-  </table>
-
-  <div class="field">
-    <%= f.label :郵便番号 %>
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-    <em>(ハイフン不要)</em>
+      <%= f.label :カナ名, class: "user-edit-name" %>
+      <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name", class: "user-edit-form" %><br>
+    </div>
+    <div class = "name-line3">
+      <%= f.label :メールアドレス　, class: "user-edit-name" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "useremail-form" %><br>
+    </div>
+    <div class = "name-line4">
+      <%= f.label :郵便番号　　　　, class: "user-edit-name" %>
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "user-edit-form" %><br>
+    </div>
+    <div class = "name-line5">
+      <%= f.label :住所　　　　　　, class: "user-edit-name" %>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "useraddress-form" %><br>
+    </div>
+    <div class = "name-line6">
+      <%= f.label :電話番号　　　　, class: "user-edit-name" %>
+      <%= f.text_field :tel, autofocus: true, autocomplete: "tel", class: "user-edit-form" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :電話番号 %>
-    <%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
-    <em>(ハイフン不要)</em>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <section class = "mypage clearfix">
+    <h4 class = "user-edit">パスワード変更</h4>
+  </section>
+  <p class = "empty-okay">※ 変更がない場合は空欄</p>
+  <div class = "row">
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :新パスワード %> <i>(変更しない場合は空欄にしてください)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %>文字以上</em>
     <% end %>
+
+    <div class = "password-change">
+      <%= f.label :新パスワード　　　　 %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+      <%= @minimum_password_length %>文字以上
+      <% end %>
+    </div>
+
+    <div class = "password-change">
+      <%= f.label :新パスワードの確認　 %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class = "password-change3">
+      <%= f.label :現在のパスワード　　 %>
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+    <div class = "actions">
+      <%= f.submit "編集完了", class: "btn btn-primary" %>
+    </div>
+     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :新パスワードの確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class = "row">
+    <section class = "mypage clearfix">
+      <h4 class = "sign-out-title">退会</h4>
+    </section>
+    <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に退会しますか?" }, method: :delete, class: "btn btn-warning"%></p>
   </div>
-
-  <div class="field">
-    <%= f.label :現在のパスワード %> <br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <div class = "user-edit-back">
+    <%= link_to "戻る", :back %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "編集完了" %>
-  </div>
-<% end %>
-
-<h3>アカウントの削除</h3>
-
-<p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
-
-<%= link_to "戻る", :back %>
+</div>
