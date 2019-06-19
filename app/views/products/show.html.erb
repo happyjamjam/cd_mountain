@@ -2,25 +2,29 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
+				<img src= "assets/mv.jpg" width="300" height="300">
 				<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
 			</div>
 	
 			<div class="product_detail col-lg-4">
-				<h2><%= @product.product_name %></h2>
-				<%# @artists.artist_name %>/ <%# @label.label_name %>
+				<h1><%= @product.product_name %></h1>
+				<h3>アーティスト名/レーベル名</h3>
+				<%# @artists.artist_name %> <%# @label.label_name %>
+				<p>ジャンル</p>
 				<%# @genre.genre_name %>
+				値段:<%= @product.price %>円(税別価格)
 			</div>
 
-			<div class="product-box col-lg-4">
-				<h1>¥ <%= @product.price %></h1>
-				<h1>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h1>
+			<div class="cart-box col-lg-4">
+				<h2>¥ <%= @product.price %></h2>
+				<h2>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h2>
 				<%= form_for @cart, url:product_carts_path(@product) do |f| %>
 				 <h3><%= f.label :quantity, "数量" %>
 					<%= f.select :quantity, @array %>
 					<% if @product.stock != 0 %>
 				 </h3>
 						<% if user_signed_in? %>
-							<%= f.submit "カートに入れる", class: "btn btn-primary col-xs-12" %>
+						  <%= f.submit "カートに入れる", class: "button btn-primary col-xs-12" %>
 						<% else %>
 							<p> カートに入れるにはログインしてください。</p>
 						<% end %>
@@ -56,12 +60,11 @@
 	<h2> レビュー</h2>
 
 	<table class="table">
-		<tr>
-			<th> 投稿者</th>
-			<th> タイトル</th>
-			<th> 本文</th>
+		<tr style="background-color:#DDDDDD;">
+			<th style="width:100px;"> 投稿者</th>
+			<th style="width:200px;"> タイトル</th>
+			<th style="width:600px;"> 本文</th>
 		</tr>
-
 		<% @reviews.each do |r| %>
 
 			<tr>
@@ -78,5 +81,4 @@
 		<% end %>
 		<%= paginate @reviews, class: "paginate" %>
 	</table>
-	</div>
 </div>

@@ -8,7 +8,7 @@
  flex-direction: row;
  flex-wrap: nowrap;
 }
-.product-box{
+.cart-box{
 	border: 1px solid #000;
 	border-radius: 24px;
 	display: inline-block;
@@ -18,3 +18,16 @@
 	float:right;
 }
 
+.button{
+	height: 60px;
+	margin-top: 40px;
+	border-radius: 20px;
+}
+
+.review-box{
+	background-color: gray;
+}
+
+.rank-box{
+	float:right;
+}

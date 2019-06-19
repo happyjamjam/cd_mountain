@@ -45,7 +45,11 @@
       </h3>
       <% @all_ranks.each.with_index(1) do |product , i| %>
         <%= i %> 位　
-        <%= link_to product.product_name,product_path(product) %>
+        <div><img src= "assets/no_img.jpg" width="50" height="50"></div>
+         <div class = "rank-box">
+         <%= link_to product.product_name,product_path(product) %>
+         <p>価格<%= product.price %>円 (税別)</p>
+         </div>
       <% end %> 
      </div>
    </div>
