@@ -160,7 +160,7 @@ header{
   margin-top: 40px;
 }
 
-/*ユーザー　サインイン*/
+/*ユーザー　サインイン 兼 アカウント登録*/
 
 .main-section{
     background:url('../demo/imgpsh_fullsize.jpg') no-repeat;
@@ -183,7 +183,7 @@ header{
     font-weight: 600;
 }
 .login-image-main{
-    padding: 30px;
+    padding: 10px;
     background-color:#fff;
     border-radius:5px;
     box-shadow: 0 0 5px 0 #fff;
@@ -194,7 +194,7 @@ header{
     border-radius: 50%;
 }
 .user-login-box,.last-part{
-    padding:20px;
+    padding: 10px;
 }
 .login-buttom:hover{
     background-color: #B56162;
@@ -206,6 +206,17 @@ header{
 .last-part a{
     text-decoration: none;
     color:#B56162;
+}
+
+/*ユーザー 新規アカウント登録*/
+
+.new-account-address {
+  width: 250px;
+  height: 50px;
+}
+
+.new-account-email {
+  width: 250px;
 }
 
 /*フッター*/
