@@ -25,7 +25,7 @@ class OrdersController < OrderDetailsController
         @user_carts.destroy_all
         return
       else
-        redirect_to orders_confirm_path, notice: "お支払い方法を選択してください。"
+        redirect_to orders_confirm_path
         return
       end
     end

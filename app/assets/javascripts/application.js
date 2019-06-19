@@ -17,4 +17,9 @@
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
-
+$(function(){
+	$("#modal-open").click(function(){
+		$("body").append('<div id ="modal-bg"></div>');
+		modalResize();
+	})
+})

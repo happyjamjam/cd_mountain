@@ -87,4 +87,25 @@ footer{
 }*/
 /*ユーザーマイページここまで*/
 
+/*注文確認画面*/
+#modal_content {
+	z-index: 0;
+	font-size: 16px;
+}
+
+#modal-open {
+	color: #cc0000;
+}
+#modal_main {
+	display: none;
+	width: 500px;
+	height: 300px;
+	margin: 0;
+	padding: 0;
+	background-color: gray;
+	color: black;
+	position: fixed;
+	z-index: 2;
+}
+
 
