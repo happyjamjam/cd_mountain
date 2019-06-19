@@ -23,7 +23,7 @@
 
 }
 
-.modal {
+/*.modal {
   position: absolute;
   top: 20%;
   left: 34%;
@@ -33,7 +33,7 @@
   width: 450px;
   height: auto;
   text-align: center;
-}
+}*/
 
 .fa-times {
   position: absolute;
@@ -73,3 +73,6 @@
   cursor: pointer;
 }
 
+.table th,td {
+  border-top: none !important;
+}

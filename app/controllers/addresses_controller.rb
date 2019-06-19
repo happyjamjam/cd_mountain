@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+
 	def new
 		@address = Address.new
 	end
@@ -7,10 +8,17 @@ class AddressesController < ApplicationController
 		@address = Address.new(address_params)
 		@address.user_id = current_user.id
 		if @address.save
-			redirect_to orders_confirm_path
+			redirect_to user_path(current_user)
 		else
 			render template: "addresses/new"
 		end
+	end
+
+	def index
+		@addresses = current_user.addresses
+		calculation
+  	@user_orders = current_user.carts.order(id: "DESC")
+    @order = Order.new
 	end
 
 	def edit

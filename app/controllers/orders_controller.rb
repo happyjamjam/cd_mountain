@@ -16,9 +16,6 @@ class OrdersController < OrderDetailsController
       @order = Order.new(order_params)
       @order.user_id = current_user.id
       @order.total_price = @final_price
-      @order.postal_code = current_user.postal_code
-      @order.shipping_address = current_user.address
-      @order.shipping_name = current_user.full_name
       if @order.save
         create_order_details
         render :index
@@ -44,6 +41,10 @@ class OrdersController < OrderDetailsController
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @order = Order.new
+    params[:shipping_name]
+    params[:shipping_address]
+    params[:postal_code]
+    params[:tel]
 
   	# 支払い関係カラム未作成のため変数作成不可
 
@@ -52,7 +53,7 @@ class OrdersController < OrderDetailsController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method)
+    params.require(:order).permit(:payment_method, :shipping_name, :shipping_address, :postal_code, :tel)
   end
 
 end

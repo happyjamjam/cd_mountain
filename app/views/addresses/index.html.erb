@@ -1,0 +1,16 @@
+<h2>登録住所一覧</h2>
+<!-- 本人の住所 -->
+<%= current_user.full_name %><br>
+<%= current_user.postal_code %><br>
+<%= current_user.address %><br>
+<%= current_user.tel %><br>
+<%= link_to "この住所を使う", orders_confirm_path %><br>
+
+<!-- 登録した住所 -->
+<% @addresses.each do |address| %>
+	<%= address.name %><br>
+	<%= address.postal_code %><br>
+	<%= address.address %><br>
+	<%= address.tel %><br>
+	<%= link_to "この住所を使う", controller: "orders", action: "confirm", shipping_name: address.name, shipping_address: address.address, postal_code: address.postal_code, tel: address.tel %><br>
+<% end %>
