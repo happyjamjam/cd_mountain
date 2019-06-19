@@ -16,9 +16,7 @@
 
 <header class = "navbar navbar-light bg-light">
 <nav class = "nav navbar-nav">
-  <%= link_to root_path do %>
-   <%= image_tag("/assets/16062019103135A.png",size: '60') %>
-  <% end %>
+  <%= link_to image_tag("/assets/16062019103135A.png",size: '60'), root_path, method: :get %>
   <span site-name>CD MOUNTAIN</span>
 </nav>
 <nav class = "nav navbar-nav">
@@ -34,7 +32,7 @@
       <ul class = "nav navbar-nav navbar-right">
        <li><%= link_to " マイページ", user_path(current_user), class: "glyphicon glyphicon-user" %></li>
        <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
-       <li><%= link_to '',carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+       <li><%= link_to '',carts_path, method: :get, class: "glyphicon glyphicon-shopping-cart" %></li>
       </ul>
     </nav>
   <% else %>
