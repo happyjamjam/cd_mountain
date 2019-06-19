@@ -2,19 +2,32 @@ class OrdersController < OrderDetailsController
 
   def create
     calculation
-    @order = Order.new(order_params)
+    # 在庫が注文数よりも多いかをチェック
+    @user_carts.each do |cart|
+      if cart.product.stock < cart.quantity # 在庫が注文数よりも少なければカートに戻る
+        redirect_to carts_path, notice: "在庫数が変更されました。注文枚数を選択し直してください。"
+        return
+     end
+   end
+    # チェック終了
+    if params[:order]
+      @order = Order.new(order_params)
+    else
+      @order = Order.new
+    end
     @order.user_id = current_user.id
     @order.total_price = @final_price
     @order.postal_code = current_user.postal_code
     @order.shipping_address = current_user.address
     @order.shipping_name = current_user.full_name
-    if @order.valid?
-      @order.save
+    if @order.save
       create_order_details
       render :index
-      current_user.carts.destroy_all
+      @user_carts.destroy_all
+      return
     else
       redirect_to orders_confirm_path
+      return
     end
   end
 
@@ -31,6 +44,7 @@ class OrdersController < OrderDetailsController
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @order = Order.new
+
   	# 支払い関係カラム未作成のため変数作成不可
 
   end

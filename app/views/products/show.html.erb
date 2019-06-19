@@ -3,22 +3,24 @@
 
 	<div class="product_detail">
 		<h2><%= @product.product_name %></h2>
-		<%# @artists.artist_name %>/ <%# @label.label_name %>
-		<%# @genre.genre_name %>
+		<!-- アーティストモデルのリレーションをどうするか決めた後で実装します -->
+		<%# @artists.each do |artist| %>
+		<%# artist.artist_name %>/ <%= @label.label_name %>
+		<%= @genre.genre_name %>
 	</div>
 
 	<div class="#">
 		¥ <%= @product.price %>
 		在庫数 <%= @product.stock %> / <%= @product.sales_status %>
-		<%= form_for @cart, url:product_carts_path(@product) do |f| %>
-			<%= f.label :quantity, "数量" %>
-			<%= f.select :quantity, @array %>
-			<% if @product.stock != 0 %>
-				<% if user_signed_in? %>
-					<%= f.submit "カートに入れる", class: "btn btn-primary" %>
-				<% else %>
-					<p> カートに入れるにはログインしてください。</p>
-				<% end %>
+		<% if @product.stock > 0 %>
+			<%= form_for @cart, url:product_carts_path(@product) do |f| %>
+				<%= f.label :quantity, "数量" %>
+				<%= f.select :quantity, @array %>
+					<% if user_signed_in? %>
+						<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+					<% else %>
+						<p> カートに入れるにはログインしてください。</p>
+					<% end %>
 			<% end %>
 		<% end %>
 	</div>
@@ -27,14 +29,15 @@
     <%= render partial: 'favorites/favorite', locals: { product: @product } %>
   </div>
 
-	<h2> トラックリスト</h2>
-	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
-	<%# @disks.each do |d| %>
-		ディスク<%## d.disk_number %>
-		<%# @musics.each do |m| %>
-		  トラック<%# m.track_number %>. <%# m.music_title %>
-		<%# end %>
-	<%# end %>
+	<h3> トラックリスト</h3>
+	<!-- 商品の新規登録ができるようになったらコメントアウトを取り消してください -->
+	<% @disks.each do |d| %>
+		<h3>ディスク<%= d.disk_number %></h3>
+		<% @musics = d.musics %>
+		<% @musics.each do |m| %>
+		  トラック<%= m.track_number %>. <%= m.music_title %><br>
+		<% end %>
+	<% end %>
 	<% if user_signed_in? %>
 		<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
 	<% else %>
