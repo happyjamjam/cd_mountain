@@ -31,7 +31,7 @@
 }
 
 body {
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(225,225,230,0.6);
 }
 
 
@@ -50,40 +50,20 @@ header{
 
 .search-engine {
   margin-left: 40px;
+  margin-top:10px;
+
 }
 
+.search-engine input{
+	float:left;
+}
 
 #product-search{
-	width: 400px;
-
+	width: 500px;
 }
-<<<<<<< HEAD
 
 
 /*プロダクトindexページ 流れるCDの実装*/
-span{
-	font-size: 25px;
-	font-family: 'arial black'
-}
-
-=======
- 
-
-footer{
-	height: 100px;
-	background-color: limegreen;
-	margin-top:50px;
-	color:black;
-	text-decoration:underline;
-	background-position:center;
-	text-align: right;
-	font-size: 16px;
-	background-image: url(586746.jpg);
-	background-size:cover;
-	background-position:center;
-	font-family: 'cursive';
-
-}
 
 
 .slider{
@@ -95,7 +75,6 @@ footer{
 	  }
 	}
 }
-
 
 
 /*ユーザー情報登録*/
@@ -274,5 +253,3 @@ footer {
 .footer-contents-name {
   margin-bottom: 20px;
 }
-=======
->>>>>>> ランキング機能実装
