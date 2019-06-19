@@ -5,10 +5,18 @@
   box-sizing: border-box;
 }
 
+.row {
+  margin-top: 20px;
+}
+
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
+}
+
+.process {
+  font-size: 11px;
 }
 
 .login-modal-wrapper {
@@ -73,3 +81,28 @@
   cursor: pointer;
 }
 
+ .order-show-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.purchase-confirm {
+  margin-top: 20px;
+}
+
+.confirm-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.confirm-items {
+  margin: 30px 0;
+}
+
+.item-name {
+  font-size: 30px;
+}

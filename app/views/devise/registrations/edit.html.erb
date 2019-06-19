@@ -42,7 +42,6 @@
   <section class = "mypage clearfix">
     <h4 class = "user-edit">パスワード変更</h4>
   </section>
-  <p class = "empty-okay">※ 変更がない場合は空欄</p>
   <div class = "row">
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -59,11 +58,13 @@
     <div class = "password-change">
       <%= f.label :新パスワードの確認　 %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <p class = "empty-okay">※ 変更がない場合は新規パスワード空欄可能</p>
     </div>
 
     <div class = "password-change3">
       <%= f.label :現在のパスワード　　 %>
       <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <p class = "empty-okay">上記の変更を保存するためにパスワードを入力してください。</p>
     </div>
 
     <div class = "actions">

@@ -1,51 +1,56 @@
 <div class = "container">
   <div class = "row">
-  	<p>カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
+  	<p class = "process">カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
   	<div class = "col-xs-9">
-      <div style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
-
-          <div class = "col-xs-6">
-	        <div class = "delivery-information">
-	          <h5>お届け先選択</h5>
-              <%= current_user.full_name %>
-	          	<%= current_user.postal_code %>
-	          	<%= current_user.address %>
-	          	<%= current_user.tel %>
-	        </div>
-            <!-- 上記表示以外のアドレスを選択する js使用-->
-          	<div class= "change-address"  id = "change-address-show">変更</div>
-          	 <div class= "change-modal-wrapper" id= "address-modal">
-		      <div class= "modal">
-		       <div id= "adress-options">
-		        <h2>お届け先を選択してください</h2>
-		        <table class = "table">
-		         <tbody>
-                   <% current_user.addresses.each do |address| %>
-                   <tr>
-  	   	            <td class = "contents"><%= link_to address.name, class: "text-muted" %></td>
-  	   	            <td class = "contents"><%= address.postal_code %></td>
-  	   	            <td class = "contents"><%= address.address %></td>
-    	           </tr>
-    	           <% end %>
-                 </tbody>
-                </table>
-		       </div>
-		      </div>
-		     </div>
+      <p class = "confirm-title">カート内容の確認と注文確定</p>
+  	  <div class = "delivery-information">
+  	   <h5>お届け先選択</h5>
+          <%= current_user.full_name %>
+  	      <%= current_user.postal_code %>
+  	      <%= current_user.address %>
+  	      <%= current_user.tel %>
+  	  </div>
+      <!-- 上記表示以外のアドレスを選択する js使用-->
+    	<div class= "change-address"  id = "change-address-show">変更</div>
+    	 <div class= "change-modal-wrapper" id= "address-modal">
+        <div class= "modal">
+          <div id= "adress-options">
+           <h2>お届け先を選択してください</h2>
+           <table class = "table">
+             <tbody>
+               <% current_user.addresses.each do |address| %>
+               <tr>
+   	            <td class = "contents"><%= link_to address.name, class: "text-muted" %></td>
+   	            <td class = "contents"><%= address.postal_code %></td>
+   	            <td class = "contents"><%= address.address %></td>
+	             </tr>
+	             <% end %>
+             </tbody>
+           </table>
+          </div>
+        </div>
+       </div>
 		    <!-- 登録していない住所はここで登録する -->
 		    <div class = "register-new-address">
 		      <%= link_to "新しい住所を登録", user_path(current_user) %>
 		    </div>
-          </div>
 
-          <div class = "col-xs-6 col-xs-offset-6">
+      <% @user_orders.each do |cart| %>
+        <div class = "confirm-items">
+          <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
+          <div>
+            <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product), class: "text-muted" %></p>
+            <p class = "contents">在庫数：<%= cart.product.stock %></p>
+            <p class = "content" >価格：<%= cart.product.price %></p>
+            <p class = "contents">数量：<%= cart.quantity %></p>
           </div>
-  	   </div>
+        </div>
+      <% end %>
     </div>
     <div class = "col-xs-3">
        <h3 class = "order-title">ご注文内容</h3>
        <table class = "table">
-      	 <tbody>
+      	<tbody>
       	  <tr>
       	  	<th>小計</th>
       	  	<th></th>
@@ -68,26 +73,16 @@
       	</tbody>
        </table>
        <div class = "submit-bottom">
-        <h5>支払い方法選択</h5>
+        <h3 class = "order-title">支払い方法選択</h3>
           <%= form_for @order, url: orders_path do |f| %>
             <label> <%= f.radio_button :payment_method, "クレジット" %> クレジット</label>
             <label> <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込 </label>
             <label> <%= f.radio_button :payment_method, "代金引換" %> 代金引換 </label>
-            <%= f.submit '注文を確定する', class: "btn btn-primary col-xs-7" %>
+            <%= f.submit '注文を確定する', class: "btn btn-primary col-xs-7 purchase-confirm" %>
           <% end %>
        </div>
     </div>
     </div>
   </div>
-
-      <% @user_orders.each do |cart| %>
-        <div>
-          <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
-          <div>
-    	  	  <p class = "contents"><%= link_to cart.product.product_name, product_path(cart.product), class: "text-muted" %></p>
-    	  	  <p class = "contents">在庫数：<%= cart.product.stock %></p>
-    	  	  <p class = "content" >価格：<%= cart.product.price %></p>
-     	   	  <p class = "contents">数量：<%= cart.quantity %></p>
-          </div>
-        </div>
-    	<% end %>
+  </div>
+</div>
