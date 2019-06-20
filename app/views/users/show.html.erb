@@ -4,54 +4,56 @@
   </div>
 <% end %>
 
-
 <div class = "container">
   <div class = "row">
 
   	<div class = "col-xs-3">
       <h4>ユーザー情報</h4>
-      <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
-      <p>郵便番号: <%= @user.postal_code %></p>
-      <p>住所: <%= @user.address %></p>
-      <p>電話番号: <%= @user.tel %></p>
-      <p>メールアドレス: <%= @user.email %></p>
-      <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+      <p> 名前: <%= @user.last_name %><%= @user.first_name %></p>
+      <p> 郵便番号: <%= @user.postal_code %></p>
+      <p> 住所: <%= @user.address %></p>
+      <p> 電話番号: <%= @user.tel %></p>
+      <p> メールアドレス: <%= @user.email %></p>
+      <p> <%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+
+      <% if @addresses.exists? %>
+        <h4> 登録住所一覧</h4>
+        <% @addresses.each do |address| %>
+          <div>
+            <%= address.name %>
+            <br>
+            〒<%= address.postal_code %>
+            <p class = "address"><%= address.address %></p>
+            <br>
+            電話番号:<%= address.tel %>
+            <br>
+            <%= link_to "編集する", edit_address_path(address) %>
+            <%= link_to "削除する", address, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          </div>
+          <br>
+        <% end %>
+      <% end %>
     </div>
 
-      <div>
-        <% if @addresses.exists? %>
-          <h4> 登録住所一覧</h4>
-          <% @addresses.each do |a| %>
-            <%= a.name %>
-            <br>
-            〒<%= a.postal_code %>
-            <p class = "address"><%= a.address %></p><br>
-            <%= a.tel %>
-            <br>
-            <%= link_to "編集する", edit_address_path(a), class: "btn" %>
-            <br>
-          <% end %>
-        <% end %>
-      </div>
-    <div class = "col_xs-offset-4">
+    <div class = "col-xs-6">
       <h4>購入履歴一覧</h4>
-	  <table>
+      <table class = "table">
         <thead>
           <tr>
             <th>注文ID</th>
             <th>ステータス</th>
-            <th>Date</th>
+            <th>注文日</th>
           </tr>
         </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= link_to order.id, order_path(order.id) %></td>
-            <td><%= order.shipping_status %></td>
-            <td><%= order.created_at.to_date %></td>
-          </tr>
-        <% end %>
-        </tbody>
+        <tboby>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= link_to order.id, order_path(order.id) %></td>
+              <td><%= order.shipping_status %></td>
+              <td><%= order.created_at.to_date %></td>
+            </tr>
+          <% end %>
+        </tboby>
       </table>
       <%= paginate @orders, class: "paginate" %>
     </div>
