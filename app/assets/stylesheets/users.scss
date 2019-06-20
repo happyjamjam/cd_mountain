@@ -5,7 +5,7 @@
 .tape-box{
   margin: 1em 0;
   padding: 1em;
-  background-color: #f4bc73;
+  background-color: #FFF6D1;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -21,13 +21,17 @@
   border-right: 3px dotted rgba(0,0,0,.1);
 }
 
-.tape-box p{
-  margin: 0;
-  padding: 0;
+.userinfo-title{
+  margin-top: 15px;
+  font-size: 20px;
+  font-family:'Reimin Light';
+  font-weight: bold;
+  text-align: center;
 }
 
-.tape-box {
-  margin-top: 40px;
+.tape-box p{
+  margin: 0;
+  padding: 1px;
 }
 
 .left-upper {

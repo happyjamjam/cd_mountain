@@ -5,7 +5,7 @@
 				<img src= "assets/mv.jpg" width="300" height="300">
 				<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
 			</div>
-	
+
 			<div class="product_detail col-lg-4">
 				<h1><%= @product.product_name %></h1>
 				<h3>アーティスト名/レーベル名</h3>
@@ -34,8 +34,6 @@
 		</div>
 
 
-	
-
 
 	<h2> トラックリスト</h2>
 	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
@@ -51,7 +49,7 @@
 	<% else %>
 		<p>レビューを書くにはログインしてください。</p>
 	<% end %>
-	  	
+
 	 <span id="favorite_buttons_<%= @product.id %>">
     <%= render partial: 'favorites/favorite', locals: { product: @product } %>
   	</span>

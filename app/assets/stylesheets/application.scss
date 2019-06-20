@@ -30,21 +30,34 @@
   clear: both;
 }
 
-/*ヘッダー　ナビゲーションバー */
+/*ヘッダー*/
+
+.header-message {
+  height: 50px;
+  background-color: #FFC679;
+}
+
+.theme-message {
+  font-size: 11px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+}
 
 .site-name {
+  margin-top: 15px;
   font-size: 25px;
   font-family: 'arial black';
 }
 
 header{
-	height: 80px;
-	padding: 15px 50px 0 40px;
+	height: 60px;
+	padding: 8px 60px 5px 60px;
 }
 
 .search-engine {
   margin-left: 40px;
-  margin-top:10px;
+  margin-top: 5px;
 }
 
 .search-engine input{
@@ -269,4 +282,9 @@ footer {
 
 .footer-contents-name {
   margin-bottom: 20px;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: bold;
 }
