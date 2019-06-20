@@ -1,26 +1,39 @@
+<div class = "container">
+ <div class = "row">
+  <div class = "col-lg-9">
 <%= notice %>
-<h3>レビュー投稿</h3>
- <div class = "product-box">
-  <%# attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %>
-  <%= @product.product_name %>
-  <%# @artist.artist_name %>
-  <%= @label.label_name %>
-  <%= @genre. genre_name %>
-
+   <h3>レビュー投稿</h3>
+    <div class = "product-box">
+     <%# attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %>
+     <%= @product.product_name %><br>
+     <%# @artist.artist_name %>
+     <%= @label.label_name %><br>
+     <%= @genre. genre_name %>
+    </div>
+  </div>
  </div>
+</div>
 
- <%= form_for @review, url: product_reviews_path do |f| %>
-　　<div class="form-group">
-        <%= f.label :name, '投稿者名' %>
-        <%= f.text_field :name, class: 'form-control' %>
-   </div>
-   <div class="form-group">
-        <%= f.label :title, 'レビュータイトル' %>
-        <%= f.text_field :title, class: 'form-control' %>
-   </div>
-   <div class="form-group">
-        <%= f.label :body, 'レビュー本文' %>
-        <%= f.text_area :body, class: 'form-control', rows:10 %>
-   </div>
-        <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
- <% end %>
+<div class = "container">
+ <div class = "row">
+  <div class = "col-xs-9">
+   <%= form_for @review, url: product_reviews_path do |f| %>
+　　 <div class="form-group-name">
+      <%= f.label :name, '投稿者名'  %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+      <div class="form-group-title">
+      <%= f.label :title, 'レビュータイトル' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body, 'レビュー本文' %>
+      <%= f.text_area :body, class: 'form-control', rows:12 %>
+    </div>
+    <div class = "button-box">
+      <%= f.submit '投稿', class: 'btn btn-info btn-lg btn-block' %>
+      <% end %>
+    </div>
+  </div>
+ </div>
+</div>

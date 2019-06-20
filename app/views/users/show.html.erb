@@ -9,7 +9,6 @@
   <div class = "row">
 
   	<div class = "col-xs-3">
-
       <h4>ユーザー情報</h4>
       <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
       <p>郵便番号: <%= @user.postal_code %></p>
@@ -17,6 +16,7 @@
       <p>電話番号: <%= @user.tel %></p>
       <p>メールアドレス: <%= @user.email %></p>
       <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+    </div>
 
       <div>
         <% if @addresses.exists? %>
@@ -33,8 +33,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
-
     <div class = "col_xs-offset-4">
       <h4>購入履歴一覧</h4>
 	  <table>
