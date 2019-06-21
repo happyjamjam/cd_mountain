@@ -100,3 +100,28 @@ main {
   float:right;
 }
 
+/*showページ カートへ追加ボタン*/
+
+.cart-button {
+  position: relative;
+  background-color: #5DAC81;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #00896C;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 220px;
+}
+
+.cart-button:hover {
+  top: -4px;
+  box-shadow: 0 5px 0 #00896C;
+}
+
+.cart-button:active {
+  top: 3px;
+  box-shadow: none;
+}
+
