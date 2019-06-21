@@ -183,42 +183,67 @@ header{
     margin: 0px;
     width: 100%;
 }
+
 .user-login-header,.login-image-main{
     margin-top: 15px;
 }
+
 .user-login-header h1{
     font-size: 45px;
     color:#fff;
 }
+
 .user-login-header p,.last-part p{
     color:#c9c5c7;
 }
+
 .user-login-header span{
     color:#fff;
     font-weight: 600;
 }
+
 .login-image-main{
     padding: 10px;
-    background-color:#fff;
-    border-radius:5px;
+    border: 2px solid #ccc;
+    border-radius:30px;
     box-shadow: 0 0 5px 0 #fff;
 }
+
 .user-image-section img{
     height:150px;
     width:150px;
     border-radius: 50%;
 }
+
+.input-group-text {
+  margin: 0 auto;
+}
+
 .user-login-box,.last-part{
     padding-top: 10px;
-    padding-left: 60px;
 }
-.login-button :hover{
-    background-color: #B56162;
-    border:1px solid #B56162;
-    width: 100%;
-    color:#fff;
-    font-weight:600;
+
+.login-button {
+  position: relative;
+  background-color: #f7d034;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #f7ba59;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 220px;
 }
+.login-button:hover {
+  top: -4px;
+  box-shadow: 0 7px 0 #f7ba59;
+}
+.login-button:active {
+  top: 3px;
+  box-shadow: none;
+}
+
 .last-part a{
     text-decoration: none;
     color:#B56162;
