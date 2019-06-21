@@ -86,13 +86,6 @@
   cursor: pointer;
 }
 
- .order-show-title {
-  font-size: 25px;
-  font-family:'Reimin Light';
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
 .purchase-confirm {
   margin-top: 20px;
 }
@@ -110,4 +103,31 @@
 
 .item-name {
   font-size: 30px;
+}
+
+/*購入履歴詳細ページ*/
+
+.order-show-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.history-details th {
+  width: 200px;
+  height: 50px;
+  padding: 40px;
+}
+
+.row {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #232323;
+  background: #f8f5f2;
+  border-left: solid 10px #426e86;
+}
+
+.history-details td {
+  font-size: 18px;
 }

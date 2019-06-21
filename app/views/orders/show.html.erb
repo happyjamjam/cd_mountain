@@ -1,39 +1,37 @@
 <div class = "container">
   <div class = "row">
     <p class = "order-show-title">購入履歴詳細</p>
-      <table class = "table">
-        <tbody>
+      <table class = "table history-details">
          <% @order_history.each do |history| %>
           <tr>
-            <th class="active">購入日</th>
+            <th>購入日</th>
             <td><%= history.created_at.to_date %></td>
           </tr>
          	<tr>
-            <th class="active">購入内容</th>
+            <th>購入内容</th>
             <td class = "contents">
               <%# attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %>
-              <%= link_to history.product.product_name, product_path(history.product) %>/ <%# history.product.disks.musics.artist.artist_name %></td>
+              <%= link_to history.product.product_name, product_path(history.product) %> / <%# history.product.disks.musics.artist.artist_name %></td>
           </tr>
           <tr>
-            <th class="active"> 購入枚数</th>
+            <th> 購入枚数</th>
             <td><%= history.purchase_quantity %></td>
           </tr>
           <tr>
-            <th class="active">合計金額</th>
+            <th>合計金額</th>
             <td>¥<%= history.purchase_price * history.purchase_quantity %></td>
           </tr>
           <% end %>
           <tr>
-            <th class="active">発送先</th>
+            <th>発送先</th>
             <td><%= @order.shipping_name %>様<br>
             〒<%= @order.postal_code %><br>
             <%= @order.shipping_address %></td>
           </tr>
           <tr>
-            <th class="active">発送状況</th>
+            <th>発送状況</th>
             <td><%= @order.shipping_status %></td>
           </tr>
-        </tbody>
       </table>
   </div>
 </div>

@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+/*ユーザー情報をテープで貼る実装*/
+
 .tape-box{
   margin: 1em 0;
   padding: 1em;
@@ -21,6 +24,13 @@
   border-right: 3px dotted rgba(0,0,0,.1);
 }
 
+.tape-box p{
+  margin: 0;
+  padding: 1px;
+}
+
+/*ユーザー情報*/
+
 .userinfo-title{
   margin-top: 15px;
   font-size: 20px;
@@ -30,10 +40,7 @@
   color: white;
 }
 
-.tape-box p{
-  margin: 0;
-  padding: 1px;
-}
+/*購入履歴一覧、いいね一覧*/
 
 .left-upper {
   margin-top: 40px;
@@ -43,17 +50,18 @@
   margin-top: 30px;
 }
 
+/*購入履歴一覧、いいね一覧のタイトル背景*/
+
 .history-box {
   margin: 1em 0;
   padding: 1em;
   background-color: #0375b4;
 }
 
-.favorite-box {
+.favorite-indexbox {
   margin: 1em 0;
   padding: 1em;
   background-color: #007849;
-  width: 845.7px;
 }
 
 .history, .favorite {
