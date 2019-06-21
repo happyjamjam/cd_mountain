@@ -29,7 +29,7 @@
                       <% @cart_array.push(new_array) %>
                     <% end %>
                     <%= f.select :quantity, @cart_array, prompt: cart.quantity %>
-                    <%= f.submit "個数を変更する" %>
+                    <%= f.submit "個数を変更する", class: "btn-white" %>
                   </td>
                 <% end %>
                 <td class = "content-total"><%= cart.product.price * cart.quantity %>円</td>
@@ -67,7 +67,7 @@
       	  </tr>
       	</tbody>
        </table>
-       <div class = "sibmit-bottom">
+       <div class = "sibmit-button">
         <% if current_user.carts.exists? %>
           <%= link_to '注文画面へ進む', orders_confirm_path, class: "btn btn-primary col-xs-7" %>
         <% end %>

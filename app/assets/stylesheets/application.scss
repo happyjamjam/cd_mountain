@@ -175,6 +175,28 @@ header{
   margin-top: 40px;
 }
 
+.new-account-button {
+  position: relative;
+  background-color: #f7d034;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #f7ba59;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 220px;
+}
+
+.new-account-button:hover {
+  top: -4px;
+  box-shadow: 0 7px 0 #f7ba59;
+}
+
+.new-account-button:active {
+  top: 3px;
+  box-shadow: none;
+}
 /*ユーザー　サインイン 兼 アカウント登録*/
 
 .main-section{
@@ -235,10 +257,12 @@ header{
   text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
   width: 220px;
 }
+
 .login-button:hover {
   top: -4px;
   box-shadow: 0 7px 0 #f7ba59;
 }
+
 .login-button:active {
   top: 3px;
   box-shadow: none;
@@ -282,6 +306,9 @@ header{
   margin-top: 20px;
 }
 
+.new-account-box {
+  margin-left: 20px;
+}
 
 /*フッター*/
 
