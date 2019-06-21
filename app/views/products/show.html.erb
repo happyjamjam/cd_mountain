@@ -16,20 +16,22 @@
 			</div>
 
 			<div class="cart-box col-xs-3">
+			  <div class = "price-info">
 				<h2>¥ <%= @product.price %></h2>
-				<h4>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h4>
-				<%= form_for @cart, url:product_carts_path(@product) do |f| %>
-				 <h4><%= f.label :quantity, "数量" %>
+				<h5>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h5>
+			<%= form_for @cart, url:product_carts_path(@product) do |f| %>
+				 <h5><%= f.label :quantity, "数量" %>
 					<%= f.select :quantity, @array %>
 					<% if @product.stock != 0 %>
-				 </h4>
-						<% if user_signed_in? %>
-						  <%= f.submit "カートに入れる", class: "cart-button" %>
-						<% else %>
-							<p> カートに入れるにはログインしてください。</p>
-						<% end %>
-					<% end %>
+				 </h5>
+			  </div>
+				<% if user_signed_in? %>
+				  <%= f.submit "カートに入れる", class: "cart-button" %>
+				<% else %>
+					<p> カートに入れるにはログインしてください。</p>
 				<% end %>
+					<% end %>
+			<% end %>
 			</div>
 		</div>
 

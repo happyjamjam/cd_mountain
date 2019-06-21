@@ -93,7 +93,7 @@ main {
   border: 1px solid #000;
   border-radius: 24px;
   display: inline-block;
-  height: 300px;
+  height: 250px;
 }
 
 .favorite-box{
@@ -112,7 +112,8 @@ main {
   transition: none;
   box-shadow: 0 3px 0 #00896C;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-  width: 220px;
+  width: 250px;
+  margin-top: 40px;
 }
 
 .cart-button:hover {
@@ -123,5 +124,9 @@ main {
 .cart-button:active {
   top: 3px;
   box-shadow: none;
+}
+
+.price-info {
+  padding-top: 15px;
 }
 
