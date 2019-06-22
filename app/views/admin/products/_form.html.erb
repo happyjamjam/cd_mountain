@@ -1,35 +1,40 @@
 <%= form_for @product, url: admin_products_path do |f| %>
 
 	<div class="field">
-		<%= f.label :product_name %>
+		<%= f.label :image, "ジャケット画像" %>
+		<%= f.attachment_field :jacket_img %>
+	</div>
+
+	<div class="field">
+		<%= f.label :商品名 %>
 		<%= f.text_field :product_name %>
 	</div>
 
 	<div class="field">
-		<%= f.label :price %>
+		<%= f.label :価格 %>
 		<%= f.text_field :price %>
 	</div>
 
 	<div class="field">
-		<%= f.label :stock %>
+		<%= f.label :在庫数 %>
 		<%= f.text_field :stock %>
 	</div>
 
 	<div class="field">
-		<%= f.label :sales_status %>
+		<%= f.label :販売状況 %>
 		<%= f.text_field :sales_status %>
 	</div>
 
 	<%= fields_for @genre do |genre| %>
 	<div class="field">
-		<%= genre.label :genre_name %>
+		<%= genre.label :ジャンル %>
 		<%= genre.text_field :genre_name %>
 	<% end %>
 	</div>
 
 	<%= fields_for @label do |label| %>
 	<div class="field">
-		<%= label.label :label_name %>
+		<%= label.label :レーベル %>
 		<%= label.text_field :label_name %>
 	<% end %>
 	</div>
@@ -39,17 +44,17 @@
 	<% end %>
 
 	<div id="links">
-		<%= link_to_add_association 'add artist', f, :artist_products %>
+		<%= link_to_add_association 'アーティストの追加', f, :artist_products %>
 	</div>
 
-	<%= link_to "new artist", new_admin_artist_path %>
+	<%= link_to "新規アーティスト登録", new_admin_artist_path %>
 
 	<%= f.fields_for :disks do |disk| %>
 	  <%= render 'disk_fields', f: disk %>
 	<% end %>
 
 	<div id="links">
-		<%= link_to_add_association 'add disk', f, :disks %>
+		<%= link_to_add_association 'ディスクの追加', f, :disks %>
 	</div>
 
 	<%= f.submit %>

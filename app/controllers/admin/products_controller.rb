@@ -56,7 +56,7 @@ class Admin::ProductsController < Admin::ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :price, :stock, :sales_status, artist_products_attributes: [:artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
+    params.require(:product).permit(:product_name, :price, :stock, :sales_status, :jacket_img, artist_products_attributes: [:artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
   end
 
   def genre_params
