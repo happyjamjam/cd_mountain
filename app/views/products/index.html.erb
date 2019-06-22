@@ -27,7 +27,7 @@
   				<%# artist.artist_name %>
   			<%# end %>
   			<br>
-  			<span class = "details">価格：<%= product.price %> 円</span>
+  			<span class = "details">価格：<%= number_with_delimiter(product.price) %> 円</span>
   		</div>
 	  <% end %>
 	  <%= paginate @products, class: "paginate" %>
@@ -45,7 +45,7 @@
           <img src= "assets/no_img.jpg" width="50" height="50">
           <div class = "rank-contents">
             <span class = "product-name"><%= link_to product.product_name,product_path(product) %></span>
-            <p class = "details">価格<%= product.price %>円 (税別)</p><br>
+            <p class = "details">価格<%= number_with_delimiter(product.price) %>円 (税別)</p><br>
           </div>
         </div>
       <% end %>
