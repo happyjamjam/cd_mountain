@@ -1,41 +1,39 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-4">
-			<img src= "assets/mv.jpg" width="300" height="300">
-			<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
-		</div>
+<div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<div><%= image_tag 'closer.jpg', :size => '280x280' %></div><br>
+				<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+			</div>
 
-		<div class="product_detail col-lg-4">
-			<h1><%= @product.product_name %></h1>
-			<h3>アーティスト名/レーベル名</h3>
-			<%# @artists.artist_name %> <%# @label.label_name %>
-			<p>ジャンル</p>
-			<%# @genre.genre_name %>
-			値段:<%= @product.price %>円(税別価格)
-		</div>
+			<div class="product_detail col-xs-5">
+				<h1><%= @product.product_name %></h1>
+				<h3>アーティスト名/レーベル名</h3>
+				<%# @artists.artist_name %> <%# @label.label_name %>
+				<p>ジャンル</p>
+				<%# @genre.genre_name %>
+				値段:<%= @product.price %>円(税別価格)
+			</div>
 
-		<div class="cart-box col-lg-4">
-			<h2>¥ <%= @product.price %></h2>
-			<h2>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h2>
+			<div class="cart-box col-xs-3">
+			  <div class = "price-info">
+				<h2>¥ <%= @product.price %></h2>
+				<h5>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h5>
 			<%= form_for @cart, url:product_carts_path(@product) do |f| %>
-
-			  <% if @product.stock != 0 %>
-				 	<h3>
-				 		<%= f.label :quantity, "数量" %>
-						<%= f.select :quantity, @array %>
-				 	</h3>
-
-					<% if user_signed_in? %>
-						<%= f.submit "カートに入れる", class: "button btn-primary col-xs-12" %>
-					<% else %>
-						<p> カートに入れるにはログインしてください。</p>
-					<% end %>
+				 <h5><%= f.label :quantity, "数量" %>
+					<%= f.select :quantity, @array %>
+					<% if @product.stock != 0 %>
+				 </h5>
+			  </div>
+				<% if user_signed_in? %>
+				  <%= f.submit "カートに入れる", class: "cart-button" %>
+				<% else %>
+					<p> カートに入れるにはログインしてください。</p>
 				<% end %>
+					<% end %>
 			<% end %>
-		</div>
-
-
-		<h2> トラックリスト</h2>
+			</div>
+			<h2> トラックリスト</h2>
 		<% @disks.each do |d| %>
 			<h3>ディスク<%= d.disk_number %></h3>
 			<% @musics = d.musics %>
@@ -43,7 +41,7 @@
 			  トラック<%= m.track_number %>. <%= m.music_title %><br>
 			<% end %>
 		<% end %>
-	</div>
+		</div>
 
 	<div class ="favorite-box">
 		<% if user_signed_in? %>
@@ -52,11 +50,10 @@
 			<p>レビューを書くにはログインしてください。</p>
 		<% end %>
 
-		<span id="favorite_buttons_<%= @product.id %>">
-	    <%= render partial: 'favorites/favorite', locals: { product: @product } %>
-	  </span>
+	 	<span id="favorite_buttons_<%= @product.id %>">
+    <%= render partial: 'favorites/favorite', locals: { product: @product } %>
+  	</span>
   </div>
-
 
 	<h2> レビュー</h2>
 

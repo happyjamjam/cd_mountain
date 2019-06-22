@@ -3,33 +3,130 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.product-wrapper {
- display: flex;
- flex-direction: row;
- flex-wrap: nowrap;
-}
-.cart-box{
-	border: 1px solid #000;
-	border-radius: 24px;
-	display: inline-block;
-  height: 300px;
-}
-.favorite-box{
-	float:right;
+/*index main*/
+
+main {
+  width: 100%;
 }
 
+.product-wrapper {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 80%;
+  padding: 35px 20px;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.details {
+  font-size: 13px;
+}
+
+.product-item {
+  padding: 20px;
+}
+
+/*index sidebar*/
+
+.sidebar {
+  float: left;
+  width: 20%;
+
+}
+
+.ranking-box{
+  float:right;
+  width: 250px;
+  margin: 35px;
+  padding: 1em;
+  background-color: #F9E3B8;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.tape{
+  display: block;
+  background-color: #ccb;
+  opacity: 0.2;
+  transform: rotate(3deg);
+  width: 40%;
+  height: 35px;
+  margin: -2em auto 0 auto;
+  border-left: 3px dotted rgba(0,0,0,.1);
+  border-right: 3px dotted rgba(0,0,0,.1);
+}
+
+.ranking-title {
+  font-size: 18px;
+  text-align: center;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.rank-img{
+  float:left;
+}
+
+.rank-contents{
+  float:right;
+  margin-left: 10px;
+}
+
+
 .button{
-	height: 60px;
-	margin-top: 40px;
-	border-radius: 20px;
+  height: 60px;
+  margin-top: 40px;
+  border-radius: 20px;
 }
 
 .review-box{
-	background-color: gray;
+  background-color: gray;
 }
-.rank-img{
-	float:left;
+
+
+.cart-box{
+  border: 1px solid #000;
+  border-radius: 24px;
+  display: inline-block;
+  height: 250px;
 }
-.rank-box{
-	float:right;
+
+.favorite-box{
+  float:right;
 }
+
+/*showページ カートへ追加ボタン*/
+
+.cart-button {
+  position: relative;
+  background-color: #5DAC81;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #00896C;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 250px;
+  margin-top: 40px;
+}
+
+.cart-button:hover {
+  top: -4px;
+  box-shadow: 0 5px 0 #00896C;
+}
+
+.cart-button:active {
+  top: 3px;
+  box-shadow: none;
+}
+
+.price-info {
+  padding-top: 15px;
+}
+
