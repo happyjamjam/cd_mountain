@@ -4,7 +4,7 @@
 		<th> 購入日</th>
 		<td> <%= @order.created_at.to_date %></td>
 	</tr>
-	<% @order_items.each do |order| %>
+	<% @order_history.each do |order| %>
 		<tr>
 			<th> 購入内容</th>
 			<td>
@@ -28,3 +28,4 @@
 		<th> 発送状況</th>
 		<td> <%= @order.shipping_status %></td>
 	</tr>
+</table>
