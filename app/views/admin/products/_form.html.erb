@@ -34,6 +34,16 @@
 	<% end %>
 	</div>
 
+	<%= f.fields_for :artist_products, ArtistProduct.new do |artist_product| %>
+		<%= render 'artist_product_fields', f: artist_product %>
+	<% end %>
+
+	<div id="links">
+		<%= link_to_add_association 'add artist', f, :artist_products %>
+	</div>
+
+	<%= link_to "new artist", new_admin_artist_path %>
+
 	<%= f.fields_for :disks do |disk| %>
 	  <%= render 'disk_fields', f: disk %>
 	<% end %>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :products do
       resources :reviews, only: [:edit, :update, :destroy]
     end
-    resources :artist, only: [:create, :edit]
+    resources :artists, only: [:create, :edit, :new]
     resources :disks, only: [:create, :update, :destroy]
     resources :musics, only: [:create, :update, :destroy]
     resources :labals, only: [:create, :update]

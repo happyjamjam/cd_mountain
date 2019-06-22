@@ -10,6 +10,10 @@ class Product < ApplicationRecord
 	has_many :orders, through: :order_details
 	has_many :order_details
 
+	has_many :artist_products, dependent: :destroy
+	has_many :artists, through: :artist_products
+	accepts_nested_attributes_for :artist_products, allow_destroy: true
+
 	belongs_to :genre
 	belongs_to :label
 

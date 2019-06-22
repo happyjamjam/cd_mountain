@@ -6,20 +6,24 @@
     <div class = "col-xs-3">
 	 <div class="product_detail">
 		<%= @product.product_name %></h2>
-		<% @product.disks.artists.artist_name %><% @product.label.label_name %>
-		<% @genre.genre_name %>
-		<%= @product.genre.price %> 円（税抜き価格）
+		<% @artist_products.each do |artist_product| %>
+			<%= artist_product.artist.artist_name %>
+		<% end %>
+		<%= @product.label.label_name %>
+		<%= @product.genre.genre_name %>
+		<%= @product.price %> 円（税抜き価格）
 	 </div>
 	</div>
 
 	<div class = "row">
 		<h2> トラックリスト</h2>
-		<% @product.each do |d| %>
-	    <% d.disk_number %>
-	    <% end%>
-	    <% @product.each do |m| %>
-	    <% m.diskd.music.track_number %>.<% m.music_title %>
-	    <% end %>
+		<% @disks.each do |d| %>
+	    	ディスク<%= d.disk_number %>
+	    	<% musics = d.musics %>
+	    	<% musics.each do |m| %>
+	    		<%= m.track_number %>.<%= m.music_title %>
+	    	<% end %>
+	   <% end %>
 	</div>
 
 	<div class = "row">

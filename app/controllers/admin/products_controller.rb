@@ -9,19 +9,17 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def create
-    # @genre = Genre.new(genre_params)
     @genre = Genre.find_or_create_by(genre_name: params[:genre][:genre_name])
-
-    # @label = Label.new(label.params)
     @label = Label.find_or_create_by(label_name: params[:label][:label_name])
 
   	@product = Product.new(product_params)
       @product.genre_id = @genre.id
       @product.label_id = @label.id
-    @product.save!
-    redirect_to admin_path
-  rescue
-    render action: 'new'
+    if @product.save!
+      redirect_to admin_products_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -43,6 +41,8 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @disks = @product.disks
+    @artist_products = @product.artist_products
     @reviews = @product.reviews.page(params[:page]).per(5)
   end
 
@@ -56,7 +56,7 @@ class Admin::ProductsController < Admin::ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :price, :stock, :sales_status, disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy, ]])
+    params.require(:product).permit(:product_name, :price, :stock, :sales_status, artist_products_attributes: [:artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
   end
 
   def genre_params
