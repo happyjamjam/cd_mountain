@@ -1,0 +1,9 @@
+<div class="nested-fields form-inline">
+  <div class="form-group">
+		<%= f.label :music_title %>
+		<%= f.text_field :music_title %>
+		<%= f.label :track_number %>
+		<%= f.number_field :track_number %>
+		<%= link_to_remove_association "remove disk", f %>
+	</div>
+</div>

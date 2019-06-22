@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_06_19_101719) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "artist_products", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_products_on_artist_id"
+    t.index ["product_id"], name: "index_artist_products_on_product_id"
+  end
+
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
     t.string "artist_hiragana"
@@ -91,7 +100,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_101719) do
   create_table "musics", force: :cascade do |t|
     t.string "music_title"
     t.integer "disk_id"
-    t.integer "artist_id"
     t.string "track_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -152,7 +160,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_101719) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
