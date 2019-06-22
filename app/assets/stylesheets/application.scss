@@ -17,6 +17,336 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.li {
-  style: none;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*ヘッダー*/
+
+.header-message {
+  height: 50px;
+  background-color: #FDBB4B;
+}
+
+.theme-message {
+  font-size: 11px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.site-name {
+  margin-top: 15px;
+  font-size: 25px;
+  font-family: 'arial black';
+}
+
+header{
+	height: 60px;
+	padding: 8px 60px 5px 60px;
+}
+
+.search-engine {
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+.search-engine input{
+	float:left;
+}
+
+#product-search{
+	width: 500px;
+}
+
+
+/*プロダクトindexページ 流れるCDの実装*/
+
+
+.slider{
+	div{
+	  width: 100%;
+	  img{
+	    width: 90px;
+	    height: 90px;
+	  }
+	}
+}
+
+/*ユーザーマイページ*/
+.address {
+	word-wrap: break-word;
+}
+/*{
+	text-align: center;
+	margin: 0 auto;
+}*/
+/*ユーザーマイページここまで*/
+
+
+/*ユーザー情報登録*/
+
+.user-edit-name {
+  padding: 5px;
+}
+
+.user-edit-form {
+
+  width: 200px;
+  height: 40px;
+
+}
+
+.user-edit {
+  text-align: center;
+}
+
+.user-edit::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.col-xs-6 {
+  margin: 40px 0;
+}
+
+.useremail-form {
+  width: 400px;
+  height: 40px;
+}
+
+.useraddress-form {
+  width: 500px;
+  height: 80px;
+}
+
+.name-line1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.name-line2, .name-line4, .name-line5 {
+  margin-bottom: 10px;
+}
+
+.name-line3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.name-line6 {
+  margin-bottom: 40px;
+}
+
+.password-change {
+  margin-bottom: 10px;
+}
+
+.password-change3 {
+  margin-top: 50px;
+}
+
+.empty-okay {
+  font-size: 12px;
+  margin: 10px;
+}
+
+.sign-out-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sign-out-title::after {
+  content: "";
+  display: block;
+  background: #4682B4;
+  height: 3px;
+  width: 100px;
+  margin: 30px auto 0;
+
+}
+
+.user-edit-back {
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+.new-account-button {
+  position: relative;
+  background-color: #f7d034;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #f7ba59;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 220px;
+}
+
+.new-account-button:hover {
+  top: -4px;
+  box-shadow: 0 7px 0 #f7ba59;
+}
+
+.new-account-button:active {
+  top: 3px;
+  box-shadow: none;
+}
+/*ユーザー　サインイン 兼 アカウント登録*/
+
+.main-section{
+    background:url('../demo/imgpsh_fullsize.jpg') no-repeat;
+    background-size:100% 100%;
+    margin: 0px;
+    width: 100%;
+}
+
+.user-login-header,.login-image-main{
+    margin-top: 15px;
+}
+
+.user-login-header h1{
+    font-size: 45px;
+    color:#fff;
+}
+
+.user-login-header p,.last-part p{
+    color:#c9c5c7;
+}
+
+.user-login-header span{
+    color:#fff;
+    font-weight: 600;
+}
+
+.login-image-main{
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius:30px;
+    box-shadow: 0 0 5px 0 #fff;
+}
+
+.user-image-section img{
+    height:150px;
+    width:150px;
+    border-radius: 50%;
+}
+
+.input-group-text {
+  margin: 0 auto;
+}
+
+.user-login-box,.last-part{
+    padding-top: 10px;
+}
+
+.login-button {
+  position: relative;
+  background-color: #f7d034;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 52px;
+  -webkit-transition: none;
+  transition: none;
+  box-shadow: 0 3px 0 #f7ba59;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+  width: 220px;
+}
+
+.login-button:hover {
+  top: -4px;
+  box-shadow: 0 7px 0 #f7ba59;
+}
+
+.login-button:active {
+  top: 3px;
+  box-shadow: none;
+}
+
+.last-part a{
+    text-decoration: none;
+    color:#B56162;
+}
+
+/*ユーザー 新規アカウント登録*/
+
+.new-account-address {
+  width: 250px;
+  height: 50px;
+}
+
+.new-account-email {
+  width: 250px;
+}
+
+.new-account-info1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-info2, .new-account-info4, .new-account-info5,
+.new-account-info6, .new-account-info7, .new-account-info8 {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-info3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.new-account-button {
+  margin-top: 20px;
+}
+
+.new-account-box {
+  margin-left: 20px;
+}
+
+/*フッター*/
+
+footer {
+  background-color: black;
+  height: 250px;
+  color: white;
+  margin-top: 300px;
+  padding: 20px 50px 0 70px;
+}
+
+.icon-white {
+  color: #FFFFFF;
+}
+
+.footer-statement {
+  margin-left: 40px;
+}
+
+.contact-footer {
+  font-weight: bold;
+}
+
+.footer-contents-name {
+  margin-bottom: 20px;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: bold;
 }

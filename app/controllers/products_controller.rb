@@ -1,17 +1,27 @@
 class ProductsController < ApplicationController
   def index
-  	@products = Product.page(params[:page])
+  	# @products = Product.page(params[:page])
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page])
+    @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
+
   end
 
   def show
   	@product = Product.find(params[:id])
-  	@genre = @product.genre_id
-  	@label = @product.label_id
-  	@disks = @product.disks.all
-  	# @musics = @disks.musics.all
-  	#@artists = @musics.artist.all
+  	@genre = @product.genre
+  	@label = @product.label
+  	@disks = @product.disks
+    #@artists
   	@reviews = @product.reviews.page(params[:page]).per(5)
-    @favorites = Favorite.all
-  end
+    @cart = Cart.new
 
+    if @product.stock != 0
+      @array = []
+      (1..@product.stock).each do |s|
+        new_array = [s, s]
+        @array.push(new_array)
+      end
+    end
+  end
 end

@@ -5,10 +5,23 @@
   box-sizing: border-box;
 }
 
+.history, .favorite {
+  font-size: 25px;
+  font-family: 'arial black';
+}
+
+.row {
+  margin-top: 20px;
+}
+
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
+}
+
+.process {
+  font-size: 11px;
 }
 
 .login-modal-wrapper {
@@ -23,7 +36,7 @@
 
 }
 
-.modal {
+/*.modal {
   position: absolute;
   top: 20%;
   left: 34%;
@@ -33,7 +46,7 @@
   width: 450px;
   height: auto;
   text-align: center;
-}
+}*/
 
 .fa-times {
   position: absolute;
@@ -73,3 +86,51 @@
   cursor: pointer;
 }
 
+.purchase-confirm {
+  margin-top: 20px;
+}
+
+.confirm-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.items {
+  float: right;
+}
+
+.confirm-items {
+  margin: 30px 0;
+}
+
+.item-name {
+  font-size: 30px;
+}
+
+/*購入履歴詳細ページ*/
+
+.order-show-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.history-details th {
+  width: 200px;
+  height: 50px;
+  padding: 40px;
+}
+
+.history-details-box {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #232323;
+  background: #f8f5f2;
+  border-left: solid 10px #426e86;
+}
+
+.history-details td {
+  font-size: 18px;
+}

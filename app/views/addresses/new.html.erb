@@ -1,0 +1,16 @@
+<h2> 新規住所登録</h2>
+<%= form_for @address do |f| %>
+	<%= f.label :name, "お名前" %>
+	<%= f.text_field :name %><br>
+
+	<%= f.label :postal_code, "郵便番号" %>
+	<%= f.text_field :postal_code %><br>
+
+	<%= f.label :address, "住所" %>
+	<%= f.text_area :address %><br>
+
+	<%= f.label :tel, "電話番号" %>
+	<%= f.text_field :tel %><br>
+
+	<%= f.submit "住所を登録する" %>
+<% end %>

@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 	has_many :favorites
 	#has_many :users, through: :favorites
 	has_many :reviews
-	has_many :users, through: :reviews
+	#has_many :users, through: :reviews
 	has_many :orders, through: :order_details
 	has_many :order_details
 
@@ -25,4 +25,5 @@ class Product < ApplicationRecord
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
+
 end

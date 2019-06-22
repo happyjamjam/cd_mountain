@@ -1,19 +1,24 @@
 class ReviewsController < ApplicationController
   def new
-  	@review = Review.new
-    @product =Product.find(params[:id])
-    @genre = @product.genre_id
-    @label = @product.label_id
-    @artist =@product.artist_id
+    @product =Product.find(params[:product_id])
+    @review = Review.new
+    @genre = @product.genre
+    @label = @product.label
+    #@artist =@product.disks.musics.artist.artist_id
   end
 
   def create
+    @product =Product.find(params[:product_id])
+    @genre = @product.genre
+    @label = @product.label
   	@review = Review.new(review_params)
+    @review.user_id = current_user.id
+    @review.product_id = @product.id
     if @review.save
-     redirect_to product_path
+     redirect_to product_path(@product)
     else
-     render :new
-　　 end
+     render :template => "reviews/new"
+    end
   end
 
 
@@ -35,6 +40,6 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-        params.require(:review).permit(:name,:title, :body)
+    params.require(:review).permit(:product_id, :name, :title, :body)
   end
 end

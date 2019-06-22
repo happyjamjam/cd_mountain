@@ -1,54 +1,85 @@
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+
 <div class = "container">
   <div class = "row">
-  	<div class = "col-xs-7 col-xs-offset-3">
-  	  <h3>ユーザー情報</h3>
-      <h3>名前: <%= @user.last_name %><%= @user.first_name %></h3>
-      <h3>郵便番号: <%= @user.postal_code %></h3>
-      <h3>住所: <%= @user.address %></h3>
-      <h3>電話番号: <%= @user.tel %></h3>
-      <h3>メールアドレス: <%= @user.email %></h3>
-      <p><%= link_to '#', edit_user_registration_path(@user) %></p>
-
-
-      <h2>購入履歴一覧</h2>
-	  <table>
-        <thead>
-          <tr>
-            <th>注文ID</th>
-            <th>ステータス</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= link_to order.id,order_path(order.id) %></td>
-            <td><%= order.shipping_status %></td>
-            <td><%= order.created_at %></td>
-          </tr>
+  	<div class = "col-xs-3">
+     <div class = "tape-box">
+      <div class = "tape"></div>
+       <h4 class = "userinfo-title">ユーザー情報</h4>
+          <p>名前: <%= @user.last_name %><%= @user.first_name %></p></
+          <p>郵便番号: <%= @user.postal_code %></p>
+          <p>住所: <%= @user.address %></p>
+          <p>電話番号: <%= @user.tel %></p>
+          <p>メールアドレス: <%= @user.email %></p>
+          <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
+     </div>
+     <% if @addresses.exists? %>
+        <h4> 登録住所一覧</h4>
+        <% @addresses.each do |address| %>
+          <div>
+            <%= address.name %>
+            <br>
+            〒<%= address.postal_code %>
+            <p class = "address"><%= address.address %></p>
+            <br>
+            電話番号:<%= address.tel %>
+            <br>
+            <%= link_to "編集する", edit_address_path(address) %>
+            <%= link_to "削除する", address, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          </div>
+          <br>
         <% end %>
-        </tbody>
-      </table>
+      <% end %>
+    </div>
+    <div class = "col-xs-9">
+      <div class = "left-upper">
+       <div class = "history-box"><p class = "history">購入履歴一覧</p></div>
+    	  <table class = "table">
+          <thead>
+            <tr>
+              <th>注文ID</th>
+              <th>ステータス</th>
+              <th>注文日</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= link_to order.id, order_path(order.id) %></td>
+              <td><%= order.shipping_status %></td>
+              <td><%= order.created_at.to_date %></td>
+            </tr>
+          <% end %>
 
-	  <h2>いいね一覧</h2>
-	  <table>
-		<thead>
-		  <tr>
-		    <th>イメージ</th>
-		    <th>商品名</th>
-		    <th>価格</th>
-		  </tr>
-		</thead>
-		<tbody>
-		<% @favorite_products.each do |favorite| %>
-		  <tr>
-		    <td><%= favorite.attachment_image_tag product, :jacket_img %></td>
-		    <td><%= favorite.product.product_name %></td>
-		    <td><%= favorite.product.price %></td>
-		  </tr>
-		<% end %>
-		</tbody>
-	  </table>
+          </tbody>
+        </table>
       </div>
-   </div>
+      <div class = "left-lower">
+    	  <div class = "favorite-indexbox"><p class = "favorite">いいね一覧</p></div>
+    	  <table class = "table">
+      		<thead>
+      		  <tr>
+      		    <th>イメージ</th>
+      		    <th>商品名</th>
+      		    <th>価格</th>
+      		  </tr>
+      		</thead>
+      		<tbody>
+      		<% @favorite_products.each do |favorite| %>
+      		  <tr>
+      		    <td><%# attachment_image_tag favorite, :jacket_img %></td>
+      		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
+      		    <td><%= favorite.product.price %></td>
+      		  </tr>
+      		<% end %>
+      		</tbody>
+      	</table>
+      </div>
+    </div>
+
+  </div>
 </div>

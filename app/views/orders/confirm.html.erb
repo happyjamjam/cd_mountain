@@ -1,99 +1,87 @@
+<%= notice %>
 <div class = "container">
   <div class = "row">
-  	<p>カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
+  	<p class = "process">カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
+
   	<div class = "col-xs-9">
-  	　　<div style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
 
-          <div class = "col-xs-6">
-	        <div class = "delivery-information">
-	          <h5>お届け先選択</h5>
-              <%= current_user.full_name %>
-	          	<%= current_user.postal_code %>
-	          	<%= current_user.address %>
-	          	<%= current_user.tel %>
-	        </div>
-            <!-- 上記表示以外のアドレスを選択する js使用-->
-          	<div class= "change-address"  id = "change-address-show">変更</div>
-          	 <div class= "change-modal-wrapper" id= "address-modal">
-		      <div class= "modal">
-		       <div id= "adress-options">
-		        <h2>お届け先を選択してください</h2>
-		        <table class = "table">
-		         <tbody>
-                   <% current_user.addresses.each do |address| %>
-                   <tr>
-  	   	            <td class = "contents"><%= link_to address.name, class: "text-muted" %></td>
-  	   	            <td class = "contents"><%= address.postal_code %></td>
-  	   	            <td class = "contents"><%= address.address %></td>
-    	           </tr>
-    	           <% end %>
-                 </tbody>
-                </table>
-		       </div>
-		      </div>
-		     </div>
-		    <!-- 登録していない住所はここで登録する -->
-		    <div class = "register-new-address">
-		      <%= link_to "新しい住所を登録", user_path(current_user) %>
-		    </div>
-          </div>
+          <h5>お届け先住所 <%= link_to "変更", addresses_path %></h5>
+          <% if params[:address_id] == nil %>
+            <%= current_user.full_name %><br>
+	          <%= current_user.postal_code %><br>
+	          <%= current_user.address %><br>
+	          <%= current_user.tel %>
+          <% else %>
+            <%= @address.name %><br>
+            <%= @address.postal_code %><br>
+            <%= @address.address %><br>
+            <%= @address.tel %>
+          <% end %>
+          <br>
+          <!-- 登録していない住所はここで登録する -->
+          <%= link_to "新しい住所を登録", new_address_path %>
 
-          <div class = "col-xs-6 col-xs-offset-6">
+          <% @user_orders.each do |cart| %>
+            <div class = "confirm-items">
+              <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
+              <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product), class: "text-muted" %></p>
+              <p class = "contents">在庫数：<%= cart.product.stock %></p>
+              <p class = "content" >価格：<%= cart.product.price %></p>
+              <p class = "contents">数量：<%= cart.quantity %></p>
+            </div>
+          <% end %>
 
-          	<h5>支払い方法選択</h5>
-          	<input type = "radio" name = "payment-method" value = "registered"> クレジット
-          	<input type = "radio" name = "payment-method" value = "other-addresses"> 銀行振込
-          	<input type = "radio" name = "payment-method" value = "other-addresses"> 代金引換
-          </div>
-  	   </div>
+
+      </div>
     </div>
+
     <div class = "col-xs-3">
-       <h3 class = "order-title">ご注文内容</h3>
-       <table class = "table">
-      	 <tbody>
-      	  <tr>
-      	  	<th>小計</th>
-      	  	<th></th>
-      	  	<th><%= @subtotal_price %></th>
-      	  </tr>
-      	  <tr>
-      	  	<th>消費税</th>
-      	  	<td><p>消費税8%</p></td>
-      	  	<th><%= @tax %></th>
-      	  </tr>
-      	  	<th>送料</th>
-      	  	<td>一配送 500円</td>
-      	  	<th><p>¥500</p></th>
-      	  </tr>
-      	  <tr>
-      	  	<th class = "total_price_title">総合計金額</th>
-      	  	<th></th>
-      	  	<th><%= @final_price %></th>
-      	  </tr>
-      	</tbody>
-       </table>
-       <div class = "sibmit-bottom">
-          <%= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-primary col-xs-7" %>
-       </div>
+      <h3 class = "order-title">ご注文内容</h3>
+
+      <table class = "table">
+    	  <tr>
+    	  	<th>小計</th>
+    	  	<th></th>
+    	  	<th>¥<%= @subtotal_price %></th>
+    	  </tr>
+    	  <tr>
+    	  	<th>消費税</th>
+    	  	<td><p>消費税8%</p></td>
+    	  	<th>¥<%= @tax %></th>
+    	  </tr>
+        <tr>
+    	  	<th>送料</th>
+    	  	<td>一配送 ¥500</td>
+    	  	<th><p>¥500</p></th>
+    	  </tr>
+    	  <tr>
+    	  	<th class = "total_price_title">総合計金額</th>
+    	  	<th></th>
+    	  	<th>¥<%= @final_price %></th>
+    	  </tr>
+      </table>
+
+      <% if current_user.carts.exists? %>
+        <h5>支払い方法選択</h5>
+        <%= form_for @order, url: orders_path do |f| %>
+          <label> <%= f.radio_button :payment_method, "クレジット", required: "required" %> クレジット</label>
+          <label> <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込 </label>
+          <label> <%= f.radio_button :payment_method, "代金引換" %> 代金引換 </label>
+          <% if params[:address_id] != nil %>
+            <%= f.hidden_field :shipping_name, value: @address.name %>
+            <%= f.hidden_field :shipping_address, value: @address.address %>
+            <%= f.hidden_field :postal_code, value: @address.postal_code %>
+            <%= f.hidden_field :tel, value: @address.tel %>
+          <% else %>
+            <%= f.hidden_field :shipping_name, value: current_user.full_name %>
+            <%= f.hidden_field :shipping_address, value: current_user.address %>
+            <%= f.hidden_field :postal_code, value: current_user.postal_code %>
+            <%= f.hidden_field :tel, value: current_user.tel %>
+          <% end %>
+          <%= f.submit '注文を確定する', class: "btn btn-primary col-xs- 7purchase-confirm" %>
+        <% end %>
+      <% end %>
     </div>
-    </div>
-  </div>
-  <div class = "row">
-  	<table class = "table">
-      <tbody>
-        <% @user_carts.each do |cart| %>
-         <tr>
-    	   <td class = "contents"><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "noimage.jpg", size:'100x100' %></td>
-    	   <tr>
-	  	   	   <td class = "contents"><%= link_to cart.product_name, product_path(product.id), class: "text-muted" %></td>
-	  	   	   <td class = "contents"><%= cart.product %></td>
-	  	   	   <td class = "contents"><%= cart.product.stock %></td>
-	  	   	   <td class = "content" ><%= cart.product.price %></td>
-  	   	   </tr>
-  	   	   <td class = "contents"><%= cart.quantity %></td>
-    	 </tr>
-    	<% end %>
-      </tbody>
-    </table>
   </div>
 </div>
