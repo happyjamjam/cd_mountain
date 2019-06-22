@@ -12,15 +12,15 @@ class ProductsController < ApplicationController
   	@genre = @product.genre
   	@label = @product.label
   	@disks = @product.disks
-    #@artists
+    @artist_products = @product.artist_products
   	@reviews = @product.reviews.page(params[:page]).per(5)
     @cart = Cart.new
 
     if @product.stock != 0
-      @array = []
+      @stock_array = []
       (1..@product.stock).each do |s|
         new_array = [s, s]
-        @array.push(new_array)
+        @stock_array.push(new_array)
       end
     end
   end

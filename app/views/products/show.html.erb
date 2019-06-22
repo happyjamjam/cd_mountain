@@ -7,10 +7,11 @@
 
 		<div class="product_detail col-xs-5">
 			<h1><%= @product.product_name %></h1>
-			<h3>アーティスト名/レーベル名</h3>
-			<%# @artists.artist_name %> <%# @label.label_name %>
-			<p>ジャンル</p>
-			<%# @genre.genre_name %>
+			<% @artist_products.each do |artist_product| %>
+				<%= artist_product.artist.artist_name %>
+			<% end %>
+			<br>
+			<%= @label.label_name %> / <%= @genre.genre_name %>
 			値段:<%= @product.price %>円(税別価格)
 		</div>
 
@@ -22,7 +23,7 @@
 					<% if @product.stock != 0 %>
 						<h5>
 							<%= f.label :quantity, "数量" %>
-							<%= f.select :quantity, @array %>
+							<%= f.select :quantity, @stock_array %>
 			  		</h5>
 
 						<% if user_signed_in? %>
