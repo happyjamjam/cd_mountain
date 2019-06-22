@@ -8,7 +8,7 @@
 	</tr>
 	<% @contacts.each do |contact| %>
 	<tr>
-		<td> <%= contact.user.last_name %> <%= contact.user.first_name %> 様</td>
+		<td> <%= contact.user.full_name %> 様</td>
 		<td> <%= contact.contact_text %></td>
 		<td> <%= link_to "詳細", admin_contact_path(contact), class: "btn btn-primary" %></td>
 		<td> <%= link_to "削除", admin_contact_path(contact), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
