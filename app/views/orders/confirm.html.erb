@@ -7,16 +7,16 @@
       <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
 
           <h5>お届け先住所 <%= link_to "変更", addresses_path %></h5>
-          <% if params[:shipping_name] == nil %>
+          <% if params[:address_id] == nil %>
             <%= current_user.full_name %><br>
 	          <%= current_user.postal_code %><br>
 	          <%= current_user.address %><br>
 	          <%= current_user.tel %>
           <% else %>
-            <%= params[:shipping_name] %><br>
-            <%= params[:postal_code] %><br>
-            <%= params[:shipping_address] %><br>
-            <%= params[:tel] %>
+            <%= @address.name %><br>
+            <%= @address.postal_code %><br>
+            <%= @address.address %><br>
+            <%= @address.tel %>
           <% end %>
           <br>
           <!-- 登録していない住所はここで登録する -->
@@ -68,11 +68,11 @@
           <label> <%= f.radio_button :payment_method, "クレジット", required: "required" %> クレジット</label>
           <label> <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込 </label>
           <label> <%= f.radio_button :payment_method, "代金引換" %> 代金引換 </label>
-          <% if params[:shipping_name] != nil %>
-            <%= f.hidden_field :shipping_name, value: params[:shipping_name] %>
-            <%= f.hidden_field :shipping_address, value: params[:shipping_address] %>
-            <%= f.hidden_field :postal_code, value: params[:postal_code] %>
-            <%= f.hidden_field :tel, value: params[:tel] %>
+          <% if params[:address_id] != nil %>
+            <%= f.hidden_field :shipping_name, value: @address.name %>
+            <%= f.hidden_field :shipping_address, value: @address.address %>
+            <%= f.hidden_field :postal_code, value: @address.postal_code %>
+            <%= f.hidden_field :tel, value: @address.tel %>
           <% else %>
             <%= f.hidden_field :shipping_name, value: current_user.full_name %>
             <%= f.hidden_field :shipping_address, value: current_user.address %>

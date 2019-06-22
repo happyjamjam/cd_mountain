@@ -12,5 +12,5 @@
 	<%= address.postal_code %><br>
 	<%= address.address %><br>
 	<%= address.tel %><br>
-	<%= link_to "この住所を使う", controller: "orders", action: "confirm", shipping_name: address.name, shipping_address: address.address, postal_code: address.postal_code, tel: address.tel %><br>
+	<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
 <% end %>
