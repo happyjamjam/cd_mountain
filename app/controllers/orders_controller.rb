@@ -41,11 +41,9 @@ class OrdersController < OrderDetailsController
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @order = Order.new
-    params[:shipping_name]
-    params[:shipping_address]
-    params[:postal_code]
-    params[:tel]
-
+    if params[:address_id] != nil
+      @address = Address.find(params[:address_id])
+    end
   	# 支払い関係カラム未作成のため変数作成不可
 
   end
