@@ -1,18 +1,18 @@
 <div class = "container">
   <div class = "row">
-  	<div class = "col-xs-3">
-	<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+  	<div>
+			<%= attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg' %>
     </div>
-    <div class = "col-xs-3">
-	 <div class="product_detail">
-		<%= @product.product_name %></h2>
+
+	<div class="product_detail">
+		<h2> <%= @product.product_name %></h2>
 		<% @artist_products.each do |artist_product| %>
 			<%= artist_product.artist.artist_name %>
 		<% end %>
 		<%= @product.label.label_name %>
 		<%= @product.genre.genre_name %>
 		<%= @product.price %> 円（税抜き価格）
-	 </div>
+	</div>
 	</div>
 
 	<div class = "row">
