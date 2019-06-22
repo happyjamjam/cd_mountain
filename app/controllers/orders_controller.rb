@@ -7,27 +7,24 @@ class OrdersController < OrderDetailsController
       if cart.product.stock < cart.quantity # 在庫が注文数よりも少なければカートに戻る
         redirect_to carts_path, notice: "在庫数が変更されました。注文枚数を選択し直してください。"
         return
-     end
-   end
-    # チェック終了
-    if params[:order]
-      @order = Order.new(order_params)
-    else
-      @order = Order.new
+      end
     end
-    @order.user_id = current_user.id
-    @order.total_price = @final_price
-    @order.postal_code = current_user.postal_code
-    @order.shipping_address = current_user.address
-    @order.shipping_name = current_user.full_name
-    if @order.save
-      create_order_details
-      render :index
-      @user_carts.destroy_all
-      return
+    # チェック終了
+    unless current_user.carts.exists?
+      redirect_to carts_path
     else
-      redirect_to orders_confirm_path
-      return
+      @order = Order.new(order_params)
+      @order.user_id = current_user.id
+      @order.total_price = @final_price
+      if @order.save
+        create_order_details
+        render :index
+        @user_carts.destroy_all
+        return
+      else
+        redirect_to orders_confirm_path
+        return
+      end
     end
   end
 
@@ -44,6 +41,10 @@ class OrdersController < OrderDetailsController
     calculation
   	@user_orders = current_user.carts.order(id: "DESC")
     @order = Order.new
+    params[:shipping_name]
+    params[:shipping_address]
+    params[:postal_code]
+    params[:tel]
 
   	# 支払い関係カラム未作成のため変数作成不可
 
@@ -52,7 +53,7 @@ class OrdersController < OrderDetailsController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method)
+    params.require(:order).permit(:payment_method, :shipping_name, :shipping_address, :postal_code, :tel)
   end
 
 end

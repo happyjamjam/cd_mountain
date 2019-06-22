@@ -1,3 +1,73 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*ユーザー情報をテープで貼る実装*/
+
+.tape-box{
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #ffce00;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.tape{
+  display: block;
+  background-color: #ccb;
+  opacity: 0.2;
+  transform: rotate(3deg);
+  width: 40%;
+  height: 35px;
+  margin: -2em auto 0 auto;
+  border-left: 3px dotted rgba(0,0,0,.1);
+  border-right: 3px dotted rgba(0,0,0,.1);
+}
+
+.tape-box p{
+  margin: 0;
+  padding: 1px;
+}
+
+/*ユーザー情報*/
+
+.userinfo-title{
+  margin-top: 15px;
+  font-size: 20px;
+  font-family:'Reimin Light';
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+/*購入履歴一覧、いいね一覧*/
+
+.left-upper {
+  margin-top: 40px;
+}
+
+.left-lower {
+  margin-top: 30px;
+}
+
+/*購入履歴一覧、いいね一覧のタイトル背景*/
+
+.history-box {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #0375b4;
+}
+
+.favorite-indexbox {
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #007849;
+}
+
+.history, .favorite {
+  color: white;
+}
+
+.table th {
+  font-size: 14px;
+}

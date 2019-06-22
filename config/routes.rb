@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
 
   root to: "products#index"
   resources :users, only: [:show]
+  resources :addresses, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :carts, only: [:index, :update, :destroy]
   get 'orders/confirm' => 'orders#confirm'
   resources :orders, only:[:create, :show, :index]

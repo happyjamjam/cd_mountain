@@ -2,18 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*indexページ*/
+/*ページ上部 手順*/
+
 .process {
   font-size: 11px;
   margin: 20px 0;
 }
-
 .cart-title {
   font-size: 25px;
   font-family:'Reimin Light';
   margin-bottom: 15px;
   font-weight: bold;
 }
-
 .order-title {
   margin-top: 65px;
   font-size: 25px;
@@ -21,7 +22,6 @@
   margin-bottom: 15px;
   font-weight: bold;
 }
-
 .order-title::after {
   content: "";
   display: block;
@@ -29,13 +29,37 @@
   height: 1px;
   width: 200px;
   margin: 15px;
-
 }
 
-.sibmit-bottom {
+.sibmit-botton {
    margin-top: 30px;
 }
-
 .table th,td {
    border-top: none !important;
  }
+
+.total_price_title {
+  font-size: 18px;
+}
+
+/*個数を変えるボタン*/
+
+.btn-white {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #a3a599;
+  font-size: 13px;
+  color: #a3a599;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 3px 3px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.btn-white:hover {
+  background-color: #a3a599;
+  border-color: #a3a599;
+  color: #FFF;
+}

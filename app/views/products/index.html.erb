@@ -1,61 +1,57 @@
-   <div class= "slider">
-      <div><%= image_tag('closer.jpg') %></div>
-      <div><%= image_tag('beginagain.jpg') %></div>
-      <div><%= image_tag('callme_by_yourname.jpg') %></div>
-      <div><%= image_tag('onedirection2.jpg') %></div>
-      <div><%= image_tag('whatdoyoumean.jpg') %></div>
-      <div><%= image_tag('1989.jpg') %></div>
-      <div><%= image_tag('lalaland.jpg') %></div>
-      <div><%= image_tag('shawn.jpg') %></div>
-      <div><%= image_tag('neverreallyover.jpg') %></div>
-      <div><%= image_tag('thepaperkites.jpg') %></div>
-      <div><%= image_tag('abbeyroad.jpg') %></div>
-      <div><%= image_tag('chainsmokers.jpg') %></div>
-      <div><%= image_tag('sunset_season.jpg') %></div>
-      <div><%= image_tag('PowerToThePeople.jpg') %></div>
-      <div><%= image_tag('onedirection.jpg') %></div>
-   </div>
-
-<div class = "container">
- <div class = "row">
-   <div class = "col-xs-9">
-     <h3>商品一覧</h3>
-     <div class = "product-wrapper">
-      <% @products.each do |product| %>
-      <div>
-        <%# attachment_image_tag product, :jacket_img%><br>
-        商品名：<%= link_to product.product_name, product_path(product) %><br>
-        アーティスト名：
-        <%# @artists.each do |artist| %>
-          <%# artist.artist_name %>
-        <%# end %>
-        <br>
-        価格：<%= product.price %> 円
-      </div>
-      <% end %>
-     </div>
-     <%= paginate @products, class: "paginate" %>
-   </div>
-   
-   <div class = "col-xs-3">
-     <div class = "ranking-box">
-      <h3>人気ランキング
-       <i class="fas fa-crown"style = "color: gold;"></i>
-      </h3>
-      <% @all_ranks.each.with_index(1) do |product , i| %>
-        <p><%= i %> 位　</p>
-        <div class = rank-img><img src= "assets/no_img.jpg" width="50" height="50">
-         <div class = "rank-box">
-         <%= link_to product.product_name,product_path(product) %>
-         <p>価格<%= product.price %>円 (税別)</p>
-         </div>
-       </div>
-      <% end %> 
-     </div>
-   </div>
- </div>
+<div class= "slider">
+  <div><%= image_tag('closer.jpg') %></div>
+  <div><%= image_tag('beginagain.jpg') %></div>
+  <div><%= image_tag('callme_by_yourname.jpg') %></div>
+  <div><%= image_tag('onedirection2.jpg') %></div>
+  <div><%= image_tag('whatdoyoumean.jpg') %></div>
+  <div><%= image_tag('1989.jpg') %></div>
+  <div><%= image_tag('lalaland.jpg') %></div>
+  <div><%= image_tag('shawn.jpg') %></div>
+  <div><%= image_tag('charlie.jpg') %></div>
+  <div><%= image_tag('thepaperkites.jpg') %></div>
+  <div><%= image_tag('abbeyroad.jpg') %></div>
+  <div><%= image_tag('chainsmokers.jpg') %></div>
+  <div><%= image_tag('sunset_season.jpg') %></div>
+  <div><%= image_tag('PowerToThePeople.jpg') %></div>
+  <div><%= image_tag('onedirection.jpg') %></div>
 </div>
 
+<main class = "clearfix">
+  <div class = "product-wrapper">
+	  <% @products.each do |product| %>
+  		<div class = "product-item">
+  			<%# attachment_image_tag product, :jacket_img%><div><%= image_tag 'closer.jpg', :size => '150x150' %></div><br>
+  			<span class = "product-name">商品名：<%= link_to product.product_name, product_path(product) %></span><br>
+  			<span class = "details">アーティスト名：</span>
+  			<%# @artists.each do |artist| %>
+  				<%# artist.artist_name %>
+  			<%# end %>
+  			<br>
+  			<span class = "details">価格：<%= product.price %> 円</span>
+  		</div>
+	  <% end %>
+	  <%= paginate @products, class: "paginate" %>
+  </div>
+
+  <div class = "sidebar">
+    <div class = "ranking-box">
+      <div class = "tape"></div>
+      <p class = "ranking-title">人気ランキング
+        <i class = "fas fa-crown" style = "color: #E8BB53;"></i>
+      </p>
+      <% @all_ranks.each.with_index(1) do |product , i| %>
+        <div class = rank-img>
+          <p><%= i %> 位　</p>
+          <img src= "assets/no_img.jpg" width="50" height="50">
+          <div class = "rank-contents">
+            <span class = "product-name"><%= link_to product.product_name,product_path(product) %></span>
+            <p class = "details">価格<%= product.price %>円 (税別)</p><br>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
 
 <script type="text/javascript">
 $(document).ready(function(){

@@ -1,30 +1,32 @@
-<div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4">
-				<img src= "assets/mv.jpg" width="300" height="300">
-				<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
-			</div>
-	
-			<div class="product_detail col-lg-4">
-				<h1><%= @product.product_name %></h1>
-				<h3>アーティスト名/レーベル名</h3>
-				<%# @artists.artist_name %> <%# @label.label_name %>
-				<p>ジャンル</p>
-				<%# @genre.genre_name %>
-				値段:<%= @product.price %>円(税別価格)
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<div><%= image_tag 'closer.jpg', :size => '280x280' %></div><br>
+			<%# attachment_image_tag @product.jacket_img, :image, alt: "jacket_image", class: "product_jacket" %>
+		</div>
 
-			<div class="cart-box col-lg-4">
+		<div class="product_detail col-xs-5">
+			<h1><%= @product.product_name %></h1>
+			<h3>アーティスト名/レーベル名</h3>
+			<%# @artists.artist_name %> <%# @label.label_name %>
+			<p>ジャンル</p>
+			<%# @genre.genre_name %>
+			値段:<%= @product.price %>円(税別価格)
+		</div>
+
+		<div class="cart-box col-xs-3">
+		  <div class = "price-info">
 				<h2>¥ <%= @product.price %></h2>
-				<h2>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h2>
+				<h5>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h5>
 				<%= form_for @cart, url:product_carts_path(@product) do |f| %>
-				 <h3><%= f.label :quantity, "数量" %>
-					<%= f.select :quantity, @array %>
 					<% if @product.stock != 0 %>
-				 </h3>
+						<h5>
+							<%= f.label :quantity, "数量" %>
+							<%= f.select :quantity, @array %>
+			  		</h5>
+
 						<% if user_signed_in? %>
-						  <%= f.submit "カートに入れる", class: "button btn-primary col-xs-12" %>
+			  			<%= f.submit "カートに入れる", class: "cart-button" %>
 						<% else %>
 							<p> カートに入れるにはログインしてください。</p>
 						<% end %>
@@ -32,40 +34,39 @@
 				<% end %>
 			</div>
 		</div>
-
-
-	
-
+	</div>
 
 	<h2> トラックリスト</h2>
-	<!-- ディスクごとに曲名を表示させる方法がわからないのでコメントアウトしてあります -->
-	<%# @disks.each do |d| %>
-		ディスク<%## d.disk_number %>
-		<%# @musics.each do |m| %>
-		  トラック<%# m.track_number %>. <%# m.music_title %>
-		<%# end %>
-	<%# end %>
-	<div class ="favorite-box">
-	<% if user_signed_in? %>
-		<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
-	<% else %>
-		<p>レビューを書くにはログインしてください。</p>
+	<% @disks.each do |d| %>
+		<h3>ディスク<%= d.disk_number %></h3>
+		<% @musics = d.musics %>
+		<% @musics.each do |m| %>
+	  	トラック<%= m.track_number %>. <%= m.music_title %><br>
+		<% end %>
 	<% end %>
-	  	
-	 <span id="favorite_buttons_<%= @product.id %>">
-    <%= render partial: 'favorites/favorite', locals: { product: @product } %>
-  	</span>
-  </div>
-	<h2> レビュー</h2>
 
+
+	<div class ="favorite-box">
+		<% if user_signed_in? %>
+			<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
+		<% else %>
+			<p>レビューを書くにはログインしてください。</p>
+		<% end %>
+
+ 		<span id="favorite_buttons_<%= @product.id %>">
+  	<%= render partial: 'favorites/favorite', locals: { product: @product } %>
+		</span>
+	</div>
+
+	<h2> レビュー</h2>
 	<table class="table">
 		<tr style="background-color:#DDDDDD;">
 			<th style="width:100px;"> 投稿者</th>
 			<th style="width:200px;"> タイトル</th>
 			<th style="width:600px;"> 本文</th>
 		</tr>
-		<% @reviews.each do |r| %>
 
+		<% @reviews.each do |r| %>
 			<tr>
 				<td>
 					<%= r.user.first_name %>
