@@ -20,12 +20,13 @@
   <div class = "product-wrapper">
 	  <% @products.each do |product| %>
   		<div class = "product-item">
-  			<%= attachment_image_tag product, :jacket_img, :fill, 100, 100, format: 'jpeg' %><br>
-  			<span class = "product-name">商品名：<%= link_to product.product_name, product_path(product) %></span><br>
-  			<span class = "details">アーティスト名：</span>
-  			<%# @artists.each do |artist| %>
-  				<%# artist.artist_name %>
-  			<%# end %>
+  			<%= attachment_image_tag product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: "100x100" %><br>
+  			<span class = "product-name"> <%= link_to product.product_name, product_path(product) %></span><br>
+  			<span class = "details">
+    			<% product.artist_products.each do |artist_product| %>
+    				<%= artist_product.artist.artist_name %>
+    			<% end %>
+        </span>
   			<br>
   			<span class = "details">価格：<%= number_with_delimiter(product.price) %> 円</span>
   		</div>
@@ -42,7 +43,7 @@
       <% @all_ranks.each.with_index(1) do |product , i| %>
         <div class = rank-img>
           <p><%= i %> 位　</p>
-          <img src= "assets/no_img.jpg" width="50" height="50">
+          <%= attachment_image_tag product, :jacket_img, :fill, 50, 50, fallback: "no_img.jpg", size: "50x50" %>
           <div class = "rank-contents">
             <span class = "product-name"><%= link_to product.product_name,product_path(product) %></span>
             <p class = "details">価格<%= number_with_delimiter(product.price) %>円 (税別)</p><br>
