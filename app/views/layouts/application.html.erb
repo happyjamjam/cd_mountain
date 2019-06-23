@@ -13,40 +13,11 @@
 
   </head>
   <body>
-   <!-- /header -->
-    <div class = "header-message">
-      <p class = "theme-message">お気に入りの音楽は、CDだから実現できる<a href = "https://music-lifestyle.net/why_cd_best/" target = "_black">最高音質</a>で</p>
-    </div>
-    <header class = "navbar navbar-light bg-light">
-    <nav class = "nav navbar-nav">
-      <%= link_to image_tag("/assets/16062019103135A.png",size: '50'), root_path, method: :get %>
-      <span class = "site-name">CD MOUNTAIN</span>
-    </nav>
-    <nav class = "nav navbar-nav">
-      <div class = "search-engine">
-      <%= search_form_for @q do |f| %>
-       <%= f.search_field :product_name_cont, class: 'form-control', id: "product-search" %>
-       <%= f.submit "商品検索", class: "btn btn-default" %>
-      <% end %>
-      </div>
-    </nav>
-      <% if user_signed_in? %>
-      <nav>
-        <ul class = "nav navbar-nav navbar-right">
-          <li><%= link_to " マイページ", user_path(current_user), class: "glyphicon glyphicon-user text-muted" %></li>
-          <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out text-muted" %></li>
-          <li><%= link_to "", carts_path, method: :get, class: "glyphicon glyphicon-shopping-cart text-muted", :style => "font-size:30px;" %></li>
-        </ul>
-        </nav>
-      <% else %>
-        <nav>
-          <ul class = "nav navbar-nav navbar-right">
-            <li><%= link_to " ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in text-muted" %></li>
-            <li><%= link_to " 新規登録", new_user_registration_path, class: "glyphicon glyphicon-cd text-muted" %></li>
-            </ul>
-          </nav>
-      <% end %>
-    </header>
+   <% if admin_signed_in? %>
+    <%= render 'layouts/admin-header-footer' %>
+   <% else %>
+    <%= render 'layouts/user-header-footer' %>
+   <% end %>
     <%= yield %>
     <footer class = "navbar navbar-dark bg-dark">
         <nav class = "nav navbar-nav">
