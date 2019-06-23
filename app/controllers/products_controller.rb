@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true).page(params[:page])
     @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
-
   end
 
   def show
@@ -12,15 +11,15 @@ class ProductsController < ApplicationController
   	@genre = @product.genre
   	@label = @product.label
   	@disks = @product.disks
-    #@artists
+    @artist_products = @product.artist_products
   	@reviews = @product.reviews.page(params[:page]).per(5)
     @cart = Cart.new
 
     if @product.stock != 0
-      @array = []
+      @stock_array = []
       (1..@product.stock).each do |s|
         new_array = [s, s]
-        @array.push(new_array)
+        @stock_array.push(new_array)
       end
     end
   end

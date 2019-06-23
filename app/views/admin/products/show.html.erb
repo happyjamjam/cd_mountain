@@ -18,10 +18,10 @@
 	<div class = "row">
 		<h2> トラックリスト</h2>
 		<% @disks.each do |d| %>
-	    	ディスク<%= d.disk_number %>
+	    	ディスク<%= d.disk_number %><br>
 	    	<% musics = d.musics %>
 	    	<% musics.each do |m| %>
-	    		<%= m.track_number %>.<%= m.music_title %>
+	    		<%= m.track_number %>.<%= m.music_title %><br>
 	    	<% end %>
 	   <% end %>
 	</div>
@@ -45,8 +45,8 @@
 	      <td><%= r.user.first_name %></td>
 		  <td><%= r.title %></td>
 		  <td><%= r.body %></td>
-		  <td class = "contents"><%= link_to '編集', edit_product_review_path(@reviews.id), class: "btn-sm btn-success" %></td>
-          <td class = "contents"><%= link_to '削除', product_review_path(@reviews.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
+		  <td class = "contents"><%= link_to '編集', edit_product_review_path(r), class: "btn-sm btn-success" %></td>
+          <td class = "contents"><%= link_to '削除', product_review_path(r), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
 		 </tr>
 		<% end %>
 		<%= paginate @reviews, class: "paginate" %>

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorite_products, through: :favorites, source: :product
   has_many :addresses
   has_many :carts
-  has_many :contacts
+  has_many :contacts, dependent: :destroy
   has_many :reviews
 
   def full_name

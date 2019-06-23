@@ -1,18 +1,18 @@
 <h1>レビュー編集</h1>
 
 <div class = "product-box">
-  <%= attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %>
-  <%= @product.product_name %>
-  <%#S @artists.artist_name %>
-  <%= @label.label_name %> 
-  <%= @genre. genre_name %>
-  
+  <%# attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %>
+  <%= @product.product_name %><br>
+  <%# @artists.artist_name %>
+  <%= @label.label_name %><br>
+  <%= @genre. genre_name %><br>
+
  </div>
 
  <%= form_for @review, url:admin_product_review_path do |f| %>
 　　<div class="form-group">
         <%= f.label :name, '投稿者名' %>
-        <%= f.text_field :name, class: 'form-control' %>   
+        <%= f.text_field :name, class: 'form-control' %>
    </div>
    <div class="form-group">
         <%= f.label :title, 'レビュータイトル' %>
@@ -23,7 +23,7 @@
         <%= f.text_area :body, class: 'form-control', rows:10 %>
    </div>
         <%= f.submit '編集完了', class: 'btn btn-warning ' %>
-        
+
  <% end %>
  <%= link_to '削除', admin_product_review_path(@review), method: :delete , class:"btn btn-danger", 'data-confirm' => '本当に削除しますか？' %>
 
