@@ -13,7 +13,7 @@ main {
   float: left;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 80%;
   padding: 35px 20px;
 }
@@ -29,6 +29,8 @@ main {
 
 .product-item {
   padding: 20px;
+
+
 }
 
 /*index sidebar*/
@@ -37,14 +39,16 @@ main {
   float: left;
   width: 20%;
 
+
 }
 
 .ranking-box{
+  border-left:dashed;
   float: right;
   width: 250px;
   margin: 35px;
   padding: 1em;
-  background-color: #F9E3B8;
+  background-color: #EEEEEE;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -70,6 +74,9 @@ main {
 
 .rank-img{
   float:left;
+  margin: 35px;
+  padding: 1em;
+  background-color: #FFFFCC;
 }
 
 .rank-contents{
