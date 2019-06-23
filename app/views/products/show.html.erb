@@ -21,13 +21,9 @@
 					<% if @product.stock != 0 %>
 						<h5>
 							<%= f.label :quantity, "数量" %>
-<<<<<<< HEAD
+
 							<%= f.select :quantity, @stock_array %>
 			  		</h5>
-=======
-							<%= f.select :quantity, @array %>
-			  		　　　</h5>
->>>>>>> レビュー投稿制限
 
 						<% if user_signed_in? %>
 			  			<%= f.submit "カートに入れる", class: "cart-button" %>

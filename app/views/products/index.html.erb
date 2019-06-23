@@ -20,7 +20,7 @@
   <div class = "product-wrapper">
 	  <% @products.each do |product| %>
   		<div class = "product-item">
-  			<%= attachment_image_tag product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: "100x100" %><br>
+  			<%= attachment_image_tag product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: "180x180" %><br>
   			<span class = "product-name"> <%= link_to product.product_name, product_path(product) %></span><br>
   			<span class = "details">
     			<% product.artist_products.each do |artist_product| %>
