@@ -21,6 +21,7 @@
 					<% if @product.stock != 0 %>
 						<h5>
 							<%= f.label :quantity, "数量" %>
+
 							<%= f.select :quantity, @stock_array %>
 			  		</h5>
 
@@ -46,7 +47,11 @@
 
 	<div class ="favorite-box">
 		<% if user_signed_in? %>
+		<% unless @product.reviewed_by?(current_user) %>
 			<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
+			<% else %>
+			<%= link_to "レビューを削除する",  product_review_path(@product, @review),method: :delete , class: "review-button btn btn-warning" %>
+		<% end %>
 		<% else %>
 			<p>レビューを書くにはログインしてください。</p>
 		<% end %>

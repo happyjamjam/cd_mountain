@@ -12,5 +12,9 @@
 	<%= address.postal_code %><br>
 	<%= address.address %><br>
 	<%= address.tel %><br>
+
 	<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
 <% end %>
+
+
+
