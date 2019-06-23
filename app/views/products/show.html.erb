@@ -55,7 +55,7 @@
 		<% unless @product.reviewed_by?(current_user) %>
 			<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
 			<% else %>
-			<%= link_to "レビューを削除する",  product_review_path(@product, current_user.reviews.first),method: :delete , class: "review-button btn btn-success" %>
+			<%= link_to "レビューを削除する",  product_review_path(@product, current_user.reviews.first),method: :delete , class: "review-button btn btn-warning" %>
 		<% end %>
 		<% else %>
 			<p>レビューを書くにはログインしてください。</p>
