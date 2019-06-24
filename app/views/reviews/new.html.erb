@@ -4,11 +4,11 @@
 <%= notice %>
    <h3>レビュー投稿</h3>
     <div class = "product-box">
-     <%# attachment_image_tag @product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg" %>
-     <%= @product.product_name %><br>
-     <%# @artist.artist_name %>
-     <%= @label.label_name %><br>
-     <%= @genre. genre_name %>
+     <%= attachment_image_tag @product, :jacket_img, :fill, 200, 200, format: 'jpeg', fallback: "no_img.jpg" %><br>
+     <p class = "product-name-inreview"><%= @product.product_name %></p><br>
+     <p class = "review-object">アーティスト名：<%# @artist_products.artists.artist_name %></p>
+     <p class = "review-object">レーベル：<%= @label.label_name %></p>
+     <p class = "review-object">ジャンル名：<%= @genre. genre_name %></p>
     </div>
   </div>
  </div>
