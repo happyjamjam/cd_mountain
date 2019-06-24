@@ -15,7 +15,8 @@
 
 		<div class="cart-box col-xs-3">
 		  <div class = "price-info">
-				<h2>¥ <%= number_with_delimiter(@product.price) %></h2>
+				<h2><%= number_with_delimiter(@product.price) %>円</h2>
+				<h4>（税別価格）</h4>
 				<h5>在庫数 <%= @product.stock %> / <%= @product.sales_status %></h5>
 				<%= form_for @cart, url:product_carts_path(@product) do |f| %>
 					<% if @product.stock != 0 %>
@@ -35,7 +36,7 @@
 			</div>
 		</div>
 
-	<h2> トラックリスト</h2>
+	<p class = "track-list-title"> トラックリスト</p>
 	<% @disks.each do |d| %>
 		<h3>ディスク<%= d.disk_number %></h3>
 		<% @musics = d.musics %>
@@ -61,7 +62,7 @@
 		</span>
 	</div>
 
-	<h2> レビュー</h2>
+	<p class = "review-list-title"> レビュー</p>
 	<table class="table">
 		<tr style="background-color:#DDDDDD;">
 			<th style="width:100px;"> 投稿者</th>

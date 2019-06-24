@@ -49,21 +49,21 @@
       	  <tr>
       	  	<th>小計</th>
       	  	<th></th>
-      	  	<td>¥<%= @subtotal_price %></td>
+      	  	<td><%= @subtotal_price %>円</td>
       	  </tr>
       	  <tr>
       	  	<th>消費税</th>
       	  	<td><p>消費税 8%</p></td>
-      	  	<td>¥<%= @tax %></td>
+      	  	<td><%= @tax %>円</td>
       	  </tr>
       	  	<th>送料</th>
-      	  	<td>一配送 ¥500</td>
-      	  	<td><p>¥500</p></td>
+      	  	<td>一配送 500円</td>
+      	  	<td><p>500円</p></td>
       	  </tr>
       	  <tr>
       	  	<th class = "total_price_title">総合計金額</th>
       	  	<th></th>
-      	  	<td class = "total_price_title">¥<%= @final_price %></td>
+      	  	<td class = "total_price_title"><%= @final_price %>円</td>
       	  </tr>
       	</tbody>
        </table>
