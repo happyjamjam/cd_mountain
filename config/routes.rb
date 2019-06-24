@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
 
   resources :products do
-    resources :reviews, only: [:edit, :update, :destroy,:new,:create]
+    resources :reviews, only: [:edit, :update, :destroy, :new, :create]
     resource :favorite, only: [:create, :destroy]
     resources :carts, only: [:create]
   end
