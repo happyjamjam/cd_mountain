@@ -38,8 +38,6 @@ main {
 .sidebar {
   float: left;
   width: 20%;
-
-
 }
 
 .ranking-box{
@@ -48,8 +46,9 @@ main {
   width: 250px;
   margin: 35px;
   padding: 1em;
-  background-color: #EEEEEE;
+  background-color: #FFFFCC;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
 }
 
 .tape{
@@ -57,7 +56,7 @@ main {
   background-color: #ccb;
   opacity: 0.2;
   transform: rotate(3deg);
-  width: 40%;
+  width: 60%;
   height: 35px;
   margin: -2em auto 0 auto;
   border-left: 3px dotted rgba(0,0,0,.1);
@@ -70,18 +69,15 @@ main {
   font-family:'Reimin Light';
   margin-bottom: 15px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .rank-img{
   float:left;
-  margin: 35px;
-  padding: 1em;
-  background-color: #FFFFCC;
-}
-
-.rank-contents{
-  float:right;
-  margin-left: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #ffce00;
+  margin-bottom: 30px;
 }
 
 
@@ -105,6 +101,20 @@ main {
 
 .favorite-box{
   float:right;
+}
+
+.product-name-rank {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.details-rank {
+  font-size: 11px;
+}
+
+.right {
+  float: right;
+  padding-right: 10px;
 }
 
 /*showページ カートへ追加ボタン*/
