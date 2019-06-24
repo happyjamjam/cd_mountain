@@ -1,15 +1,22 @@
 <div class = "container">
   <div class = "row">
-    <h2>お買い上げありがとうございました</h2>
-    <p> 今回の</p><%= link_to '注文詳細', order_path(@order) %><p>はこちらから</p>
+    <p class = "thankyou">お買い上げありがとうございました</p>
+    <p class = "jump-to-history">今回の<%= link_to '注文詳細', order_path(@order) %>はこちら</p>
     <table class = "table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>商品名</th>
+          <th>値段</th>
+          <th>注文数</th>
+        </tr>
+      </thead>
       <tbody>
         <% @user_carts.each do |order| %>
          <tr>
-         <td class = "contents"><%# attachment_image_tag order.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %></td>
-         <td class = "contents"><%# link_to order.product_name, product_path(product.id), class: "text-muted" %></td>
+         <td><%= attachment_image_tag order.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %></td>
          <td class = "contents"><%= order.product.product_name %></td>
-         <td class = "content" ><%= order.product.price %></td>
+         <td class = "contents" ><%= number_with_delimiter(order.product.price) %></td>
          <td class = "contents"><%= order.quantity %></td>
        </tr>
       <% end %>

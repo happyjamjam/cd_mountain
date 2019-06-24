@@ -25,9 +25,9 @@
           <% @user_orders.each do |cart| %>
             <div class = "confirm-items">
               <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
-              <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product), class: "text-muted" %></p>
+              <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product) %></p>
               <p class = "contents">在庫数：<%= cart.product.stock %></p>
-              <p class = "content" >価格：<%= cart.product.price %></p>
+              <p class = "contents" >価格：<%= number_with_delimiter(cart.product.price) %></p>
               <p class = "contents">数量：<%= cart.quantity %></p>
             </div>
           <% end %>
@@ -43,22 +43,22 @@
     	  <tr>
     	  	<th>小計</th>
     	  	<th></th>
-    	  	<th>¥<%= @subtotal_price %></th>
+    	  	<th><%= number_with_delimiter(@subtotal_price) %></th>
     	  </tr>
     	  <tr>
     	  	<th>消費税</th>
     	  	<td><p>消費税8%</p></td>
-    	  	<th>¥<%= @tax %></th>
+    	  	<th><%= number_with_delimiter(@tax) %>円</th>
     	  </tr>
         <tr>
     	  	<th>送料</th>
-    	  	<td>一配送 ¥500</td>
-    	  	<th><p>¥500</p></th>
+    	  	<td>一配送 500円</td>
+    	  	<th><p><%= number_with_delimiter(500) %>円</p></th>
     	  </tr>
     	  <tr>
     	  	<th class = "total_price_title">総合計金額</th>
     	  	<th></th>
-    	  	<th>¥<%= @final_price %></th>
+    	  	<th><%= number_with_delimiter(@final_price) %>円</th>
     	  </tr>
       </table>
 

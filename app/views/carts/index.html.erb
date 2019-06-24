@@ -20,7 +20,7 @@
   	  	   <tr>
               <td class = "contents"><%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: '100x100' %></td>
                 <td class = "contents"><%= link_to cart.product.product_name, product_path(cart.product) %></td>
-                <td class = "contents"><%= cart.product.price %>円</td>
+                <td class = "contents"><%= number_with_delimiter(cart.product.price) %>円</td>
                 <%= form_for cart, url: cart_path(cart), method: :PUT do |f| %>
                   <td class = "quantity-select">
                     <% @cart_array.clear %>
@@ -32,7 +32,7 @@
                     <%= f.submit "個数を変更する", class: "btn-white" %>
                   </td>
                 <% end %>
-                <td class = "content-total"><%= cart.product.price * cart.quantity %>円</td>
+                <td class = "content-total"><%= number_with_delimiter(cart.product.price * cart.quantity) %>円</td>
                 <td> <%= link_to "削除", cart_path(cart), method: :delete, class: "btn" %></td>
             </tr>
           <% end %>
@@ -49,21 +49,21 @@
       	  <tr>
       	  	<th>小計</th>
       	  	<th></th>
-      	  	<td><%= @subtotal_price %>円</td>
+      	  	<td><%= number_with_delimiter(@subtotal_price) %>円</td>
       	  </tr>
       	  <tr>
       	  	<th>消費税</th>
       	  	<td><p>消費税 8%</p></td>
-      	  	<td><%= @tax %>円</td>
+      	  	<td><%= number_with_delimiter(@tax) %>円</td>
       	  </tr>
       	  	<th>送料</th>
       	  	<td>一配送 500円</td>
-      	  	<td><p>500円</p></td>
+      	  	<td><p><%= number_with_delimiter(500) %>円</p></td>
       	  </tr>
       	  <tr>
       	  	<th class = "total_price_title">総合計金額</th>
       	  	<th></th>
-      	  	<td class = "total_price_title"><%= @final_price %>円</td>
+      	  	<td class = "total_price_title"><%= number_with_delimiter(@final_price) %>円</td>
       	  </tr>
       	</tbody>
        </table>

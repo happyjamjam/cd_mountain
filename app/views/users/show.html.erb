@@ -54,7 +54,7 @@
               <td><%= order.created_at.to_date %></td>
             </tr>
           <% end %>
-
+          <%= paginate @orders %>
           </tbody>
         </table>
       </div>
