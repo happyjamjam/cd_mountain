@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @genre = @product.genre
     @label = @product.label
-    @artist_products =@product.artist_products
   end
 
   def create
@@ -23,18 +22,24 @@ class ReviewsController < ApplicationController
 
 
   def edit
+
     @review = Review.find(params[:id])
+    @product =Product.find(params[:product_id])
+    @genre = @product.genre
+    @label = @product.label
+    @artist_products =@product.artist_products
+
   end
 
   def update
     review = Review.find(params[:id])
     review.update(review_params)
-    redirect_to user_path
+    redirect_to product_path(review.product)
   end
 
   def destroy
-  	reviews = Review.find(params[:id])
-  	reviews.destroy
+  	review = Review.find(params[:id])
+  	review.destroy
     redirect_to product_path(params[:product_id])
   end
 
