@@ -25,9 +25,7 @@ class ReviewsController < ApplicationController
   def edit
 
     @review = Review.find(params[:id])
-
     @product =Product.find(params[:product_id])
-    @review = Review.new
     @genre = @product.genre
     @label = @product.label
     @artist_products =@product.artist_products
