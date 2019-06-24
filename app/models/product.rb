@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
-
+	validates :price, numericality: { only_integer: true }
+	validates :stock, numericality: { only_integer: true }
+	validates :product_name, presence: true
+	validates :genre_id, presence: true
+	validates :label_id, presence: true
 
 	has_many :users, through: :carts
 	has_many :carts

@@ -3,6 +3,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def new
     @genre = Genre.new
     @label = Label.new
+    #artist = Artist.new
     @product = Product.new
     @disk = @product.disks.build
     @music = @disk.musics.build
@@ -15,7 +16,7 @@ class Admin::ProductsController < Admin::ApplicationController
   	@product = Product.new(product_params)
       @product.genre_id = @genre.id
       @product.label_id = @label.id
-    if @product.save!
+    if @product.save
       redirect_to admin_products_path
     else
       render :new
