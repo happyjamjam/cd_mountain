@@ -81,6 +81,9 @@
           <% end %>
           <%= f.submit '注文を確定する', class: "btn btn-primary col-xs- 7purchase-confirm" %>
         <% end %>
+        <%= form_tag(action: :pay, method: :post) do %>
+          <script type = "text/javascript" src = "https://checkout.pay.jp" class = "payjp-button" data-key = "pk_test_115115a6e1739479fe4d883f"></script>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   resources :orders, only:[:create, :show, :index]
   resources :contacts, only:[:new, :create]
   resources :order_details, only: [:create]
+  post 'orders/pay' => 'orders#pay'
 end

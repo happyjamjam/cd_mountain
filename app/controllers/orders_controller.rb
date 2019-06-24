@@ -48,6 +48,16 @@ class OrdersController < OrderDetailsController
 
   end
 
+  def pay
+    calculation
+    Payjp.api_key = 'sk_test_e07dda9bc6db99d0c64abe79'
+    Payjp::Charge.create(
+      amount: @final_price, # 決済する値段
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
+  end
+
   private
 
   def order_params
