@@ -16,7 +16,7 @@
          <tr>
          <td><%= attachment_image_tag order.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %></td>
          <td class = "contents"><%= order.product.product_name %></td>
-         <td class = "contents" ><%= number_with_delimiter(order.product.price) %></td>
+         <td class = "contents" ><%= number_with_delimiter(order.product.price) %>円</td>
          <td class = "contents"><%= order.quantity %></td>
        </tr>
       <% end %>
