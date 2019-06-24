@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <th>合計金額</th>
-            <td>¥<%= history.purchase_price * history.purchase_quantity %></td>
+            <td><%= number_with_delimiter(history.purchase_price * history.purchase_quantity)円 %></td>
           </tr>
           <% end %>
           <tr>

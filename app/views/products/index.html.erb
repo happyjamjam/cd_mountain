@@ -1,19 +1,11 @@
 <div class= "slider">
-  <div><%= image_tag('closer.jpg') %></div>
-  <div><%= image_tag('beginagain.jpg') %></div>
-  <div><%= image_tag('callme_by_yourname.jpg') %></div>
-  <div><%= image_tag('onedirection2.jpg') %></div>
-  <div><%= image_tag('whatdoyoumean.jpg') %></div>
-  <div><%= image_tag('1989.jpg') %></div>
-  <div><%= image_tag('lalaland.jpg') %></div>
-  <div><%= image_tag('shawn.jpg') %></div>
-  <div><%= image_tag('charlie.jpg') %></div>
-  <div><%= image_tag('thepaperkites.jpg') %></div>
-  <div><%= image_tag('abbeyroad.jpg') %></div>
-  <div><%= image_tag('chainsmokers.jpg') %></div>
-  <div><%= image_tag('sunset_season.jpg') %></div>
-  <div><%= image_tag('PowerToThePeople.jpg') %></div>
-  <div><%= image_tag('onedirection.jpg') %></div>
+  <% @products.each do |product| %>
+   <div>
+    <%= link_to product_path(product) do %>
+      <%= attachment_image_tag product, :jacket_img, :fill, 100, 100, fallback: "no_img.jpg", size: "100x100" %>
+    <% end %>
+   </div>
+  <% end %>
 </div>
 
 <main class = "clearfix">

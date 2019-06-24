@@ -73,7 +73,7 @@
       		  <tr>
       		    <td><%# attachment_image_tag favorite, :jacket_img %></td>
       		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
-      		    <td><%= favorite.product.price %></td>
+      		    <td><%= number_with_delimiter(favorite.product.price) %></td>
       		  </tr>
       		<% end %>
       		</tbody>

@@ -4,7 +4,7 @@
   	<p class = "process">カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
 
   	<div class = "col-xs-9">
-      <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #333333;">
 
           <h5>お届け先住所 <%= link_to "変更", addresses_path %></h5>
           <% if params[:address_id] == nil %>
@@ -21,19 +21,16 @@
           <br>
           <!-- 登録していない住所はここで登録する -->
           <%= link_to "新しい住所を登録", new_address_path %>
-
+      </div>
           <% @user_orders.each do |cart| %>
             <div class = "confirm-items">
               <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
               <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product) %></p>
               <p class = "contents">在庫数：<%= cart.product.stock %></p>
-              <p class = "contents" >価格：<%= number_with_delimiter(cart.product.price) %></p>
+              <p class = "contents" >価格：<%= number_with_delimiter(cart.product.price) %>円</p>
               <p class = "contents">数量：<%= cart.quantity %></p>
             </div>
           <% end %>
-
-
-      </div>
     </div>
 
     <div class = "col-xs-3">
