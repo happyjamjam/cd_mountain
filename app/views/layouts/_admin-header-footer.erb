@@ -1,0 +1,22 @@
+ <!-- /header -->
+    <div class = "header-message">
+      <p class = "theme-message">管理者用ページ</p>
+    </div>
+    <header class = "navbar navbar-light bg-light">
+    <nav class = "nav navbar-nav">
+      <%= link_to image_tag("/assets/16062019103135A.png",size: '50'), root_path, method: :get %>
+      <span class = "site-name">CD MOUNTAIN</span>
+    </nav>
+      <% if admin_signed_in? %>
+      <nav>
+        <ul class = "nav navbar-nav navbar-right">
+          <li><%= link_to "問い合わせ", admin_contacts_path %></li>
+          <li><%= link_to "ユーザー一覧", admin_users_path%></li>
+          <li><%= link_to "購入履歴一覧",  admin_orders_path %></li>
+          <li><%= link_to "商品一覧", admin_products_path %></li>
+          <li><%= link_to "新規商品登録", new_admin_product_path %></li>
+          <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </ul>
+        </nav>
+      <% end %>
+    </header>
