@@ -4,7 +4,7 @@
       <%= link_to product_path(product) do %>
         <%= attachment_image_tag product, :jacket_img, :fill, 100, 100, fallback: "no_img.jpg", size: "100x100" %>
       <% end %>
-    </div>
+   </div>
   <% end %>
 </div>
 
@@ -12,7 +12,7 @@
   <div class = "product-wrapper">
 	  <% @products.each do |product| %>
   		<div class = "product-item">
-  			<%= attachment_image_tag product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size: "180x180" %><br>
+  			<%= attachment_image_tag product, :jacket_img, :fill, 200, 200, format: 'jpeg', fallback: "no_img.jpg", size: "180x180" %><br>
   			<span class = "product-name"> <%= link_to product.product_name, product_path(product) %></span><br>
   			<span class = "details">
     			<% product.artist_products.each do |artist_product| %>
@@ -37,10 +37,10 @@
         <div class = rank-img>
           <div class = "tape"></div>
           <p><%= i %> 位　</p>
-          <%= attachment_image_tag product, :jacket_img, :fill, 50, 50, fallback: "no_img.jpg", size: "50x50" %>
-          <div class = "rank-contents">
-            <span class = "product-name"><%= link_to product.product_name,product_path(product) %></span>
-            <p class = "details">価格<%= number_with_delimiter(product.price) %>円 (税別)</p><br>
+          <%= attachment_image_tag product, :jacket_img, :fill, 80, 80, fallback: "no_img.jpg", size: "80x80" %>
+          <div class = "right">
+              <span class = "product-name-rank"><%= link_to product.product_name,product_path(product) %></span><br>
+              <p class = "details-rank">価格<%= number_with_delimiter(product.price) %>円 (税別)</p>
           </div>
         </div>
       <% end %>
