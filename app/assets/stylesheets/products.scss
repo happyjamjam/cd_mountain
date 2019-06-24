@@ -41,7 +41,14 @@ main {
 }
 
 .ranking-box{
-  border-left:dashed;
+  border-left: 3px solid;
+  border-image:
+    linear-gradient(
+      to bottom,
+      #A05359,
+      rgba(0,0,0,0)
+      ) 1 100%;
+  border-image-slice: 1;
   float: right;
   width: 250px;
   margin: 35px;
