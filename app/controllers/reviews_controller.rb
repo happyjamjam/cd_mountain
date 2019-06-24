@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @genre = @product.genre
     @label = @product.label
-    @artist_products =@product.artist_products
   end
 
   def create
