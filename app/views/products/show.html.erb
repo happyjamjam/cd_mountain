@@ -52,7 +52,9 @@
 			<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
 			<% else %>
 			<%= link_to "レビューを編集する", edit_product_review_path(@product, @review), class: "review-button btn btn-success" %>
-			<%= link_to "レビューを削除する", product_review_path(@product, @review), method: :delete , class: "review-button btn btn-warning" %>
+		   <% if @review.user == current_user %>
+			<%= link_to "レビューを削除する", product_review_path(@product, @review), method: :delete, data:{confirm:"本当に削除しますか?"}, class: "review-button btn btn-warning" %>
+		   <% end %>
 		<% end %>
 		<% else %>
 			<p>レビューを書くにはログインしてください。</p>
