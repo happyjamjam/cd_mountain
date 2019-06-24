@@ -3,7 +3,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def new
     @genre = Genre.new
     @label = Label.new
-    #artist = Artist.new
+    @artist = Artist.new
     @product = Product.new
     @disk = @product.disks.build
     @music = @disk.musics.build
@@ -12,11 +12,21 @@ class Admin::ProductsController < Admin::ApplicationController
   def create
     @genre = Genre.find_or_create_by(genre_name: params[:genre][:genre_name])
     @label = Label.find_or_create_by(label_name: params[:label][:label_name])
-
   	@product = Product.new(product_params)
-      @product.genre_id = @genre.id
-      @product.label_id = @label.id
+    @product.genre_id = @genre.id
+    @product.label_id = @label.id
+    artist_hash = params[:product][:artists_attributes]
     if @product.save
+      artist_hash.values.each do |value|
+        @artist = Artist.new
+        @artist.artist_name = value[:artist_name]
+        if @artist.save
+          artist_product = ArtistProduct.new
+          artist_product.artist_id = @artist.id
+          artist_product.product_id = @product.id
+          artist_product.save
+        end
+      end
       redirect_to admin_products_path
     else
       render :new
@@ -36,6 +46,10 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @genre = Genre.find(@product.genre_id)
+    @label = Label.find(@product.label_id)
+    @genre.update(genre_params)
+    @label.update(label_params)
     if @product.update!(product_params)
       redirect_to admin_product_path(@product)
     else
@@ -69,5 +83,9 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def label_params
     params.require(:label).permit(:label_name)
+  end
+
+  def artist_params
+    params.require(:artist).permit(:artist_name)
   end
 end
