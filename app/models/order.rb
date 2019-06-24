@@ -4,4 +4,8 @@ class Order < ApplicationRecord
   has_many :order_details
   has_many :products, through: :order_details
   validates :payment_method, presence: true
+
+  attachment :jacket_img
+
 end
+
