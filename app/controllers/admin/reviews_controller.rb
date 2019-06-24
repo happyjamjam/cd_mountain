@@ -12,8 +12,7 @@ class Admin::ReviewsController < Admin::ApplicationController
     review.update(review_params)
     redirect_to admin_user_path
   end
-  	
-  
+
 
   def destroy
   	review = Review.find(params[:id])
