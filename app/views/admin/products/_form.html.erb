@@ -22,7 +22,7 @@
 
 	<div class="field">
 		<%= f.label :販売状況 %>
-		<%= f.text_field :sales_status %>
+		<%= f.select :sales_status, [["在庫あり","在庫あり"],["販売中止","販売中止"],["在庫なし","在庫なし"]] %>
 	</div>
 
 	<%= fields_for @genre do |genre| %>
@@ -39,9 +39,10 @@
 	<% end %>
 	</div>
 
-	<%= f.fields_for :artist_products, ArtistProduct.new do |artist_product| %>
-		<%= render 'artist_product_fields', f: artist_product %>
-	<% end %>
+		<%= f.fields_for :artist_products, ArtistProduct.new do |artist_product| %>
+			<%= render 'artist_product_fields', f: artist_product %>
+		<% end %>
+
 
 	<div id="links">
 		<%= link_to_add_association 'アーティストの追加', f, :artist_products %>

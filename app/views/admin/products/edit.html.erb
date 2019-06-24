@@ -1,0 +1,64 @@
+<h1>商品編集</h1>
+<%= form_for @product, url: admin_product_path(@product), html: { method: :put } do |f| %>
+
+	<div class="field">
+		<%= f.label :image, "ジャケット画像" %>
+		<%= f.attachment_field :jacket_img %>
+	</div>
+
+	<div class="field">
+		<%= f.label :商品名 %>
+		<%= f.text_field :product_name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :価格 %>
+		<%= f.text_field :price %>
+	</div>
+
+	<div class="field">
+		<%= f.label :在庫数 %>
+		<%= f.text_field :stock %>
+	</div>
+
+	<div class="field">
+		<%= f.label :販売状況 %>
+		<%= f.select :sales_status, [["在庫あり","在庫あり"],["販売中止","販売中止"],["在庫なし","在庫なし"]], prompt: ["在庫あり","在庫あり"] %>
+	</div>
+
+	<%= fields_for @genre do |genre| %>
+	<div class="field">
+		<%= genre.label :ジャンル %>
+		<%= genre.text_field :genre_name %>
+	<% end %>
+	</div>
+
+	<%= fields_for @label do |label| %>
+	<div class="field">
+		<%= label.label :レーベル %>
+		<%= label.text_field :label_name %>
+	<% end %>
+	</div>
+
+
+	<%= f.fields_for :artist_products do |artist_product| %>
+		<%= render 'artist_product_fields', f: artist_product %>
+	<% end %>
+
+
+	<div id="links">
+		<%= link_to_add_association 'アーティストの追加', f, :artist_products %>
+	</div>
+
+	<%= link_to "新規アーティスト登録", new_admin_artist_path %>
+
+	<%= f.fields_for :disks do |disk| %>
+	  <%= render 'disk_fields', f: disk %>
+	<% end %>
+
+	<div id="links">
+		<%= link_to_add_association 'ディスクの追加', f, :disks %>
+	</div>
+
+	<%= f.submit %>
+<% end %>
