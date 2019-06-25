@@ -1,5 +1,7 @@
 class OrdersController < OrderDetailsController
 
+  require 'payjp'
+
   def create
     calculation
     # 在庫が注文数よりも多いかをチェック

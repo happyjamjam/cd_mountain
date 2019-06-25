@@ -40,4 +40,11 @@ Rails.application.routes.draw do
   resources :contacts, only:[:new, :create]
   resources :order_details, only: [:create]
   post 'orders/pay' => 'orders#pay'
+  resources :cards, only: [:new, :show] do
+    collection do
+      post 'show', to: 'cards#show'
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
+  end
 end

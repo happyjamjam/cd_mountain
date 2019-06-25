@@ -95,10 +95,28 @@
           <br>
           <%= f.submit '注文を確定する', class: "btn btn-primary col-xs- 7purchase-confirm" %>
         <% end %>
-        <%= form_tag(action: :pay, method: :post) do %>
-          <script type = "text/javascript" src = "https://checkout.pay.jp" class = "payjp-button" data-key = "pk_test_115115a6e1739479fe4d883f"></script>
-        <% end %>
+        <!-- クレカ決済 -->
+        <form method = "POST" action = "/pay" id = "charge-form">
+          <span class = "charge-errors"></span>
+
+          <h4> 支払い </h4>
+          <label> カード番号 </label>
+          <input type = "text" class = "number" name = "number" maxlength = "16" placeholder = "カード番号">
+
+          <label> CVC </label>
+          <input type = "text" class = "cvc" name = "cvc" maxlength = "3" placeholder = "CVC">
+          <br>
+
+          <label> 有効期限 </label>
+          <input type = "text" class = "exp_month" name = "exp_month" maxlength = "2" placeholder = "月">
+          <input type = "text" class = "exp_year" name = "exp_year" maxlength = "4" placeholder = "年">
+          <br>
+
+          <button type = "submit"> 送信 </button>
+        </form>
+        <!-- クレカ決済ここまで -->
       <% end %>
     </div>
   </div>
 </div>
+<script> Payjp.setPublicKey(ENV[PAYJP_KEY]);</script>
