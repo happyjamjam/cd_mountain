@@ -6,5 +6,3 @@ class ContactMailer < ApplicationMailer
          subject:'【CD MOUNTAIN】お問い合わせの回答。'
   end
 end
-
-# アドミンがコンタクトフォームに記入したものがユーザーに送られる場合はどうデータを引っ張ってくれば良い？
