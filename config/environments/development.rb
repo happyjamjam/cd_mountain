@@ -37,10 +37,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     port:                 465,
     address:              'smtp.gmail.com',
-    domain:               'smtp.gmail.com',
+    domain:               'gmail.com',
     user_name:            'annaaidamailer@gmail.com',
-    password:             'annaaidamailer@gmail.com',
-    authentication:       'login'
+    password:             'webcamp813',
+    authentication:       'login',
     enable_starttls_auto: true
   }
 

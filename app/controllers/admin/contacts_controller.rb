@@ -5,6 +5,15 @@ class Admin::ContactsController < Admin::ApplicationController
 
   def show
   	@contact = Contact.find(params[:id])
+
+  end
+
+  def update
+
+    contact = @contac
+    user = contact.user
+    ContactMailer.send_when_admin_reply(user, contact).deliver
+
   end
 
   def destroy
@@ -15,5 +24,5 @@ class Admin::ContactsController < Admin::ApplicationController
 
   def update
   end
-  
+
 end
