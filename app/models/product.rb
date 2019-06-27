@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
 	has_many :users, through: :carts
 	has_many :carts
-	has_many :favorites
+	has_many :favorites, dependent: :destroy
 	#has_many :users, through: :favorites
 	has_many :reviews
 	#has_many :users, through: :reviews
@@ -34,9 +34,15 @@ class Product < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
-	private
-		def find_or_create_artist
-			self.artists = self.artists.map {|artist| Artist.find_or_create_by(artist_name: artist.artist_name.strip)}
-		end
+
+	# private
+	# 	def find_or_create_artist
+	# 		self.artists = self.artists.map {|artist| Artist.find_or_create_by(artist_name: artist.artist_name.strip)}
+	# 	end
+
+	def reviewed_by?(user)
+		reviews.where(user_id: user.id).exists?
+	end
+
 
 end

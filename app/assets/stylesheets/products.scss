@@ -13,7 +13,7 @@ main {
   float: left;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 80%;
   padding: 35px 20px;
 }
@@ -29,6 +29,8 @@ main {
 
 .product-item {
   padding: 20px;
+
+
 }
 
 /*index sidebar*/
@@ -36,16 +38,24 @@ main {
 .sidebar {
   float: left;
   width: 20%;
-
 }
 
 .ranking-box{
+  border-left: 3px solid;
+  border-image:
+    linear-gradient(
+      to bottom,
+      #A05359,
+      rgba(0,0,0,0)
+      ) 1 100%;
+  border-image-slice: 1;
   float: right;
   width: 250px;
   margin: 35px;
   padding: 1em;
-  background-color: #F9E3B8;
+  background-color: #FFFFCC;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
 }
 
 .tape{
@@ -53,7 +63,7 @@ main {
   background-color: #ccb;
   opacity: 0.2;
   transform: rotate(3deg);
-  width: 40%;
+  width: 60%;
   height: 35px;
   margin: -2em auto 0 auto;
   border-left: 3px dotted rgba(0,0,0,.1);
@@ -66,15 +76,15 @@ main {
   font-family:'Reimin Light';
   margin-bottom: 15px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .rank-img{
   float:left;
-}
-
-.rank-contents{
-  float:right;
-  margin-left: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: #E5BB4B;
+  margin-bottom: 30px;
 }
 
 
@@ -100,6 +110,20 @@ main {
   float:right;
 }
 
+.product-name-rank {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.details-rank {
+  font-size: 11px;
+}
+
+.right {
+  float: right;
+  padding-right: 10px;
+}
+
 /*showページ カートへ追加ボタン*/
 
 .cart-button {
@@ -112,8 +136,8 @@ main {
   transition: none;
   box-shadow: 0 3px 0 #00896C;
   text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-  width: 250px;
-  margin-top: 40px;
+  width: 260px;
+  margin-top: 20px;
 }
 
 .cart-button:hover {
@@ -128,5 +152,21 @@ main {
 
 .price-info {
   padding-top: 15px;
+}
+
+.track-list-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+  margin-top: 40px
+}
+
+.review-list-title {
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+  margin-top: 40px
 }
 

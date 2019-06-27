@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+/*index*/
+
+.thankyou {
+  text-align: center;
+  font-size: 25px;
+  font-family:'Reimin Light';
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
 .history, .favorite {
   font-size: 25px;
   font-family: 'arial black';
@@ -107,6 +117,7 @@
 .item-name {
   font-size: 30px;
 }
+
 
 /*購入履歴詳細ページ*/
 

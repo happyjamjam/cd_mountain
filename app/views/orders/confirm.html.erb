@@ -2,11 +2,10 @@
 <div class = "container">
   <div class = "row">
   	<p class = "process">カート  >  <strong>住所情報/支払い情報</strong>  >  確認</p>
-
   	<div class = "col-xs-9">
-      <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+      <div class = "clearfix" style = "padding: 10px; margin-bottom: 10px;">
 
-          <h5>お届け先住所 <%= link_to "変更", addresses_path %></h5>
+          <h4>お届け先住所 <%= link_to "変更", addresses_path %></h4>
           <% if params[:address_id] == nil %>
             <%= current_user.full_name %><br>
 	          <%= current_user.postal_code %><br>
@@ -19,20 +18,34 @@
             <%= @address.tel %>
           <% end %>
           <br>
+          <br>
           <!-- 登録していない住所はここで登録する -->
           <%= link_to "新しい住所を登録", new_address_path %>
-
-          <% @user_orders.each do |cart| %>
-            <div class = "confirm-items">
-              <%# attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %>
-              <p class = "item-name"><%= link_to cart.product.product_name, product_path(cart.product), class: "text-muted" %></p>
-              <p class = "contents">在庫数：<%= cart.product.stock %></p>
-              <p class = "content" >価格：<%= cart.product.price %></p>
-              <p class = "contents">数量：<%= cart.quantity %></p>
-            </div>
-          <% end %>
-
-
+      </div>
+      <div>
+      <h4>
+      <table class = "table">
+        <h3>カート内容</h3>
+        <thead>
+          <tr>
+            <th></th>
+            <th>商品名</th>
+            <th>値段</th>
+            <th>注文数</th>
+          </tr>
+        </thead>
+        <tbody>
+         <% @user_orders.each do |cart| %>
+           <tr>
+             <td><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %></td>
+             <td><%= link_to cart.product.product_name, product_path(cart.product) %></td>
+             <td><%= cart.product.stock %></td>
+             <td><%= number_with_delimiter(cart.product.price) %>円</td>
+             <td>数量：<%= cart.quantity %></td>
+           </tr>
+         <% end %>
+        </tbody>
+      </table>
       </div>
     </div>
 
@@ -43,22 +56,22 @@
     	  <tr>
     	  	<th>小計</th>
     	  	<th></th>
-    	  	<th>¥<%= @subtotal_price %></th>
+    	  	<th><%= number_with_delimiter(@subtotal_price) %></th>
     	  </tr>
     	  <tr>
     	  	<th>消費税</th>
     	  	<td><p>消費税8%</p></td>
-    	  	<th>¥<%= @tax %></th>
+    	  	<th><%= number_with_delimiter(@tax) %>円</th>
     	  </tr>
         <tr>
     	  	<th>送料</th>
-    	  	<td>一配送 ¥500</td>
-    	  	<th><p>¥500</p></th>
+    	  	<td>一配送 500円</td>
+    	  	<th><p><%= number_with_delimiter(500) %>円</p></th>
     	  </tr>
     	  <tr>
     	  	<th class = "total_price_title">総合計金額</th>
     	  	<th></th>
-    	  	<th>¥<%= @final_price %></th>
+    	  	<th><%= number_with_delimiter(@final_price) %>円</th>
     	  </tr>
       </table>
 
@@ -79,6 +92,7 @@
             <%= f.hidden_field :postal_code, value: current_user.postal_code %>
             <%= f.hidden_field :tel, value: current_user.tel %>
           <% end %>
+          <br>
           <%= f.submit '注文を確定する', class: "btn btn-primary col-xs- 7purchase-confirm" %>
         <% end %>
       <% end %>
