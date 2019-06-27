@@ -39,7 +39,7 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     domain:               'gmail.com',
     user_name:            'annaaidamailer@gmail.com',
-    password:             'webcamp813',
+    password:             'aokipapipon',
     authentication:       'login',
     enable_starttls_auto: true
   }
