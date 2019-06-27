@@ -16,17 +16,32 @@ class Admin::ProductsController < Admin::ApplicationController
     @product.genre_id = @genre.id
     @product.label_id = @label.id
     artist_hash = params[:product][:artists_attributes]
+    # @product.artist_products.each do |artist_product|
+    #   binding.pry
+    #   artist = Artist.find_or_create_by!(artist_name: params[:product][:artist_products_attributes][:artist_id])
+    #   artist_product.artist_id = artist.id
+    #   artist_product.product_id = @product.id
+    #   artist_product.save!
     if @product.save
       artist_hash.values.each do |value|
-        @artist = Artist.new
-        @artist.artist_name = value[:artist_name]
-        if @artist.save
-          artist_product = ArtistProduct.new
-          artist_product.artist_id = @artist.id
-          artist_product.product_id = @product.id
-          artist_product.save
+        unless Artist.find_by(artist_name: value[:artist_name])
+          @artist = Artist.new
+          @artist.artist_name = value[:artist_name]
+          @artist.save
         end
+        artist = Artist.find_by(artist_name: value[:artist_name])
+        artist_product = ArtistProduct.new
+        artist_product.artist_id = artist.id
+        artist_product.product_id = @product.id
+        artist_product.save
       end
+          # # @artist = Artist.find_or_create_by(artist_name: params[:product][:artists_attributes][:artist_name])
+          # artist_product = ArtistProduct.new
+          # artist_product.artist_id = @artist.id
+          # artist_product.product_id = @product.id
+          # artist_product.save
+        # end
+      # end
       redirect_to admin_products_path
     else
       render :new
@@ -50,8 +65,17 @@ class Admin::ProductsController < Admin::ApplicationController
     @label = Label.find(@product.label_id)
     @genre.update(genre_params)
     @label.update(label_params)
-    if @product.update!(product_params)
-      redirect_to admin_product_path(@product)
+    # artist_hash = params[:product][:artists_attributes]
+    # artist_hash.values.each do |value|
+    #   unless Artist.find_by(artist_name: value[:artist_name])
+    #     @artist = Artist.new
+    #     @artist.artist_name = value[:artist_name]
+    #     @artist.save
+    #   end
+    #   artist = Artist.find_by(artist_name: value[:artist_name])
+    # end
+    if @product.update(product_params)
+        redirect_to admin_product_path(@product)
     else
       render :edit
     end
@@ -74,7 +98,7 @@ class Admin::ProductsController < Admin::ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :price, :stock, :sales_status, :jacket_img, artist_products_attributes: [:id, :artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
+    params.require(:product).permit(:product_name, :price, :stock, :sales_status, :jacket_img, artists_attributes: [:id, :artist_name, :_destroy], artist_products_attributes: [:id, :artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
   end
 
   def genre_params

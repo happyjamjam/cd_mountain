@@ -16,7 +16,7 @@ class Product < ApplicationRecord
 
 	has_many :artist_products, dependent: :destroy
 	has_many :artists, through: :artist_products
-	accepts_nested_attributes_for :artist_products, allow_destroy: true
+	# accepts_nested_attributes_for :artist_products, allow_destroy: true
 	accepts_nested_attributes_for :artists, allow_destroy: true
 
 	belongs_to :genre

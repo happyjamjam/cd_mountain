@@ -40,10 +40,8 @@
 	<% end %>
 	</div>
 
-	<% @artist_products.each do |artist_product| %>
-		<%= f.fields_for artist_product.artist do |artist| %>
-			<%= render 'artist_fields', f: artist %>
-		<% end %>
+	<%= f.fields_for :artists do |artist| %>
+		<%= render 'artist_fields', f: artist %>
 	<% end %>
 
 	<div id="links">
