@@ -1,6 +1,10 @@
 class ContactMailer < ApplicationMailer
 
+<<<<<<< HEAD
   default from: 'CD MOUNTAIN 管理人 <annaaidamailer@gmail.com>'
+=======
+  default from: 'CD MOUNTAIN 管理人 <shunsuke8935@gmail.com>'
+>>>>>>> master
   layout 'mailer'
 
   def send_when_admin_reply(user, contact)

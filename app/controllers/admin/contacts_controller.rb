@@ -6,7 +6,6 @@ class Admin::ContactsController < Admin::ApplicationController
   def show
   	@contact = Contact.find(params[:id])
     @newcontact = Contact.new
-
   end
 
   def update
@@ -27,6 +26,7 @@ class Admin::ContactsController < Admin::ApplicationController
   	contact.destroy
     redirect_to admin_contacts_path
   end
+
 
   def update
   end
