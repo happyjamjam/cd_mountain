@@ -12,16 +12,10 @@ class Admin::ProductsController < Admin::ApplicationController
   def create
     @genre = Genre.find_or_create_by(genre_name: params[:genre][:genre_name])
     @label = Label.find_or_create_by(label_name: params[:label][:label_name])
-  	@product = Product.new(product_params)
+  	@product = Product.new(create_product_params)
     @product.genre_id = @genre.id
     @product.label_id = @label.id
     artist_hash = params[:product][:artists_attributes]
-    # @product.artist_products.each do |artist_product|
-    #   binding.pry
-    #   artist = Artist.find_or_create_by!(artist_name: params[:product][:artist_products_attributes][:artist_id])
-    #   artist_product.artist_id = artist.id
-    #   artist_product.product_id = @product.id
-    #   artist_product.save!
     if @product.save
       artist_hash.values.each do |value|
         unless Artist.find_by(artist_name: value[:artist_name])
@@ -35,13 +29,6 @@ class Admin::ProductsController < Admin::ApplicationController
         artist_product.product_id = @product.id
         artist_product.save
       end
-          # # @artist = Artist.find_or_create_by(artist_name: params[:product][:artists_attributes][:artist_name])
-          # artist_product = ArtistProduct.new
-          # artist_product.artist_id = @artist.id
-          # artist_product.product_id = @product.id
-          # artist_product.save
-        # end
-      # end
       redirect_to admin_products_path
     else
       render :new
@@ -74,7 +61,7 @@ class Admin::ProductsController < Admin::ApplicationController
     #   end
     #   artist = Artist.find_by(artist_name: value[:artist_name])
     # end
-    if @product.update(product_params)
+    if @product.update(update_product_params)
         redirect_to admin_product_path(@product)
     else
       render :edit
@@ -97,7 +84,11 @@ class Admin::ProductsController < Admin::ApplicationController
 
   private
 
-  def product_params
+  def create_product_params
+    params.require(:product).permit(:product_name, :price, :stock, :sales_status, :jacket_img, artist_products_attributes: [:id, :artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
+  end
+
+  def update_product_params
     params.require(:product).permit(:product_name, :price, :stock, :sales_status, :jacket_img, artists_attributes: [:id, :artist_name, :_destroy], artist_products_attributes: [:id, :artist_id, :_destroy], disks_attributes: [:id, :product_id, :disk_number, :_destroy, musics_attributes: [:id, :disk_id, :artist_id, :music_title, :track_number, :_destroy]])
   end
 
