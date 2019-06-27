@@ -6,14 +6,19 @@ class Admin::ContactsController < Admin::ApplicationController
   def show
   	@contact = Contact.find(params[:id])
     @newcontact = Contact.new
-
   end
 
   def update
 
+    @contact = Contact.new.find(params[:id])
+
     contact = @contact
     user = contact.user
     ContactMailer.send_when_admin_reply(user, contact).deliver
+
+    @newcontact.update
+    redirect_to admin_contacts_path
+
   end
 
   def destroy
@@ -22,11 +27,6 @@ class Admin::ContactsController < Admin::ApplicationController
     redirect_to admin_contacts_path
   end
 
-  def create
-    @contact = Contact.new.find(prams[:id])
-    @contact.save
-    redirect_to admin_contacts_path
-  end
 
   def update
   end
