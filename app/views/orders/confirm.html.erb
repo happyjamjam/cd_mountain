@@ -39,9 +39,8 @@
            <tr>
              <td><%= attachment_image_tag cart.product, :jacket_img, :fill, 100, 100, format: 'jpeg', fallback: "no_img.jpg", size:'100x100' %></td>
              <td><%= link_to cart.product.product_name, product_path(cart.product) %></td>
-             <td><%= cart.product.stock %></td>
              <td><%= number_with_delimiter(cart.product.price) %>円</td>
-             <td>数量：<%= cart.quantity %></td>
+             <td> <%= cart.quantity %></td>
            </tr>
          <% end %>
         </tbody>
