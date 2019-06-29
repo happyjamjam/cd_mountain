@@ -16,4 +16,11 @@
 	</tr>
 </table>
 
-<a href="mailto:<% @contact.user.email %>"> 返信する</a>
+<h3>お問い合わせ返信フォーム</h3>
+  <%= form_for [:admin, @contact] do |f| %>
+  <%= f.text_area :reply_text %>
+  <p><%= f.submit '送信', class: "btn btn-success col-xs-2 col-xs-offset-9" %></p>
+ <% end %>
+
+<!--<a href="mailto:<% @contact.user.email %>"> 返信する</a>-- とりあえずコメントアウロしておく>
+
