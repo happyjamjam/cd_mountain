@@ -28,14 +28,14 @@
 	<%= fields_for @genre do |genre| %>
 	<div class="field">
 		<%= genre.label :ジャンル %>
-		<%= genre.text_field :genre_name %>
+		<%= genre.text_field :genre_name, data: {autocomplete_source: Genre.order(:genre_name).map(&:genre_name)} %>
 	<% end %>
 	</div>
 
 	<%= fields_for @label do |label| %>
 	<div class="field">
 		<%= label.label :レーベル %>
-		<%= label.text_field :label_name %>
+		<%= label.text_field :label_name, data: {autocomplete_source: Label.order(:label_name).map(&:label_name)} %>
 	<% end %>
 	</div>
 
