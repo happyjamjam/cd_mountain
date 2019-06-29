@@ -17,6 +17,16 @@
           <p>メールアドレス: <%= @user.email %></p>
           <p><%= link_to '情報を編集する', edit_user_registration_path(@user) %></p>
      </div>
+     <% if @user.cards.exists?%>
+       <h4> カード情報 </h4>
+      カード番号 <%= "**** **** ****" + @default_card_information.last4 %>
+      <br>
+      有効期限 <%= @default_card_information.exp_month.to_s %> /
+      <%= @default_card_information.exp_year.to_s.slice(2,3) %>
+      <br>
+      <%= link_to "カード情報を削除する", delete_cards_path, method: :post, data: {confirm: "本当に削除しますか？"} %>
+    <% end %>
+
      <% if @addresses.exists? %>
         <h4> 登録住所一覧</h4>
         <% @addresses.each do |address| %>

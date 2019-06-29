@@ -106,7 +106,7 @@
 
         <% else %>
 
-          <%= form_tag cards_path, method: :POST, id: "charge-form" do %>
+          <%= form_tag cards_path, action: "create", method: :POST, id: "charge-form" do %>
 
             <label> カード番号 </label>
             <input maxlength = "16" type = "text" id = "card_number" class = "number", name = "number",  placeholder = "半角数字のみ" >
@@ -146,10 +146,10 @@
             <span> 年 </span>
             <br>
             <label> セキュリティコード </label>
-            <input class = "cvc", id =  "cvc", name = "cvc", placeholder = "カード裏面３〜４桁の番号", maxlength = "4" >
-            <input class = "payjp_token" type = "hidden" name = "payjp_token", value = "">
+            <input class = "cvc" id =  "cvc" name = "cvc" placeholder = "カード裏面３〜４桁の番号" maxlength = "4" >
+            <input class = "payjp_token" type = "hidden" name = "payjp_token" value = "">
             <div id = "card_token">
-              <%= submit_tag "追加する", id: "submit-button", type: "submit" %>
+              <%= submit_tag "カードを追加する", id: "submit-button", type: "submit" %>
             </div>
           <% end %>
         <% end %>
