@@ -1,4 +1,6 @@
-<h2>登録住所一覧</h2>
+<div class = "container">
+ <div class = "row">
+<h2><strong>登録住所一覧</strong></h2>
 <!-- 本人の住所 -->
 <%= current_user.full_name %><br>
 <%= current_user.postal_code %><br>
@@ -15,6 +17,7 @@
 
 	<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
 <% end %>
-
+</div>
+</div>
 
 

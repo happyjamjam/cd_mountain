@@ -1,12 +1,15 @@
 <%= notice %>
 <div class = "container">
   <div class = row>
-  <%= link_to '商品の追加', new_admin_product_path, class: "btn btn-primary col-xs-7" %>
-  <table class="table table-hover">
+  <%= link_to '商品の追加', new_admin_product_path, class: "btn btn-primary col-xs-6" %>
+  <table class="table">
     <thead>
      <tr>
       <th>商品名</th>
-      <th>商品詳細</th>
+      <th>値段</th>
+      <th>ジャンル名</th>
+      <th>レーベル名</th>
+      <th></th>
       <th></th>
      </tr>
     </thead>
@@ -14,14 +17,13 @@
 　　<tbody>
     <% @products.each do |products| %>
      <tr>
-       <td class = "contents"><%= products.product_name %></td>
+       <td><%= products.product_name %></td>
+       <td><%= products.price %></td>
+       <td><%= products.genre.genre_name %></td>
+       <td><%= products.label.label_name %></td>
+       <td><%= link_to 'edit', edit_admin_product_path(products.id), class: "btn-sm btn-success" %></td>
+       <td><%= link_to 'destroy', admin_product_path(products.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
      </tr>
-     <tr>
-       <td class = "contents"><%= products.price %></td>
-       <td class = "contents"><%= products.genre.genre_name %></td>
-       <td class = "contents"><%= products.label.label_name %></td>
-       <td class = "contents"><%= link_to 'edit', edit_admin_product_path(products.id), class: "btn-sm btn-success" %></td>
-       <td class = "contents"><%= link_to 'destroy', admin_product_path(products.id), method: :delete, data:{confirm:"Are you sure?"}, class: "btn-sm btn-danger" %></td>
     <% end %>
    </tbody>
   </table>
