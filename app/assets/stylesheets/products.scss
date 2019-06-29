@@ -170,6 +170,14 @@ main {
   margin-top: 40px
 }
 
+.review_table {
+  table-layout: fixed;
+}
+
+.review_body {
+  word-wrap: break-word;
+}
+
 ul.ui-autocomplete {
   position: absolute;
   list-style: none;
