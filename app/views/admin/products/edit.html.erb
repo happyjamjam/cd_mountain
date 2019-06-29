@@ -40,17 +40,13 @@
 	<% end %>
 	</div>
 
-
-	<%= f.fields_for :artist_products do |artist_product| %>
-		<%= render 'artist_product_fields', f: artist_product %>
+	<%= f.fields_for :artists do |artist| %>
+		<%= render 'artist_fields', f: artist %>
 	<% end %>
 
-
 	<div id="links">
-		<%= link_to_add_association 'アーティストの追加', f, :artist_products %>
+		<%= link_to_add_association 'アーティストの追加', f, :artists %>
 	</div>
-
-	<%= link_to "新規アーティスト登録", new_admin_artist_path %>
 
 	<%= f.fields_for :disks do |disk| %>
 	  <%= render 'disk_fields', f: disk %>

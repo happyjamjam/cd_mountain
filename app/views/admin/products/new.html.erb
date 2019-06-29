@@ -1,2 +1,12 @@
+<% if @product.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>新規商品登録</h1>
 <%= render 'form', product: @product %>
