@@ -1,19 +1,14 @@
 class CardsController < ApplicationController
-
+  before_action :authenticate_user!
   protect_from_forgery
   require "payjp"
   require "dotenv"
   Dotenv.load
 
-  def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to orders_confirm_path if card.exists?
-  end
-
   def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params[:payjp_token].blank?
-      redirect_to action: "new"
+      redirect_to orders_confirm_path
     else
       customer = Payjp::Customer.create(
       card: params[:payjp_token],
@@ -34,17 +29,6 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
-  end
-
-  def show #Cardのデータpayjpに送り情報を取り出します
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
-      redirect_to action: "new"
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
+      redirect_to current_user
   end
 end

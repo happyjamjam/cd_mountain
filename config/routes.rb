@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   resources :order_details, only: [:create]
   resources :cards, only: [:new, :show] do
     collection do
-      get 'show',    to: 'cards#show'
       post 'create', to: 'cards#create'
       post 'delete', to: 'cards#delete'
     end
