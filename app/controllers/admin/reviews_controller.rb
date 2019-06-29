@@ -9,8 +9,9 @@ class Admin::ReviewsController < Admin::ApplicationController
 
   def update
     review = Review.find(params[:id])
+    user = review.user
     review.update(review_params)
-    redirect_to admin_user_path
+    redirect_to admin_user_path(user.id)
   end
 
 
@@ -18,7 +19,7 @@ class Admin::ReviewsController < Admin::ApplicationController
   	review = Review.find(params[:id])
     user = review.user
   	review.destroy
-  	redirect_to admin_user_path
+  	redirect_to admin_user_path(user.id)
   end
 
 private

@@ -9,7 +9,7 @@
 
  </div>
 
- <%= form_for @review, url:admin_product_review_path do |f| %>
+ <%= form_for @review, url:admin_product_review_path(@product.id,@review.id) do |f| %>
 　　<div class="form-group">
         <%= f.label :name, '投稿者名' %>
         <%= f.text_field :name, class: 'form-control' %>
