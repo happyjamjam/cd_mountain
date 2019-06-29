@@ -35,11 +35,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port:                 465,
+    port:                 587,
     address:              'smtp.gmail.com',
     domain:               'gmail.com',
     user_name:            'annaaidamailer@gmail.com',
-    password:             'webcamp813',
+    password:             'aokipapipon',
     authentication:       'login',
     enable_starttls_auto: true
   }

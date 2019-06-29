@@ -1,0 +1,46 @@
+<%= form_tag cards_path, method: :POST, id: "charge-form" do %>
+
+  <label> カード番号 </label>
+  <input maxlength = "16" type = "text" id = "card_number" class = "number", name = "number",  placeholder = "半角数字のみ" >
+  <br>
+  <label> 有効期限 </label>
+  <select class = "exp_month" id = "exp_month" name = "exp_month" type = "text">
+  	<option value = ""> -- </option>
+  	<option value = "1"> 1 </option>
+  	<option value = "2"> 2 </option>
+  	<option value = "3"> 3 </option>
+  	<option value = "4"> 4 </option>
+  	<option value = "5"> 5 </option>
+  	<option value = "6"> 6 </option>
+  	<option value = "7"> 7 </option>
+  	<option value = "8"> 8 </option>
+  	<option value = "9"> 9 </option>
+  	<option value = "10"> 10 </option>
+  	<option value = "11"> 11 </option>
+  	<option value = "12"> 12 </option>
+  </select>
+  <span> 月/ </span>
+
+  <select class = "exp_year" id = "exp_year" name = "exp_year" type = "text">
+  	<option value = ""> -- </option>
+  	<option value = "2019"> 19 </option>
+  	<option value = "2020"> 20 </option>
+  	<option value = "2021"> 21 </option>
+  	<option value = "2022"> 22 </option>
+  	<option value = "2023"> 23 </option>
+  	<option value = "2024"> 24 </option>
+  	<option value = "2025"> 25 </option>
+  	<option value = "2026"> 26 </option>
+  	<option value = "2027"> 27 </option>
+  	<option value = "2028"> 28 </option>
+  	<option value = "2029"> 29 </option>
+  </select>
+  <span> 年 </span>
+  <br>
+  <label> セキュリティコード </label>
+  <input class = "cvc", id =  "cvc", name = "cvc", placeholder = "カード裏面３〜４桁の番号", maxlength = "4" >
+  <input class = "payjp_token" type = "hidden" name = "payjp_token", value = "">
+  <div id = "card_token">
+  	<%= submit_tag "追加する", id: "submit-button", type: "submit" %>
+  </div>
+<% end %>

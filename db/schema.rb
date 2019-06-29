@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_101719) do
+ActiveRecord::Schema.define(version: 2019_06_24_062705) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 2019_06_19_101719) do
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
     t.string "artist_hiragana"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -160,7 +168,6 @@ ActiveRecord::Schema.define(version: 2019_06_19_101719) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"

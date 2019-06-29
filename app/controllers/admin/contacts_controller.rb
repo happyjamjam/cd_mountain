@@ -1,22 +1,19 @@
 class Admin::ContactsController < Admin::ApplicationController
+
   def index
   	@contacts = Contact.page(params[:page])
   end
 
   def show
   	@contact = Contact.find(params[:id])
-    @newcontact = Contact.new
   end
 
   def update
-
-    @contact = Contact.new.find(params[:id])
-
-    contact = @contact
+    contact = Contact.find(params[:id])
+    contact.update(contact_params)
     user = contact.user
     ContactMailer.send_when_admin_reply(user, contact).deliver
 
-    @newcontact.update
     redirect_to admin_contacts_path
 
   end
@@ -27,8 +24,8 @@ class Admin::ContactsController < Admin::ApplicationController
     redirect_to admin_contacts_path
   end
 
-
-  def update
+  def contact_params
+  params.require(:contact).permit(:reply_text)
   end
 
 end
