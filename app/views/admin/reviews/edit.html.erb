@@ -9,7 +9,7 @@
 
  </div>
 
- <%= form_for @review, url:admin_product_review_path do |f| %>
+ <%= form_for @review, url:admin_review_path do |f| %>
 　　<div class="form-group">
         <%= f.label :name, '投稿者名' %>
         <%= f.text_field :name, class: 'form-control' %>
@@ -25,5 +25,5 @@
         <%= f.submit '編集完了', class: 'btn btn-warning ' %>
 
  <% end %>
- <%= link_to '削除', admin_product_review_path(@review), method: :delete , class:"btn btn-danger", 'data-confirm' => '本当に削除しますか？' %>
+ <%= link_to '削除', admin_review_path(@review), method: :delete , class:"btn btn-danger", 'data-confirm' => '本当に削除しますか？' %>
 

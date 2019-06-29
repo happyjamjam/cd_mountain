@@ -1,5 +1,9 @@
 class Product < ApplicationRecord
-
+	validates :price, numericality: { only_integer: true }
+	validates :stock, numericality: { only_integer: true }
+	validates :product_name, presence: true
+	validates :genre_id, presence: true
+	validates :label_id, presence: true
 
 	has_many :users, through: :carts
 	has_many :carts
@@ -12,7 +16,11 @@ class Product < ApplicationRecord
 
 	has_many :artist_products, dependent: :destroy
 	has_many :artists, through: :artist_products
-	accepts_nested_attributes_for :artist_products, allow_destroy: true
+	# accepts_nested_attributes_for :artist_products, allow_destroy: true
+	accepts_nested_attributes_for :artists, allow_destroy: true
+
+	# before_save :find_or_create_artist
+	# # before_update :find_or_create_artist
 
 	belongs_to :genre
 	belongs_to :label
@@ -26,8 +34,15 @@ class Product < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+
+	# private
+	# 	def find_or_create_artist
+	# 		self.artists = self.artists.map {|artist| Artist.find_or_create_by(artist_name: artist.artist_name.strip)}
+	# 	end
+
 	def reviewed_by?(user)
 		reviews.where(user_id: user.id).exists?
 	end
+
 
 end
