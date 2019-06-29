@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+
   protect_from_forgery
   require "payjp"
   require "dotenv"
@@ -6,31 +7,25 @@ class CardsController < ApplicationController
 
   def new
     card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    redirect_to orders_confirm_path if card.exists?
   end
 
-  def create #payjpとCardのデータベース作成を実施します。
+  def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params[:payjp_token].blank?
-      binding.pry
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-      description: '登録テスト', #なくてもOK
-      email: current_user.email, #なくてもOK
       card: params[:payjp_token],
-      metadata: {user_id: current_user.id}
-      ) #念の為metadataにuser_idを入れましたがなくてもOK
+      )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "show"
-      else
-        redirect_to action: "pay"
+        redirect_to orders_confirm_path
       end
     end
   end
 
-  def delete #PayjpとCardデータベースを削除します
+  def delete
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
