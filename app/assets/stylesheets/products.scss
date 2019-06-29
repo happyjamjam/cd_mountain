@@ -87,6 +87,10 @@ main {
   margin-bottom: 30px;
 }
 
+.product-name-rank {
+  word-wrap: break-word;
+}
+
 
 .button{
   height: 60px;
@@ -120,6 +124,7 @@ main {
 }
 
 .right {
+  width: 100px;
   float: right;
   padding-right: 10px;
 }
@@ -168,6 +173,14 @@ main {
   margin-bottom: 15px;
   font-weight: bold;
   margin-top: 40px
+}
+
+.review_table {
+  table-layout: fixed;
+}
+
+.review_body {
+  word-wrap: break-word;
 }
 
 ul.ui-autocomplete {

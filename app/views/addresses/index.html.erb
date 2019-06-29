@@ -1,23 +1,26 @@
-<div class = "container">
- <div class = "row">
-<h2><strong>登録住所一覧</strong></h2>
-<!-- 本人の住所 -->
-<%= current_user.full_name %><br>
-<%= current_user.postal_code %><br>
-<%= current_user.address %><br>
-<%= current_user.tel %><br>
-<%= link_to "この住所を使う", orders_confirm_path %><br>
+<div class = "clearfix">
+	<div class = "container">
+ 		<div class = "row">
+ 			<h2><strong> 登録住所一覧 </strong></h2>
+			<!-- 本人の住所 -->
+			<div class = "my_address">
+				<%= current_user.full_name %><br>
+				<%= current_user.postal_code %><br>
+				<%= current_user.address %><br>
+				<%= current_user.tel %><br>
+				<%= link_to "この住所を使う", orders_confirm_path %><br>
+			</div>
 
-<!-- 登録した住所 -->
-<% @addresses.each do |address| %>
-	<%= address.name %><br>
-	<%= address.postal_code %><br>
-	<%= address.address %><br>
-	<%= address.tel %><br>
-
-	<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
-<% end %>
+			<!-- 登録した住所 -->
+			<% @addresses.each do |address| %>
+				<div class = "added-address">
+					<%= address.name %><br>
+					<%= address.postal_code %><br>
+					<%= address.address %><br>
+					<%= address.tel %><br>
+					<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
-</div>
-
-
