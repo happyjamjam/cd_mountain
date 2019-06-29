@@ -34,11 +34,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :addresses, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :carts, only: [:index, :update, :destroy]
-  get 'orders/confirm' => 'orders#confirm'
+  get 'orders/confirm' => 'orders#confirm' do
+    collection do
+      post 'orders/pay', to: 'orders#pay'
+    end
+  end
   resources :orders, only:[:create, :show, :index]
   resources :contacts, only:[:new, :create]
   resources :order_details, only: [:create]
-  post 'orders/pay' => 'orders#pay'
   resources :cards, only: [:new, :show] do
     collection do
       get 'show',    to: 'cards#show'
