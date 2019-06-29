@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 	has_many :carts
 	has_many :favorites, dependent: :destroy
 	#has_many :users, through: :favorites
-	has_many :reviews
+	has_many :reviews, dependent: :destroy
 	#has_many :users, through: :reviews
 	has_many :orders, through: :order_details
 	has_many :order_details
