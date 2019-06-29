@@ -38,10 +38,10 @@
 
 	<p class = "track-list-title"> トラックリスト</p>
 	<% @disks.each do |d| %>
-		<h3>ディスク<%= d.disk_number %></h3>
+		<h4>ディスク<%= d.disk_number %></h4>
 		<% @musics = d.musics %>
 		<% @musics.each do |m| %>
-	  	トラック<%= m.track_number %>. <%= m.music_title %><br>
+	  	<%= m.track_number %>. <%= m.music_title %><br>
 		<% end %>
 	<% end %>
 
