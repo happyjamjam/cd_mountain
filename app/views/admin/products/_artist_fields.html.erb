@@ -1,7 +1,7 @@
 <span class="nested-fields form-inline">
   <div class="form-group">
 		<%= f.label :アーティスト名 %>
-		<%= f.text_field :artist_name, data: {autocomplete_source: Artist.order(:artist_name).map(&:artist_name)} %>
+		<%= f.text_field :artist_name %>
 		<%= link_to_remove_association "削除", f %>
 	</div>
 </span>
