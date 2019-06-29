@@ -1,22 +1,19 @@
-(function() {
-  const form = $("charge-form"),
-      number = form.find('input[name="number"]'),
-      cvc = form.find('input[name="cvc"]'),
-      exp_month = form.find('select[name="exp_month"]'),
-      exp_year = form.find('input[name="exp_year"]');
+$(document).on('turbolinks:load', function() {
+  const form = $("#charge-form");
+  Payjp.setPublicKey(ENV["PAYJP_KEY"]);
 
-  $("#charge-form").submit(function() {
+  $("#charge-form").on("click", "#submit-button", function(e) {
+    e.preventDefault();
     form.find("input[type=submit]").prop("disabled", true);
-
     const card = {
-        number: number.value,
-        cvc: cvc.value,
-        exp_month: exp_month.value,
-        exp_year: exp_year.value
+        number: parseInt($("#card_number").val()),
+        cvc: parseInt($("#cvc").val()),
+        exp_month: parseInt($("#exp_month").val()),
+        exp_year: parseInt($("#exp_year").val())
     };
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        form.find('.payment-errors').text(response.error.message);
+        alert("error")
         form.find('button').prop('disabled', false);
       }
       else {
@@ -26,10 +23,9 @@
         $(".exp_year").removeAttr("name");
 
         const token = response.id;
-
-        form.append($('<input type="hidden" name="payjpToken" />').val(token));
-        form.get(0).submit();
+        $("#charge-form").append($('<input type="hidden" name="payjp_token" class = "payjp-token" />').val(token));
+        $("#charge-form").get(0).submit();
       }
     });
   });
-})();
+});

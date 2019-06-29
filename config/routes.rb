@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   	root to: "contacts#index"
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :contacts, only: [:index, :show, :destroy, :update]
-    resources :products do
-      resources :reviews, only: [:edit, :update, :destroy]
-    end
+    resources :products
+    resources :reviews, only: [:edit, :update, :destroy]
     resources :artists, only: [:create, :edit, :new]
     resources :disks, only: [:create, :update, :destroy]
     resources :musics, only: [:create, :update, :destroy]
@@ -42,8 +41,7 @@ Rails.application.routes.draw do
   post 'orders/pay' => 'orders#pay'
   resources :cards, only: [:new, :show] do
     collection do
-      post 'show', to: 'cards#show'
-      post 'pay', to: 'cards#pay'
+      post 'create', to: 'cards#create'
       post 'delete', to: 'cards#delete'
     end
   end

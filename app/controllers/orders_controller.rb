@@ -1,6 +1,26 @@
 class OrdersController < OrderDetailsController
 
   require 'payjp'
+  require 'dotenv'
+  Dotenv.load
+
+  def confirm
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to new_card_path
+    else
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+    calculation
+    @user_orders = current_user.carts.order(id: "DESC")
+    @order = Order.new
+    if params[:address_id] != nil
+      @address = Address.find(params[:address_id])
+    end
+  end
+
 
   def create
     calculation
@@ -20,6 +40,9 @@ class OrdersController < OrderDetailsController
       @order.total_price = @final_price
       if @order.save
         create_order_details
+        if @order.payment_method = "クレジット"
+          pay
+        end
         render :index
         @user_carts.destroy_all
         return
@@ -35,32 +58,18 @@ class OrdersController < OrderDetailsController
     @order_history = @order.order_details
   end
 
-  def index
-
-  end
-
-  def confirm
-    calculation
-  	@user_orders = current_user.carts.order(id: "DESC")
-    @order = Order.new
-    if params[:address_id] != nil
-      @address = Address.find(params[:address_id])
-    end
-  	# 支払い関係カラム未作成のため変数作成不可
-
-  end
+  private
 
   def pay
     calculation
-    Payjp.api_key = 'sk_test_e07dda9bc6db99d0c64abe79'
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       amount: @final_price, # 決済する値段
-      card: params['payjp-token'],
+      card: card.customer_id,
       currency: 'jpy'
     )
   end
-
-  private
 
   def order_params
     params.require(:order).permit(:payment_method, :shipping_name, :shipping_address, :postal_code, :tel)

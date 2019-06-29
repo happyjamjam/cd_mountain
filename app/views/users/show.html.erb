@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
 <% end %>
 
 <div class = "container">
@@ -54,9 +54,9 @@
               <td><%= order.created_at.to_date %></td>
             </tr>
           <% end %>
-          <%= paginate @orders %>
           </tbody>
         </table>
+        <%= paginate @orders %>
       </div>
       <div class = "left-lower">
     	  <div class = "favorite-indexbox"><p class = "favorite">いいね一覧</p></div>
@@ -71,13 +71,14 @@
       		<tbody>
       		<% @favorite_products.each do |favorite| %>
       		  <tr>
-      		    <td><%# attachment_image_tag favorite, :jacket_img %></td>
+      		    <td><%= attachment_image_tag favorite.product, :jacket_img, :fill, 40, 40, fallback: "no_img.jpg", size: "50x50" %></td>
       		    <td><%= link_to favorite.product.product_name, product_path(favorite.product) %></td>
-      		    <td><%= number_with_delimiter(favorite.product.price) %></td>
+      		    <td><%= number_with_delimiter(favorite.product.price) %>円</td>
       		  </tr>
       		<% end %>
       		</tbody>
       	</table>
+        <%= paginate @favorite_products %>
       </div>
     </div>
 

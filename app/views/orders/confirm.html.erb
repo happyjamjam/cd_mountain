@@ -56,7 +56,7 @@
     	  <tr>
     	  	<th>小計</th>
     	  	<th></th>
-    	  	<th><%= number_with_delimiter(@subtotal_price) %></th>
+    	  	<th><%= number_with_delimiter(@subtotal_price) %>円</th>
     	  </tr>
     	  <tr>
     	  	<th>消費税</th>
@@ -96,24 +96,30 @@
           <%= f.submit '注文を確定する', class: "btn btn-primary col-xs- 7purchase-confirm" %>
         <% end %>
         <!-- クレカ決済 -->
-        <form method = "POST" action = "/pay" id = "charge-form">
-          <span class = "charge-errors"></span>
-
-          <h4> 支払い </h4>
-          <label> カード番号 </label>
-          <input type = "text" class = "number" name = "number" maxlength = "16" placeholder = "カード番号">
-
-          <label> CVC </label>
-          <input type = "text" class = "cvc" name = "cvc" maxlength = "3" placeholder = "CVC">
-          <br>
-
-          <label> 有効期限 </label>
-          <input type = "text" class = "exp_month" name = "exp_month" maxlength = "2" placeholder = "月">
-          <input type = "text" class = "exp_year" name = "exp_year" maxlength = "4" placeholder = "年">
-          <br>
-
-          <button type = "submit"> 送信 </button>
+        <form>
+          <div class="form-group">
+            <label for="inputCardNumber">カード番号</label>
+            <input type="text" class="form-control" id="card_number" maxlength = "16" placeholder="カード番号">
+          </div>
+          <div class="form-group">
+            <label for="inputCVC">CVC/セキュリティコード</label>
+            <input type="text" class="form-control" id="cvc" maxlength = "3" placeholder="CVC">
+          </div>
+          <div class="form-group">
+            <label for="inputExp">有効期限</label>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="exp_month" maxlength = "2" placeholder="月">
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="exp_year" maxlength = "4" placeholder="年">
+              </div>
+            </div>
+          </div>
+          <button id="token">トークン化</button>
         </form>
+        <!-- 今回はHTML上に結果を表示します -->
+        生成されたトークン：<div id="card_token"></div>
         <!-- クレカ決済ここまで -->
       <% end %>
     </div>

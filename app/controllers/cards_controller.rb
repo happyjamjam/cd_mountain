@@ -1,18 +1,26 @@
 class CardsController < ApplicationController
-
+  protect_from_forgery
   require "payjp"
+  require "dotenv"
+  Dotenv.load
 
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
   end
 
-  def pay
+  def create #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    if params['payjp_token'].blank?
+    if params[:payjp_token].blank?
+      binding.pry
       redirect_to action: "new"
     else
-      customer = Payjp::Customer.create(card: params['payjp_token'])
+      customer = Payjp::Customer.create(
+      description: '登録テスト', #なくてもOK
+      email: current_user.email, #なくてもOK
+      card: params[:payjp_token],
+      metadata: {user_id: current_user.id}
+      ) #念の為metadataにuser_idを入れましたがなくてもOK
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to action: "show"
@@ -22,7 +30,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def delete
+  def delete #PayjpとCardデータベースを削除します
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
@@ -31,10 +39,10 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-    redirect_to
+      redirect_to action: "new"
   end
 
-  def show
+  def show #Cardのデータpayjpに送り情報を取り出します
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new"
@@ -44,5 +52,4 @@ class CardsController < ApplicationController
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
-
 end
