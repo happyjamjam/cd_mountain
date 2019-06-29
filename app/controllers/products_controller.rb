@@ -14,7 +14,9 @@ class ProductsController < ApplicationController
     @artist_products = @product.artist_products
   	@reviews = @product.reviews.page(params[:page]).per(5)
     @cart = Cart.new
+  if user_signed_in?
     @review = Review.where(user_id: current_user.id, product_id: @product.id).first
+  end
 
     if @product.stock != 0
       @stock_array = []

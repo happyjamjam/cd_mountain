@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     resources :labals, only: [:create, :update]
     resources :genres, only: [:create, :update]
     resources :orders, only: [:index, :show]
-
   end
 
 
