@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :carts
   has_many :contacts, dependent: :destroy
   has_many :reviews
+  has_many :cards, dependent: :destroy
 
   def full_name
     self.last_name + self.first_name

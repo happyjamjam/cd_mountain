@@ -5,8 +5,8 @@ class Admin::UsersController < Admin::ApplicationController
 
   def show
   	@user = User.find(params[:id])
-  	@orders = @user.orders.all
-  	@reviews = @user.reviews.all
+  	@orders = @user.orders.page(params[:page]).per(10)
+  	@reviews = @user.reviews
   end
 
   def edit

@@ -1,7 +1,7 @@
 class Admin::ReviewsController < Admin::ApplicationController
   def edit
   	@review = Review.find(params[:id])
-  	@product =Product.find(params[:product_id])
+  	@product = @review.product
     @genre = @product.genre
     @label = @product.label
     # @artist =@product.artist_id
@@ -10,15 +10,14 @@ class Admin::ReviewsController < Admin::ApplicationController
   def update
     review = Review.find(params[:id])
     review.update(review_params)
-    redirect_to admin_user_path
+    redirect_to admin_user_path(review.user)
   end
 
 
   def destroy
-  	review = Review.find(params[:id])
-    user = review.user
-  	review.destroy
-  	redirect_to admin_user_path
+    review = Review.find(params[:id])
+    review.destroy
+  	redirect_to admin_user_path(review.user)
   end
 
 private

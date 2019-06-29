@@ -47,19 +47,22 @@
 	</tr>
 <% end %>
 </table>
+<%= paginate @orders %>
 
 <h2> レビュー一覧</h2>
 <table class = "table">
 	<tr>
 		<th> 商品名</th>
 		<th> タイトル</th>
+		<th> レビュー本文 </th>
 	</tr>
 	<% @reviews.each do |review| %>
 		<tr>
 			<td> <%= review.product.product_name %></td>
 			<td> <%= review.title %></td>
-			<td> <%= link_to "レビュー編集", edit_admin_product_review_path(review), class: "btn btn-warning" %></td>
-			<td> <%= link_to "レビュー削除", admin_product_review_path(review), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+			<td> <%= review.body %> </td>
+			<td> <%= link_to "レビュー編集", edit_admin_review_path(review), class: "btn btn-warning" %></td>
+			<td> <%= link_to "レビュー削除", admin_review_path(review), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
 		</tr>
 	<% end %>
 </table>
