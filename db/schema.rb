@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 2019_06_24_062705) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
