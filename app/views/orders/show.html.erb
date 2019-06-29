@@ -2,36 +2,50 @@
   <div class = "row history-details-box">
     <p class = "order-show-title">購入履歴詳細</p>
       <table class = "table history-details">
-       <tr>
-        <th>購入日</th>
-        <td><%= @order.created_at.to_date %></td>
-       </tr>
-       <tr>
-        <th>発送先</th>
-        <td><%= @order.shipping_name %>様<br>
-        〒<%= @order.postal_code %><br>
-        <%= @order.shipping_address %></td>
-       </tr>
-       <tr>
-        <th>発送状況</th>
-        <td><%= @order.shipping_status %></td>
-       </tr>
-     <% @order_history.each do |history| %>
-     	 <tr>
-        <th>購入内容</th>
-        <td class = "contents">
-          <%= attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %>
-          <%= link_to history.product.product_name, product_path(history.product) %> / <%# history.product.disks.musics.artist.artist_name %></td>
-       </tr>
-       <tr>
-        <th>購入枚数</th>
-        <td><%= history.purchase_quantity %></td>
-       </tr>
-       <tr>
-        <th>金額</th>
-        <td><%= number_with_delimiter(history.purchase_price * history.purchase_quantity) %>円</td>
-       </tr>
+        <tr>
+          <th>購入日</th>
+          <td><%= @order.created_at.to_date %></td>
+        </tr>
+        <tr>
+          <th>発送先</th>
+          <td><%= @order.shipping_name %>様<br>
+          〒<%= @order.postal_code %><br>
+          <%= @order.shipping_address %></td>
+        </tr>
+        <tr>
+          <th>発送状況</th>
+          <td><%= @order.shipping_status %></td>
+        </tr>
+
+        <tr>
+          <th> 合計金額 </th>
+          <td> <%= number_with_delimiter(@order.total_price) %>円（消費税、送料込み） </td>
+        </tr>
+
+        <% @order_history.each do |history| %>
+       	<tr>
+          <th>購入内容</th>
+          <td class = "contents">
+            <%= attachment_image_tag history.product, :jacket_img, :fill, 50, 50, format: 'jpeg', fallback: "no_img.jpg", size:'50x50' %>
+            <%= link_to history.product.product_name, product_path(history.product) %>
+            <span> / </span>
+            <% history.product.artist_products.each do |artist_product| %>
+              <span> <%= artist_product.artist.artist_name %>/</span>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>購入枚数</th>
+          <td><%= history.purchase_quantity %></td>
+        </tr>
+
+        <tr>
+          <th>商品価格</th>
+          <td><%= number_with_delimiter(history.purchase_price * history.purchase_quantity) %>円</td>
+        </tr>
+
       <% end %>
-      </table>
+    </table>
   </div>
 </div>
