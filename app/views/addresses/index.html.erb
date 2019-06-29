@@ -1,20 +1,27 @@
 <h2>登録住所一覧</h2>
-<!-- 本人の住所 -->
-<%= current_user.full_name %><br>
-<%= current_user.postal_code %><br>
-<%= current_user.address %><br>
-<%= current_user.tel %><br>
-<%= link_to "この住所を使う", orders_confirm_path %><br>
+<div class = "address clearfix">
 
-<!-- 登録した住所 -->
-<% @addresses.each do |address| %>
-	<%= address.name %><br>
-	<%= address.postal_code %><br>
-	<%= address.address %><br>
-	<%= address.tel %><br>
+	<div class = "my_address">
+		<!-- 本人の住所 -->
+		<%= current_user.full_name %><br>
+		<%= current_user.postal_code %><br>
+		<%= current_user.address %><br>
+		<%= current_user.tel %><br>
+		<%= link_to "この住所を使う", orders_confirm_path %><br>
+	</div>
 
-	<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
-<% end %>
+	<!-- 登録した住所 -->
+	<% @addresses.each do |address| %>
+		<div class = "added-address">
+			<%= address.name %><br>
+			<%= address.postal_code %><br>
+			<%= address.address %><br>
+			<%= address.tel %><br>
+			<%= link_to "この住所を使う", controller: "orders", action: "confirm", address_id: address.id %><br>
+		</div>
+	<% end %>
+
+</div>
 
 
 

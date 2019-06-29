@@ -87,6 +87,10 @@ main {
   margin-bottom: 30px;
 }
 
+.product-name-rank {
+  word-wrap: break-word;
+}
+
 
 .button{
   height: 60px;
@@ -120,6 +124,7 @@ main {
 }
 
 .right {
+  width: 100px;
   float: right;
   padding-right: 10px;
 }
