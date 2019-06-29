@@ -9,7 +9,7 @@
 				<%= artist_product.artist.artist_name %>
 			<% end %>
 			<br>
-			<%= @label.label_name %> / <%= @genre.genre_name %>
+			<%= @label.label_name %> / <%= @genre.genre_name %><br>
 			値段:<%= number_with_delimiter(@product.price) %>円(税別価格)
 		</div>
 
@@ -51,11 +51,10 @@
 		<% unless @product.reviewed_by?(current_user) %>
 			<%= link_to "レビューを投稿する", new_product_review_path(@product), class: "review-button btn btn-success" %>
 			<% else %>
+            <% review = Review.find_by(user_id: current_user.id, product_id: @product.id) %>
 			<%= link_to "レビューを編集する", edit_product_review_path(@product, @review), class: "review-button btn btn-success" %>
-		   <% if @review.user == current_user %>
 			<%= link_to "レビューを削除する", product_review_path(@product, @review), method: :delete, data:{confirm:"本当に削除しますか?"}, class: "review-button btn btn-warning" %>
 		   <% end %>
-		<% end %>
 		<% else %>
 			<p>レビューを書くにはログインしてください。</p>
 		<% end %>
