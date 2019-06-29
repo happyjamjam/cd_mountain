@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
   const form = $("#charge-form");
+  console.log(Payjp);
   Payjp.setPublicKey("pk_test_115115a6e1739479fe4d883f");
 
   $("#charge-form").on("click", "#submit-button", function(e) {
@@ -12,7 +13,7 @@ $(document).on('turbolinks:load', function() {
           exp_month: $("#exp_month").val(),
           exp_year: $("#exp_year").val(),
     };
-
+    console.log(card);
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         alert("error");
@@ -23,6 +24,7 @@ $(document).on('turbolinks:load', function() {
         $(".exp_month").removeAttr("name");
         $(".exp_year").removeAttr("name");
         const token = response.id;
+        console.log(token);
 
         form.append($('<input type = "hidden" name = "payjp_token" />').val(token));
         form.get(0).submit();

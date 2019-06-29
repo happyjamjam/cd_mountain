@@ -3,6 +3,7 @@ class OrdersController < OrderDetailsController
   protect_from_forgery
   require 'payjp'
   require 'dotenv'
+  Dotenv.load
 
   def confirm
     if current_user.cards.exists?
@@ -26,18 +27,24 @@ class OrdersController < OrderDetailsController
     @user_carts.each do |cart|
       if cart.product.stock < cart.quantity # 在庫が注文数よりも少なければカートに戻る
         redirect_to carts_path, notice: "在庫数が変更されました。注文枚数を選択し直してください。"
+        return
       end
     end
     # チェック終了
-    unless current_user.carts.exists?
+    if !current_user.carts.exists?
       redirect_to carts_path
     else
       @order = Order.new(order_params)
       @order.user_id = current_user.id
       @order.total_price = @final_price
+      # 支払い方法にクレジットを選択しているのにカード情報を登録していない場合、リダイレクトする
+      if !current_user.cards.exists? && @order.payment_method == "クレジット"
+        redirect_to orders_confirm_path, notice: "カード情報を登録してください。"
+        return
+      end
       if @order.save
         if @order.payment_method == "クレジット"
-        pay
+          pay
         end
         create_order_details
         render :index
