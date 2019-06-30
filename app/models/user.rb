@@ -19,8 +19,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence:true
-  validates :kana_first_name, presence: true
-  validates :kana_last_name, presence: true
   validates :postal_code, presence: true, length: { minimum: 7 }
   validates :address, presence: true
   validates :tel, presence: true, length: { maximum: 13 }
